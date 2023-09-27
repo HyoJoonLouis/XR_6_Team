@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [Header("Info")]
-    [SerializeField] int level;
-    float Speed;
+    public float Speed;
 
     [Header("PlayerManager")]
     Movement move;
@@ -41,13 +40,9 @@ public class Player : MonoBehaviour
         }
     }*/
 
-    private void OnShot(InputValue value)
+    private void OnFire(InputValue value)
     {
-        if (value.isPressed)
-        {
-            weapon.OnShot();
-        }
-
+        weapon.OnShot();
     }
 
     #region DamageUpTrigger

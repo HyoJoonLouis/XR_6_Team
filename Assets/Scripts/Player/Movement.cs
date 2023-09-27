@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour
     bool checkWalk;
 
     private Vector2 moveDirection;
-    public Vector3 mousePosition;
 
     private void Start()
     {
