@@ -18,5 +18,8 @@ public class BaseWeapon : MonoBehaviour
     {
     }
 
-
+    public float GetAtkSpd()
+    {
+        return AttackSpeed;
+    }
 }

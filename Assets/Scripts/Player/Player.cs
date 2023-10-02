@@ -9,20 +9,21 @@ public class Player : MonoBehaviour
 {
     [Header("Info")]
     public float Speed;
+    public float MaxHp;
+    float CurrentHp;
 
     [Header("PlayerManager")]
     Movement move;
     Weapon weapon;
 
-    UnityEvent damageUp;    //임시 
+    bool isFire = false;
 
     private void Awake()
     {
         move = GetComponent<Movement>();
         weapon = GetComponentInChildren<Weapon>();
 
-        // 임시
-        damageUp = new UnityEvent();
+        CurrentHp = MaxHp;
     }
 
     private void Update()
@@ -30,45 +31,22 @@ public class Player : MonoBehaviour
         move.Move(Speed);
     }
 
-    /*public override void TakeDamage(float value)
+    public void TakeDamage(float value)
     {
-        base.TakeDamage(value);
+        CurrentHp -= value;
 
         if (CurrentHp <= 0)
         {
             // Gameover
+            Destroy(this);
         }
-    }*/
+    }
 
     private void OnFire(InputValue value)
     {
-        weapon.OnShot();
+        if (value.isPressed)
+            weapon.OnShot(true);
+        else
+            weapon.OnShot(false);
     }
-
-    #region DamageUpTrigger
-    void OnDamageUp()
-    {
-        damageUp.AddListener(DamageUpTrigger);
-        damageUp.Invoke();
-        damageUp.RemoveListener(DamageUpTrigger);
-    }
-
-    public void OnTest1(InputValue value)
-    {
-        float keyCode = value.Get<float>();
-
-        OnDamageUp();
-    }
-
-    public void DamageUpTrigger()
-    {
-        for (int i = 0; i < this.transform.childCount; ++i)
-        {
-            if (this.transform.GetChild(i).gameObject.GetComponent<BaseSkill>() == null)
-                return;
-            this.transform.GetChild(i).gameObject.AddComponent<SkillDamageUp>();
-        }
-    }
-
-    #endregion DamageUpTrigger
 }

@@ -15,22 +15,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Test1",
-                    "type": "Value",
-                    "id": "75b81115-c503-4f6a-8d3e-cf6786015941",
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "371909ba-4c71-4187-a3ed-45eb59b39ea6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Fire",
-                    "type": "Value",
-                    "id": "6bb7988a-60f0-462b-b185-db08e5d87b06",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -91,20 +82,9 @@
                 },
                 {
                     "name": "",
-                    "id": "15fb41fc-83ac-44ba-b647-279beac2f947",
-                    "path": "<Keyboard>/p",
-                    "interactions": "Press(pressPoint=2,behavior=1)",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Test1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4d8f2ded-c5ff-4131-a2d8-d09ce7544242",
+                    "id": "65c59a7e-baa7-4205-8ace-924838c67846",
                     "path": "<Keyboard>/z",
-                    "interactions": "Hold",
+                    "interactions": "Press(pressPoint=0.2,behavior=2)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Fire",

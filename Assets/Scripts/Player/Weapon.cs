@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class Weapon : BaseWeapon
 {
     protected Player player;
-    bool isAttack = true;
+    bool isAttack = false;
+    bool attackTime = true;
 
     protected override void Awake()
     {
@@ -20,28 +21,33 @@ public class Weapon : BaseWeapon
         StartCoroutine(OnAttack());
     }
 
+    private void Update()
+    {
+        CreateProjectile();
+    }
+
     public IEnumerator OnAttack()
     {
         while (true)
         {
             yield return new WaitForSeconds(AttackSpeed);
-
-            if (!isAttack) isAttack = true;
+    
+            if (!attackTime) attackTime = true;
         }
     }
 
     void CreateProjectile()
     {
-        Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, player.transform.position, player.transform.rotation).GetComponent<Fireball>();
-        fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
-        isAttack = false;
+        if (isAttack && attackTime)
+        {
+            Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, player.transform.position, player.transform.rotation).GetComponent<Fireball>();
+            fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
+            attackTime = false;
+        }
     }
 
-    public void OnShot()
+    public void OnShot(bool isAtk)
     {
-        if (isAttack)
-        {
-            CreateProjectile();
-        }
+        isAttack = isAtk;
     }
 }
