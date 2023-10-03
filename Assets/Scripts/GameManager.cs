@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager instance;
-    [SerializeField] float Timer;
+    [SerializeField] float time;
 
     [HideInInspector] public UnityEvent TimeEvent;
 
@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        Timer -= Time.deltaTime;
-        if(Timer / 5 == 0)
+        time += Time.deltaTime;
+        if(time >= 0)
         {
             TimeEvent.Invoke();
         }
