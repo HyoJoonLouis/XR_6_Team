@@ -16,11 +16,6 @@ public class Weapon : BaseWeapon
         player = GetComponentInParent<Player>();
     }
 
-    private void Start()
-    {
-        StartCoroutine(OnAttack());
-    }
-
     private void Update()
     {
         CreateProjectile();
@@ -42,6 +37,7 @@ public class Weapon : BaseWeapon
         {
             Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, player.transform.position, player.transform.rotation).GetComponent<Fireball>();
             fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
+            StartCoroutine(OnAttack());
             attackTime = false;
         }
     }

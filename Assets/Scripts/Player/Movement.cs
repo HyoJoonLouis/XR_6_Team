@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        Vector3 input = value.Get<Vector2>();
+        Vector2 input = value.Get<Vector2>();
         
         moveDirection = new Vector2(input.x, input.y);
     }
