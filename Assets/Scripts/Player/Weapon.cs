@@ -16,11 +16,6 @@ public class Weapon : BaseWeapon
         player = GetComponentInParent<Player>();
     }
 
-    private void Start()
-    {
-        StartCoroutine(OnAttack());
-    }
-
     private void Update()
     {
         CreateProjectile();
@@ -28,20 +23,20 @@ public class Weapon : BaseWeapon
 
     public IEnumerator OnAttack()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(AttackSpeed);
+        yield return new WaitForSeconds(AttackSpeed);
     
-            if (!attackTime) attackTime = true;
-        }
+        if (!attackTime) attackTime = true;
     }
 
     void CreateProjectile()
     {
         if (isAttack && attackTime)
         {
-            Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, player.transform.position, player.transform.rotation).GetComponent<Fireball>();
+            Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, 
+                new Vector2(player.transform.position.x + 0.7f, player.transform.position.y - 0.5f), 
+                player.transform.rotation).GetComponent<Fireball>();
             fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
+            StartCoroutine(OnAttack());
             attackTime = false;
         }
     }

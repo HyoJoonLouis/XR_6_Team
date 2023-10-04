@@ -24,7 +24,7 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //collision.gameObject.GetComponent<BaseCharacter>().TakeDamage(Damage);
+        //collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(Damage);
         CurrentAttack -= 1;
         if (CurrentAttack <= 0)
         {
