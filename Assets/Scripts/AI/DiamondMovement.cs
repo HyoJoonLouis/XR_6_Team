@@ -6,13 +6,14 @@ public class DiamondMovement : AIMovement
 {
     [Header("Diamond")]
     [SerializeField] GameObject AmmoGameObject;
+    [SerializeField] float AmmoStartTime;
     [SerializeField] float DelayTime;
 
     Coroutine coroutine;
     public override void Update()
     {
         base.Update();
-        if (time >= DelayTime && coroutine == null)
+        if (time >= AmmoStartTime && coroutine == null)
         {
             coroutine = StartCoroutine(SpawnAmmo());
         }
@@ -22,8 +23,8 @@ public class DiamondMovement : AIMovement
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.0f);
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, transform.rotation);
+            yield return new WaitForSeconds(DelayTime);
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(new Vector3(0, 0, 180)));
         }
     }
 }

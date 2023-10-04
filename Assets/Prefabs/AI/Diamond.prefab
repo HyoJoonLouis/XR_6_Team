@@ -101,19 +101,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 10
-      inSlope: -14
-      outSlope: -14
+      time: -0.00064086914
+      value: 0
+      inSlope: -13.982079
+      outSlope: -13.982079
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: 3
-      inSlope: -14
-      outSlope: -14
+      value: -7
+      inSlope: -13.982079
+      outSlope: -13.982079
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -146,4 +146,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AmmoGameObject: {fileID: 7195823597200851465, guid: db986f40b5f39bf42aefe4b37e18ab2f, type: 3}
-  DelayTime: 0.5
+  AmmoStartTime: 0.5
+  DelayTime: 2
