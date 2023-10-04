@@ -9,22 +9,38 @@ public class DiamondMovement : AIMovement
     [SerializeField] float AmmoStartTime;
     [SerializeField] float DelayTime;
 
+    [SerializeField] Transform AmmoStartPosition;
+
+    Animator animator;
+
     Coroutine coroutine;
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        animator = GetComponent<Animator>();
+    }
+
     public override void Update()
     {
         base.Update();
         if (time >= AmmoStartTime && coroutine == null)
         {
-            coroutine = StartCoroutine(SpawnAmmo());
+            coroutine = StartCoroutine(StartHitAnimation());
         }
     }
 
-    IEnumerator SpawnAmmo()
+    IEnumerator StartHitAnimation()
     {
-        while (true)
+        while(true)
         {
+            animator.Play("Hit");
             yield return new WaitForSeconds(DelayTime);
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(new Vector3(0, 0, 180)));
         }
+    }
+
+    public void Hit()
+    {
+        ObjectPoolManager.SpawnObject(AmmoGameObject, AmmoStartPosition.position, Quaternion.Euler(new Vector3(0,0,180)));
     }
 }

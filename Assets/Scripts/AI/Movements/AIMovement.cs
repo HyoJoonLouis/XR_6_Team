@@ -16,6 +16,7 @@ public class AIMovement : MonoBehaviour
     virtual public void OnEnable()
     {
         initPosition = transform.position;
+        time = 0;
     }
 
     virtual public void Update()
@@ -23,7 +24,8 @@ public class AIMovement : MonoBehaviour
         time += Time.deltaTime;
         
         this.transform.position = new Vector2(XMovement.Evaluate(time) + initPosition.x, YMovement.Evaluate(time) + initPosition.y);
-
+        if (this.transform.position.x <= -13)
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
     }
 
 }
