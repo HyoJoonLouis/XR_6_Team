@@ -12,23 +12,37 @@ public class Player : MonoBehaviour, ITakeDamage
     public float MaxHp;
     float CurrentHp;
 
+    [Header("Hit")]
+    bool isUnbeatTime = false;
+    Renderer render;
+    BoxCollider2D boxCollider;
+
+    [Header("Movement")]
     Movement move;
+
+    [Header("Weapon")]
     Weapon weapon;
     public GameObject[] subWeapons;
     int MaxSubWeaponCount = 3;
     int CurSubWeaponCount = 0;
-    bool isFire = false;
 
     private void Awake()
     {
         move = GetComponent<Movement>();
         weapon = GetComponentInChildren<Weapon>();
+        render = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         CurrentHp = MaxHp;
     }
 
     private void Update()
     {
+        if (isUnbeatTime)
+            boxCollider.enabled = false;
+        else
+            boxCollider.enabled = true;
+
         move.Move(Speed);
         CameraWorldSpace();
     }
@@ -36,11 +50,35 @@ public class Player : MonoBehaviour, ITakeDamage
     public void TakeDamage(float value)
     {
         CurrentHp -= value;
+        isUnbeatTime = true;
+        StartCoroutine(UnBeatTime());
 
         if (CurrentHp <= 0)
         {
             // Gameover
         }
+    }
+
+    IEnumerator UnBeatTime()
+    {
+        int countTime = 0;
+
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+                render.material.color = new Color32(255, 255, 255, 90);
+            else
+                render.material.color = new Color32(255, 255, 255, 180);
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+
+        render.material.color = new Color32(255, 255, 255, 255);
+        isUnbeatTime = false;
+
+        yield return null;
     }
 
     void CameraWorldSpace()

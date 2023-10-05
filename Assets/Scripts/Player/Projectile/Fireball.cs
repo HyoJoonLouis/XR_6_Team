@@ -20,6 +20,9 @@ public class Fireball : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.right * Speed * Time.deltaTime);
+
+        if (this.transform.position.x < -13 || this.transform.position.x > 13 || this.transform.position.y > 7 || this.transform.position.y < -7)
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

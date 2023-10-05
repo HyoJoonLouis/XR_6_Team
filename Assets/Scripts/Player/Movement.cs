@@ -18,21 +18,7 @@ public class Movement : MonoBehaviour
 
     public void Move(float speed)
     {
-        if (moveDirection.x != 0)
-        {
-            animator.SetBool("isWalk", true);
-        }
-
-        if (moveDirection.x < 0)
-        {
-            animator.SetBool("isBack", true);
-            animator.SetBool("isFront", false);
-        }
-        else if (moveDirection.x > 0)
-        {
-            animator.SetBool("isBack", false);
-            animator.SetBool("isFront", true);
-        }
+        animator.SetFloat("MoveDirection", moveDirection.x);
 
         transform.Translate(moveDirection * speed * Time.deltaTime);
     }
@@ -42,6 +28,5 @@ public class Movement : MonoBehaviour
         Vector2 input = value.Get<Vector2>();
         
         moveDirection = new Vector2(input.x, input.y);
-        Debug.Log(moveDirection.x);
     }
 }
