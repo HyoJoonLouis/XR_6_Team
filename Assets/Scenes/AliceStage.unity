@@ -187,10 +187,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4389267962448649024, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
-      propertyPath: renderer
-      value: 
-      objectReference: {fileID: 988239706}
     - target: {fileID: 4389267962448649081, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
       propertyPath: m_Name
       value: Player
@@ -244,11 +240,6 @@ PrefabInstance:
 --- !u!1 &988239704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4389267962448649081, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
-  m_PrefabInstance: {fileID: 515390048}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &988239706 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 260968522, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
   m_PrefabInstance: {fileID: 515390048}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1701322832
@@ -441,17 +432,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.4
-      outSlope: 0.4
+      inSlope: 0.1
+      outSlope: 0.1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.4
-      inSlope: 0.4
-      outSlope: 0.4
+      value: 0.1
+      inSlope: 0.1
+      outSlope: 0.1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -465,17 +456,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.4
-      outSlope: -0.4
+      inSlope: -0.1
+      outSlope: -0.1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: -0.4
-      inSlope: -0.4
-      outSlope: -0.4
+      value: -0.1
+      inSlope: -0.1
+      outSlope: -0.1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

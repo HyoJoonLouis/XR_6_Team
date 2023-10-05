@@ -338,7 +338,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10.76
   MaxHp: 5
-  renderer: {fileID: 0}
   subWeapons:
   - {fileID: 447935278}
   - {fileID: 1332917261}
