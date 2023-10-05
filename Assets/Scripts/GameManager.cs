@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public UnityEvent TimeEvent;
 
-    [SerializeField] List<GameObject> Monsters;
+    public List<GameObject> Monsters;
+    public List<GameObject> Ammos;
 
     public void Awake()
     {

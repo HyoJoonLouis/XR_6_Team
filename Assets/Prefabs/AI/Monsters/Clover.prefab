@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0.01, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4964738760633650986}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,20 +168,38 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.0383166
-      outSlope: 0.0383166
+      inSlope: -16.62824
+      outSlope: -16.62824
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.13828152
+      outWeight: 0.087347455
+    - serializedVersion: 3
+      time: 0.58398134
+      value: -4.9097686
+      inSlope: -0.19948436
+      outSlope: 0.17369123
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.08730821
+      outWeight: 0.085834816
+    - serializedVersion: 3
+      time: 1.2856003
+      value: -5.1712303
+      inSlope: -1.9301327
+      outSlope: -8.421093
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.23454559
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 2
       value: -25
-      inSlope: -31.020967
-      outSlope: -31.020967
+      inSlope: -41.195644
+      outSlope: -41.195644
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.035986125
+      inWeight: 0.025790334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -200,3 +219,77 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  time: 0
+  initPosition: {x: 0, y: 0}
+--- !u!1 &976020351773893819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4964738760633650986}
+  - component: {fileID: 7448423321278681312}
+  - component: {fileID: 8052764662998286278}
+  m_Layer: 6
+  m_Name: DamageTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4964738760633650986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976020351773893819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 343327110741720695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7448423321278681312
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976020351773893819}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.47736877, y: 0.01801394}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3782924, y: 0.9639721}
+  m_EdgeRadius: 0
+--- !u!114 &8052764662998286278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976020351773893819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82813fa115ae18e4da7f6dda3451a9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5
