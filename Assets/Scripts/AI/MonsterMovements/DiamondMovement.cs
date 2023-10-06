@@ -5,11 +5,10 @@ using UnityEngine;
 public class DiamondMovement : AIMovement
 {
     [Header("Diamond")]
-    [SerializeField] GameObject AmmoGameObject;
     [SerializeField] float AmmoStartTime;
     [SerializeField] float DelayTime;
 
-    [SerializeField] Transform AmmoStartPosition;
+    public Transform AmmoStartPosition;
 
     Animator animator;
 
@@ -41,7 +40,7 @@ public class DiamondMovement : AIMovement
         }
     }
 
-    public void Hit()
+    public virtual void Hit()
     {
         ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[0], AmmoStartPosition.position, Quaternion.Euler(new Vector3(0,0,180)));
     }

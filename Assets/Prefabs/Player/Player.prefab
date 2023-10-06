@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 4389267962448649081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.78, y: 1.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4389267962582763278}
@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f69a13630425f54c9e3c2d0a6773648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10.76
-  MaxHp: 5
+  Speed: 10
+  MaxHp: 6
   subWeapons:
   - {fileID: 447935278}
   - {fileID: 1332917261}
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPoint: 1
-  AttackSpeed: 0.5
+  AttackSpeed: 0.15
   ProjectileSpeed: 20
   ProjectileObject: {fileID: 3053831775962426289, guid: fec9102d44af5ac4b88e31f472131436, type: 3}
   MaxAttack: 1
@@ -585,6 +585,18 @@ PrefabInstance:
     - target: {fileID: 3117731065736741114, guid: 0afb9ff61ff8add43bef9c865f029d50, type: 3}
       propertyPath: m_DrawMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117731066696502090, guid: 0afb9ff61ff8add43bef9c865f029d50, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117731066696502090, guid: 0afb9ff61ff8add43bef9c865f029d50, type: 3}
+      propertyPath: m_SpriteTileMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117731066696502090, guid: 0afb9ff61ff8add43bef9c865f029d50, type: 3}
+      propertyPath: m_AdaptiveModeThreshold
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0afb9ff61ff8add43bef9c865f029d50, type: 3}

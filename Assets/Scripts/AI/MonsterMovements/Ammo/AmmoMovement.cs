@@ -6,7 +6,7 @@ public class AmmoMovement : MonoBehaviour
 {
     [SerializeField] float Speed;
 
-    void Update()
+    public virtual void Update()
     {
         this.transform.Translate(new Vector3(Speed,0,0) * Time.deltaTime);
 

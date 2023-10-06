@@ -11,7 +11,7 @@ public class AIMovement : MonoBehaviour
 
     public float time = 0;
 
-    public Vector2 initPosition;
+    [HideInInspector] public Vector2 initPosition;
 
     virtual public void OnEnable()
     {
