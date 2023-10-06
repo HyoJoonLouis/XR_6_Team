@@ -33,7 +33,7 @@ public class Weapon : BaseWeapon
         if (isAttack && attackTime)
         {
             Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, 
-                new Vector2(player.transform.position.x + 0.7f, player.transform.position.y - 0.5f), 
+                new Vector2(player.transform.position.x + 0.9f, player.transform.position.y - 0.3f), 
                 player.transform.rotation).GetComponent<Fireball>();
             fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
             StartCoroutine(OnAttack());

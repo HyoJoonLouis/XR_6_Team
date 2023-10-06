@@ -19,6 +19,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Movement")]
     Movement move;
+    Animator animator;
 
     [Header("Weapon")]
     Weapon weapon;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         move = GetComponent<Movement>();
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
@@ -96,9 +98,15 @@ public class Player : MonoBehaviour, ITakeDamage
     private void OnFire(InputValue value)
     {
         if (value.isPressed)
-            weapon.OnShot(true);
+        {
+            weapon.OnShot(value.isPressed);
+            animator.SetBool("IsAttack", value.isPressed);
+        }
         else
-            weapon.OnShot(false);
+        {
+            weapon.OnShot(value.isPressed);
+            animator.SetBool("IsAttack", value.isPressed);
+        }
     }
 
     private void OnUse(InputValue value)
