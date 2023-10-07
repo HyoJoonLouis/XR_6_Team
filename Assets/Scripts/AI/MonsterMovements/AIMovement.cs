@@ -10,6 +10,7 @@ public class AIMovement : MonoBehaviour
     [SerializeField] AnimationCurve YMovement;
 
     public float time = 0;
+    public bool isMoveable;
 
     [HideInInspector] public Vector2 initPosition;
 
@@ -17,13 +18,17 @@ public class AIMovement : MonoBehaviour
     {
         initPosition = transform.position;
         time = 0;
+        isMoveable = true;
     }
 
     virtual public void Update()
     {
-        time += Time.deltaTime;
+        if(isMoveable)
+        {
+            time += Time.deltaTime;
+            this.transform.position = new Vector2(XMovement.Evaluate(time) + initPosition.x, YMovement.Evaluate(time) + initPosition.y);
+        }
         
-        this.transform.position = new Vector2(XMovement.Evaluate(time) + initPosition.x, YMovement.Evaluate(time) + initPosition.y);
         if (this.transform.position.x <= -13)
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
     }

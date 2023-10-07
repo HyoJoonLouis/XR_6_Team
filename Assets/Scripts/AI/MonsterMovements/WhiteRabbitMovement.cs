@@ -8,8 +8,16 @@ public class WhiteRabbitMovement : AIMovement
     [SerializeField] GameObject AmmoGameObject;
     [SerializeField] float AmmoStartTime;
     [SerializeField] float DelayTime;
+    [SerializeField] Transform AmmoStartPosition;
 
     Coroutine coroutine;
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        coroutine = null;
+        AmmoStartPosition.eulerAngles= Vector3.zero;
+    }
 
     public override void Update()
     {
@@ -25,14 +33,14 @@ public class WhiteRabbitMovement : AIMovement
     {
         while (true)
         {
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 0));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 60));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 120));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 180));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 240));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 300));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 0));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 60));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 120));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 180));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 240));
+            ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[2], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.eulerAngles.z + 300));
             yield return new WaitForSeconds(DelayTime);
-            this.transform.Rotate(new Vector3(0, 0, 20));
+            AmmoStartPosition.Rotate(new Vector3(0, 0, 20));
         }
     }
 }
