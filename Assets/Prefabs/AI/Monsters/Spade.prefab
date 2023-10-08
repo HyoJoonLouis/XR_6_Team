@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 6
+  MaxHp: 5
   renderer: {fileID: 0}
   time: 0.07
 --- !u!114 &7141298315792639526
