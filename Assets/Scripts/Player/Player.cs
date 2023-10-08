@@ -22,10 +22,13 @@ public class Player : MonoBehaviour, ITakeDamage
     Animator animator;
 
     [Header("Weapon")]
-    Weapon weapon;
+    public GameObject MegicalSpace;
     public GameObject[] subWeapons;
+    Weapon weapon;
     int MaxSubWeaponCount = 3;
     int CurSubWeaponCount = 0;
+    Vector2 randVector;
+    float time;
 
     private void Awake()
     {
@@ -97,15 +100,16 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void OnFire(InputValue value)
     {
+        animator.SetBool("IsAttack", value.isPressed);
+        MegicalSpace.SetActive(value.isPressed);
+
         if (value.isPressed)
         {
             weapon.OnShot(value.isPressed);
-            animator.SetBool("IsAttack", value.isPressed);
         }
         else
         {
             weapon.OnShot(value.isPressed);
-            animator.SetBool("IsAttack", value.isPressed);
         }
     }
 

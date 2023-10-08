@@ -8,6 +8,8 @@ public class Weapon : BaseWeapon
     protected Player player;
     bool isAttack = false;
     bool attackTime = true;
+    public float time;
+    Vector2 randVector;
 
     protected override void Awake()
     {
@@ -18,6 +20,11 @@ public class Weapon : BaseWeapon
 
     private void Update()
     {
+        time++;
+        if (time > 100f)
+            time = 0;
+        Random.InitState((int)time);
+
         CreateProjectile();
     }
 
@@ -33,7 +40,7 @@ public class Weapon : BaseWeapon
         if (isAttack && attackTime)
         {
             Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, 
-                new Vector2(player.transform.position.x + 0.9f, player.transform.position.y - 0.3f), 
+                new Vector2(player.transform.position.x + 1.5f, player.transform.position.y + Random.Range(-0.65f, 0.3f)), 
                 player.transform.rotation).GetComponent<Fireball>();
             fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
             StartCoroutine(OnAttack());
