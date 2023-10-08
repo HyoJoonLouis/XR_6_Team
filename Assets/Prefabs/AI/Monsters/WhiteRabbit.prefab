@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0f75aeac659ea2f4c84aab3c9b9affd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   time: 0
+  isMoveable: 0
   initPosition: {x: 0, y: 0}
   AmmoGameObject: {fileID: 7195823597200851465, guid: db986f40b5f39bf42aefe4b37e18ab2f, type: 3}
   AmmoStartTime: 1.5

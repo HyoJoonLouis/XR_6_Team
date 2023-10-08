@@ -51,11 +51,16 @@ MonoBehaviour:
       m_Calls: []
   Monsters:
   - {fileID: 343327110741720690, guid: aaaad9a841386dc4e8e44a6428d64b70, type: 3}
-  - {fileID: 4180021978574540650, guid: 6b4f51b484e7d4d4ea491993237b54ba, type: 3}
   - {fileID: 4790472349505202476, guid: 59fb64f33e7f7214a95efa9d283345dc, type: 3}
+  - {fileID: 4180021978574540650, guid: 6b4f51b484e7d4d4ea491993237b54ba, type: 3}
   - {fileID: 6420047486200513929, guid: 0eb7c46274cf01d4a8755ba4330c15b1, type: 3}
   - {fileID: 4026654972348106695, guid: b21d300a197e4454eaea04fa1b8a330d, type: 3}
   Ammos:
   - {fileID: 3456975904051789431, guid: b27ad69a6502a2c4da8686e2321525d8, type: 3}
   - {fileID: 1936970529259058219, guid: fe8041544d36c6b4f9e5280046d605c4, type: 3}
   - {fileID: 8106677566286390473, guid: a0b7e4d5c0354cf43987fb221af84092, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 5552931075741817274, guid: 15906cf711ae80a43a2351a6a1d2b2bf, type: 3}
+  - {fileID: 4526684898710637152, guid: fd5a216ddc47a054e9e2fc0275e198bd, type: 3}
+  - {fileID: 658949887680120997, guid: d70a10e3c1cc98f4ea87ab2c21f542bb, type: 3}

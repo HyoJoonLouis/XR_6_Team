@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager instance;
     [SerializeField] float time;
-    [SerializeField] float Wave1Time;
 
     [HideInInspector] public UnityEvent TimeEvent;
 
@@ -22,17 +21,11 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         time += Time.deltaTime;
-        Wave1Time += Time.deltaTime;
-        if(time >= 10)
+/*        if(time >= 10)
         {
             TimeEvent.Invoke();
-        }
+        }*/
 
-        if(Wave1Time >= 10)
-        {
-            Wave1Time = 0;
-            StartCoroutine(Wave1());
-        }
     }
 
     IEnumerator Wave1()

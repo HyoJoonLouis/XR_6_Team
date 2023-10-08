@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aac11e07bf7465c4c9df2dd0c33053be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 10
+  MaxHp: 6
   renderer: {fileID: 0}
-  time: 0.1
+  time: 0.07
 --- !u!114 &7141298315792639526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   time: 0
+  isMoveable: 0
   initPosition: {x: 0, y: 0}
   AmmoStartTime: 1.5
   DelayTime: 2
