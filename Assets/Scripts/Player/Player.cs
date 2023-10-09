@@ -23,12 +23,13 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public GameObject MegicalSpace;
-    public GameObject[] subWeapons;
+    public GameObject[] onceWeapons;
     Weapon weapon;
-    int MaxSubWeaponCount = 3;
-    int CurSubWeaponCount = 0;
-    Vector2 randVector;
-    float time;
+    int MaxOnceWeaponCount = 3;
+    int CurOnceWeaponCount = 0;
+
+    [Header("UI")]
+    public GameObject HpUI;
 
     private void Awake()
     {
@@ -54,14 +55,17 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(float value)
     {
+        if (CurrentHp <= 0)
+        {
+            return;
+            // Gameover
+        }
+
         CurrentHp -= value;
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
+        HpUI.GetComponent<PlayerHpUI>().CheckHp();
 
-        if (CurrentHp <= 0)
-        {
-            // Gameover
-        }
     }
 
     IEnumerator UnBeatTime()
@@ -115,32 +119,32 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void OnUse(InputValue value)
     {
-        if (CurSubWeaponCount <= 0)
+        if (CurOnceWeaponCount <= 0)
             return;
 
         for (int i = 0; i < 3; ++i)
         {
-            if (subWeapons[i] == null)
+            if (onceWeapons[i] == null)
                 continue;
         }
 
-        subWeapons[CurSubWeaponCount-- - 1].SetActive(false);
+        onceWeapons[CurOnceWeaponCount-- - 1].SetActive(false);
     }
 
     private void OnTest(InputValue value)
     {
-        if (CurSubWeaponCount >= MaxSubWeaponCount)
+        if (CurOnceWeaponCount >= MaxOnceWeaponCount)
             return;
-        CurSubWeaponCount += 1;
+        CurOnceWeaponCount += 1;
 
-        ActiveSubWapon(CurSubWeaponCount);
+        ActiveOnceWapon(CurOnceWeaponCount);
     }
 
-    void ActiveSubWapon(int cursub)
+    void ActiveOnceWapon(int cursub)
     {
         for (int i = 0; i < cursub; ++i)
         {
-            subWeapons[i].SetActive(true);
+            onceWeapons[i].SetActive(true);
         }
     }
 
