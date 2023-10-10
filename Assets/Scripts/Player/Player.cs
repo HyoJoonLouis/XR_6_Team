@@ -57,14 +57,16 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(float value)
     {
-        if (CurrentHp <= 0)
-        {
-            return;
-            // Gameover
-        }
-
         CurrentHp -= value;
         UIManager.instance.SetHealth((int)CurrentHp);
+
+        if (CurrentHp <= 0)
+        {
+            // Gameover
+            UIManager.instance.GameOver();
+            return;
+        }
+
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
         cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.05f);
@@ -100,6 +102,10 @@ public class Player : MonoBehaviour, ITakeDamage
         if (worldpos.x > 0.98f) worldpos.x = 0.98f;
         if (worldpos.y > 0.95f) worldpos.y = 0.95f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
+    }
+
+    public void OnPlayerDied() {
+        this.gameObject.SetActive(false);
     }
 
     #region Weapon

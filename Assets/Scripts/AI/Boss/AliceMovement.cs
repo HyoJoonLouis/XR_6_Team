@@ -27,7 +27,11 @@ public class AliceMovement : BossBaseMovement
 
         CurrentState = AliceState[State.Idle];
         CurrentState.OnStateEnter();
+    }
 
+    public void OnGameOver()
+    {
+        CurrentState = null;
     }
 }
 
