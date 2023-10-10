@@ -30,6 +30,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("UI")]
     public GameObject HpUI;
+    public GameObject camera;
 
     private void Awake()
     {
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour, ITakeDamage
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
         HpUI.GetComponent<PlayerHpUI>().CheckHp();
-
+        camera.GetComponent<CameraShake>().VibrateForTime(0.05f);
     }
 
     IEnumerator UnBeatTime()
