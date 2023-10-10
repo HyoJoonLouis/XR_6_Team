@@ -5,40 +5,27 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] AnimationCurve yCurveUp;
-    [SerializeField] AnimationCurve yCurveDown;
     public GameObject player;
     float time = 0;
+    bool isShaking = false;
 
     [Header("Shaking")]
     [SerializeField] float shakeAmount;
     float shakeTime;
     Vector3 initialPosition;
 
-    private void Start()
-    {
-        initialPosition = new Vector3(transform.position.x, transform.position.y, -10);
-    }
-
     void Update()
     {
-        if (player.transform.position.y > 1.5f)
+        if (!isShaking)
         {
-            CameraUp();
-        }
-        else if (player.transform.position.y < -1.5f)
-        {
-            CameraDown();
-        }
-
-        if (shakeTime > 0)
-        {
-            transform.position = Random.insideUnitSphere * shakeAmount + initialPosition;
-            shakeTime -= Time.deltaTime;
-        }
-        else
-        {
-            shakeTime = 0;
-            transform.position = initialPosition;
+            if (player.transform.position.y > 1.5f)
+            {
+                CameraUp();
+            }
+            else if (player.transform.position.y < -1.5f)
+            {
+                CameraDown();
+            }
         }
     }
 
@@ -62,8 +49,31 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    public void VibrateForTime(float time)
+    public void VibrateForTime(float times)
     {
-        shakeTime = time;
+        isShaking = true;
+        shakeTime = times;
+        initialPosition = new Vector3(transform.position.x, transform.position.y, -10);
+        StartCoroutine(CameraShaking());
+    }
+
+    IEnumerator CameraShaking()
+    {
+        while (isShaking)
+        {
+            if (shakeTime > 0)
+            {
+                transform.position = Random.insideUnitSphere * shakeAmount + initialPosition;
+                shakeTime -= Time.deltaTime;
+            }
+            else
+            {
+                shakeTime = 0;
+                transform.position = initialPosition;
+                isShaking = false;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
