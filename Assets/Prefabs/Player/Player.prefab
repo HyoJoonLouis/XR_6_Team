@@ -341,10 +341,8 @@ MonoBehaviour:
   Speed: 10
   MaxHp: 6
   MegicalSpace: {fileID: 8848747313494126449}
-  subWeapons:
-  - {fileID: 447935278}
-  - {fileID: 1332917261}
-  - {fileID: 303069946}
+  onceWeapons: []
+  cameraUI: {fileID: 0}
 --- !u!114 &4389267962448649025
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,8 +29,7 @@ public class Player : MonoBehaviour, ITakeDamage
     int CurOnceWeaponCount = 0;
 
     [Header("UI")]
-    public GameObject HpUI;
-    public GameObject camera;
+    public GameObject cameraUI;
 
     private void Awake()
     {
@@ -39,6 +38,7 @@ public class Player : MonoBehaviour, ITakeDamage
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        cameraUI = GameObject.FindWithTag("MainCamera");
 
         CurrentHp = MaxHp;
     }
@@ -65,8 +65,7 @@ public class Player : MonoBehaviour, ITakeDamage
         CurrentHp -= value;
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
-        HpUI.GetComponent<PlayerHpUI>().CheckHp();
-        camera.GetComponent<CameraShake>().VibrateForTime(0.05f);
+        cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.05f);
     }
 
     IEnumerator UnBeatTime()
