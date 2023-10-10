@@ -9,6 +9,16 @@ public class CameraShake : MonoBehaviour
     public GameObject player;
     float time = 0;
 
+    [Header("Shaking")]
+    [SerializeField] float shakeAmount;
+    float shakeTime;
+    Vector3 initialPosition;
+
+    private void Start()
+    {
+        initialPosition = new Vector3(transform.position.x, transform.position.y, -10);
+    }
+
     void Update()
     {
         if (player.transform.position.y > 1.5f)
@@ -18,6 +28,17 @@ public class CameraShake : MonoBehaviour
         else if (player.transform.position.y < -1.5f)
         {
             CameraDown();
+        }
+
+        if (shakeTime > 0)
+        {
+            transform.position = Random.insideUnitSphere * shakeAmount + initialPosition;
+            shakeTime -= Time.deltaTime;
+        }
+        else
+        {
+            shakeTime = 0;
+            transform.position = initialPosition;
         }
     }
 
@@ -39,5 +60,10 @@ public class CameraShake : MonoBehaviour
                 time -= Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
+    }
+
+    public void VibrateForTime(float time)
+    {
+        shakeTime = time;
     }
 }
