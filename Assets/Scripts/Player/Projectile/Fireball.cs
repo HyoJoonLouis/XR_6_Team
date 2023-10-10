@@ -21,7 +21,7 @@ public class Fireball : MonoBehaviour
 
     private void OnEnable()
     {
-        this.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+        this.transform.localScale = new Vector3(0.4f, 0.4f, 1);
         time = 0;
     }
 
