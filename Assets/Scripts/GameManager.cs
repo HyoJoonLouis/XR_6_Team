@@ -6,6 +6,9 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager instance;
+
+    public Player player;
+
     [SerializeField] float time;
 
     [HideInInspector] public UnityEvent TimeEvent;
@@ -17,7 +20,10 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        
+        player = FindObjectOfType<Player>();
     }
+
     public void Update()
     {
         time += Time.deltaTime;

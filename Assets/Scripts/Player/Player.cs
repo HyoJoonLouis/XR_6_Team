@@ -41,6 +41,7 @@ public class Player : MonoBehaviour, ITakeDamage
         cameraUI = GameObject.FindWithTag("MainCamera");
 
         CurrentHp = MaxHp;
+        UIManager.instance.SetHealth((int)CurrentHp);
     }
 
     private void Update()
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour, ITakeDamage
         }
 
         CurrentHp -= value;
+        UIManager.instance.SetHealth((int)CurrentHp);
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
         cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.05f);

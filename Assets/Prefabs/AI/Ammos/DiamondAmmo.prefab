@@ -61,6 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82813fa115ae18e4da7f6dda3451a9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnHit: 0
+  OnHitSpawnedEffect: {fileID: 4072820299640631585, guid: 29b6cc49099033f449812ffdcfcc845c, type: 3}
   Damage: 1
 --- !u!61 &7015185539862713141
 BoxCollider2D:

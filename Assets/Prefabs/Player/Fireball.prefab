@@ -72,6 +72,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnHitParticle: {fileID: 4072820299640631585, guid: 29b6cc49099033f449812ffdcfcc845c, type: 3}
 --- !u!50 &-1860370054706225761
 Rigidbody2D:
   serializedVersion: 4

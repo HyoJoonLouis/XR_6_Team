@@ -10,6 +10,7 @@ public class Fireball : MonoBehaviour
     int MaxAttack;
     [SerializeField] AnimationCurve curveUp;
     float time;
+    [SerializeField] GameObject OnHitParticle;
 
     public void Init(float speed, float damage, int maxAtk)
     {
@@ -46,6 +47,7 @@ public class Fireball : MonoBehaviour
         CurrentAttack -= 1;
         if (CurrentAttack <= 0)
         {
+            ObjectPoolManager.SpawnObject(OnHitParticle, this.transform.position, this.transform.rotation);
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
     }

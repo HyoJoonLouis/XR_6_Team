@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  MaxHp: 6
+  MaxHp: 3
   MegicalSpace: {fileID: 8848747313494126449}
   onceWeapons: []
   cameraUI: {fileID: 0}

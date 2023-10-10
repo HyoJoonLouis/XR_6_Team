@@ -107,7 +107,6 @@ public class Pattern2 : BaseState
 
     public override void OnStateExit()
     {
-        Monster.StopCoroutine(coroutine);
     }
 
     public override void OnStateUpdate()
