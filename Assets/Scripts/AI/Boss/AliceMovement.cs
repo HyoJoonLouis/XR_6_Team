@@ -207,7 +207,6 @@ public class Pattern7 : BaseState
 
     public override void OnStateExit()
     {
-        Monster.StopCoroutine(coroutine);
         Monster.isMoveable = true;
     }
 
@@ -224,7 +223,19 @@ public class Pattern7 : BaseState
         }
         yield return new WaitForSeconds(0.5f);
         GameObject GiantHand = ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[7], new Vector3(0, 10, 0), Quaternion.Euler(0, 0, 0));
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject GiantHandRange = ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[8], new Vector3(0, 10, 0), Quaternion.Euler(0, 0, 0));
+        float time = 0;
+        while(time <= 3)
+        {
+            GiantHandRange.transform.position = new Vector2(Monster.TargetTransform.transform.position.x, 0.5f);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        ObjectPoolManager.ReturnObjectToPool(GiantHandRange);
+
         GiantHand.transform.position = new Vector2(Monster.TargetTransform.position.x, 10);
             
         while(GiantHand.transform.position.y > 0.5f )

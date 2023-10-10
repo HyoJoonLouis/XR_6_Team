@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  Wave1Time: 3
   TimeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -64,3 +63,4 @@ MonoBehaviour:
   - {fileID: 5552931075741817274, guid: 15906cf711ae80a43a2351a6a1d2b2bf, type: 3}
   - {fileID: 4526684898710637152, guid: fd5a216ddc47a054e9e2fc0275e198bd, type: 3}
   - {fileID: 658949887680120997, guid: d70a10e3c1cc98f4ea87ab2c21f542bb, type: 3}
+  - {fileID: 4092646131303259030, guid: 06a96b60c3e890f4495fedfe3e07d153, type: 3}

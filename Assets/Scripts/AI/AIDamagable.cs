@@ -30,7 +30,7 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
 
     IEnumerator ChangeRenderCoroutine()
     {
-        renderer.material.SetFloat("_Lerp", 1);
+        renderer.material.SetFloat("_Lerp", 0.7f);
         yield return new WaitForSeconds(time);
         renderer.material.SetFloat("_Lerp", 0);
 
