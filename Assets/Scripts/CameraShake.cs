@@ -43,7 +43,7 @@ public class CameraShake : MonoBehaviour
     {
         if (this.transform.position.y >= -0.4f)
         {
-            if (time >= 0)
+            if (time >= -1)
                 time -= Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
