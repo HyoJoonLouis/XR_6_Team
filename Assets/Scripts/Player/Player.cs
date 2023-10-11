@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
-        cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.05f);
+        cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.06f);
     }
 
     IEnumerator UnBeatTime()
