@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] AnimationCurve yCurveUp;
     public GameObject player;
     float time = 0;
-    bool isShaking = false;
 
     [Header("Shaking")]
-    [SerializeField] float shakeAmount;
-    float shakeTime;
-    Vector3 initialPosition;
+    [SerializeField] float Impulse;
+    [SerializeField] float Frequency;
+    float shakeTime = 0;
+    CinemachineVirtualCamera cineCamera;
+
+    private void Start()
+    {
+        cineCamera = GetComponent<CinemachineVirtualCamera>();
+    }
 
     void Update()
     {
-        if (!isShaking)
+        if (shakeTime <= 0)
         {
             if (player.transform.position.y > 1.5f)
             {
@@ -33,7 +39,7 @@ public class CameraShake : MonoBehaviour
     {
         if (this.transform.position.y <= 0.4f)
         {
-            if (time <= 1)
+            if (time < 1)
                 time += Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
@@ -43,7 +49,7 @@ public class CameraShake : MonoBehaviour
     {
         if (this.transform.position.y >= -0.4f)
         {
-            if (time >= 0)
+            if (time > 0)
                 time -= Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
@@ -51,29 +57,21 @@ public class CameraShake : MonoBehaviour
 
     public void VibrateForTime(float times)
     {
-        isShaking = true;
         shakeTime = times;
-        initialPosition = new Vector3(transform.position.x, transform.position.y, -10);
         StartCoroutine(CameraShaking());
     }
 
     IEnumerator CameraShaking()
     {
-        while (isShaking)
+        while (shakeTime > 0)
         {
-            if (shakeTime > 0)
-            {
-                transform.position = Random.insideUnitSphere * shakeAmount + initialPosition;
-                shakeTime -= Time.deltaTime;
-            }
-            else
-            {
-                shakeTime = 0;
-                transform.position = initialPosition;
-                isShaking = false;
-            }
-
-            yield return new WaitForSeconds(0.1f);
+            shakeTime -= Time.deltaTime;
+            cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = Frequency;
+            cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = Impulse;
+            yield return 0;
         }
+        cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+        cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+        yield return 0;
     }
 }

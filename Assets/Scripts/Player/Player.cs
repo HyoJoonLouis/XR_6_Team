@@ -38,7 +38,6 @@ public class Player : MonoBehaviour, ITakeDamage
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        cameraUI = GameObject.FindWithTag("MainCamera");
 
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
@@ -69,7 +68,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
-        cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.05f);
+
+        cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.3f);
     }
 
     IEnumerator UnBeatTime()
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour, ITakeDamage
         if (worldpos.x < 0.02f) worldpos.x = 0.02f;
         if (worldpos.y < 0.1f) worldpos.y = 0.1f;
         if (worldpos.x > 0.98f) worldpos.x = 0.98f;
-        if (worldpos.y > 0.95f) worldpos.y = 0.95f;
+        if (worldpos.y > 0.90f) worldpos.y = 0.90f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
     }
 
