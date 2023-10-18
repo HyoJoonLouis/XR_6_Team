@@ -295,4 +295,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyOnHit: 0
   OnHitSpawnedEffect: {fileID: 0}
-  Damage: 5
+  Damage: 1

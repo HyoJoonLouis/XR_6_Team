@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
@@ -10,13 +11,17 @@ public class CameraShake : MonoBehaviour
     bool isShaking = false;
 
     [Header("Shaking")]
-    [SerializeField] float shakeAmount;
-    float shakeTime;
-    Vector3 initialPosition;
+    float shakeTime = 0;
+    CinemachineVirtualCamera cineCamera;
+
+    private void Start()
+    {
+        cineCamera = GetComponent<CinemachineVirtualCamera>();
+    }
 
     void Update()
     {
-        if (!isShaking)
+        if (shakeTime <= 0)
         {
             if (player.transform.position.y > 1.5f)
             {
@@ -51,29 +56,20 @@ public class CameraShake : MonoBehaviour
 
     public void VibrateForTime(float times)
     {
-        isShaking = true;
         shakeTime = times;
-        initialPosition = new Vector3(transform.position.x, transform.position.y, -10);
         StartCoroutine(CameraShaking());
     }
 
     IEnumerator CameraShaking()
     {
-        while (isShaking)
+        while (shakeTime > 0)
         {
-            if (shakeTime > 0)
-            {
-                transform.position = Random.insideUnitSphere * shakeAmount + initialPosition;
-                shakeTime -= Time.deltaTime;
-            }
-            else
-            {
-                shakeTime = 0;
-                transform.position = initialPosition;
-                isShaking = false;
-            }
+            shakeTime -= Time.deltaTime;
+            cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 2;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return 0;
         }
+        cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+        yield return 0;
     }
 }

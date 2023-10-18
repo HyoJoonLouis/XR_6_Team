@@ -38,7 +38,6 @@ public class Player : MonoBehaviour, ITakeDamage
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        cameraUI = GameObject.FindWithTag("MainCamera");
 
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
@@ -69,7 +68,11 @@ public class Player : MonoBehaviour, ITakeDamage
 
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
+<<<<<<< Updated upstream
         cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.06f);
+=======
+        cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.5f);
+>>>>>>> Stashed changes
     }
 
     IEnumerator UnBeatTime()
