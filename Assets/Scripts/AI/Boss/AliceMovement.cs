@@ -31,7 +31,6 @@ public class AliceMovement : BossBaseMovement
 
     public void OnGameOver()
     {
-        CurrentState = null;
     }
 }
 

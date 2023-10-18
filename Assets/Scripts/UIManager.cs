@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [HideInInspector] public static UIManager instance;
+    public static UIManager instance;
 
     [Header("Player")]
     [SerializeField] Image[] Health;
@@ -40,16 +40,29 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         OnGameOverEvent?.Invoke();
-        GameOverPanel.SetActive(true);
+        StartCoroutine(OnGameOverCoroutine());
+    
     }
 
     public void OnRestartClicked()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void OnQuitClicked()
     {
         Application.Quit();
+    }
+
+    IEnumerator OnGameOverCoroutine()
+    {
+        GameOverPanel.SetActive(true);
+        while(Time.timeScale >= 0.2f)
+        {
+            Time.timeScale -= 0.2f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        Time.timeScale = 0;
     }
 }

@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, ITakeDamage
     [Header("UI")]
     public GameObject cameraUI;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         move = GetComponent<Movement>();
