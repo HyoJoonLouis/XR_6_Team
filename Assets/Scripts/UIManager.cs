@@ -16,12 +16,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Alice")]
     public UnityEvent OnGameOverEvent;
-    [SerializeField] GameObject GameOverPanel;
+    GameObject GameOverCanvas;
 
     private void Awake()
     {
         if(instance == null)
             instance = this;
+        GameOverCanvas = GameObject.Find("GameOverCanvas");
+        GameOverCanvas.SetActive(false);
     }
 
     public void SetHealth(int value)
@@ -57,7 +59,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator OnGameOverCoroutine()
     {
-        GameOverPanel.SetActive(true);
+        GameOverCanvas.SetActive(true);
         while(Time.timeScale >= 0.2f)
         {
             Time.timeScale -= 0.2f;
