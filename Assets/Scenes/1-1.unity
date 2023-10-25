@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 41550768}
   - component: {fileID: 41550767}
   - component: {fileID: 41550766}
+  - component: {fileID: 41550769}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -218,6 +219,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &41550769
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41550764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: b241f91b9ccf8ff489abf204b30d3112, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &169015135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 948138750686589035, guid: cd9b49129face9f4287af57e5dfdc51c, type: 3}
@@ -511,6 +529,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260968522, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_Size.x
+      value: 2.631579
+      objectReference: {fileID: 0}
+    - target: {fileID: 260968522, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5792043
+      objectReference: {fileID: 0}
+    - target: {fileID: 260968522, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b8d8eaf74608bdf4e8ce7c7e699b932d, type: 3}
+    - target: {fileID: 260968522, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988239712, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.631579
+      objectReference: {fileID: 0}
+    - target: {fileID: 988239712, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.5792043
+      objectReference: {fileID: 0}
     - target: {fileID: 4389267962448649024, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
       propertyPath: cameraUI
       value: 
@@ -522,6 +564,18 @@ PrefabInstance:
     - target: {fileID: 4389267962448649086, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389267962448649086, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389267962448649086, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389267962448649086, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4389267962448649086, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
       propertyPath: m_LocalPosition.x
