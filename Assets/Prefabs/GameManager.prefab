@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dae8aa8ddaf83419ef617e3441acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaughterSprites:
+  - {fileID: 21300000, guid: bdcc02ddf2720dc4996f1522388566f5, type: 3}
+  - {fileID: 21300000, guid: 56c598a5c3050de40ba63643c311b037, type: 3}
+  - {fileID: 21300000, guid: 904e824a4ac5e6a4983a52e72df53c4a, type: 3}
   Health:
   - {fileID: 0}
   - {fileID: 0}
@@ -53,7 +57,6 @@ MonoBehaviour:
   OnGameOverEvent:
     m_PersistentCalls:
       m_Calls: []
-  GameOverPanel: {fileID: 0}
 --- !u!1 &9118742480213105780
 GameObject:
   m_ObjectHideFlags: 0

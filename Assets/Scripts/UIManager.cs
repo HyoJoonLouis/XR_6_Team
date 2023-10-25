@@ -5,24 +5,37 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum LaughterSprite
+{
+    WhiteRabbit = 0,
+    Marchhare,
+    Alice
+}
+
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    [SerializeField] List<Sprite> LaughterSprites;
 
     [Header("Player")]
     [SerializeField] Image[] Health;
     [SerializeField] Sprite HpEmptySprite;
     [SerializeField] Sprite HpFullSprite;
 
+    
     [Header("Alice")]
     public UnityEvent OnGameOverEvent;
     GameObject GameOverCanvas;
+    Image SpriteBackground;
 
     private void Awake()
     {
         if(instance == null)
             instance = this;
+
         GameOverCanvas = GameObject.Find("GameOverCanvas");
+        SpriteBackground = GameObject.Find("MonsterBackground").GetComponent<Image>();
         GameOverCanvas.SetActive(false);
     }
 
@@ -55,6 +68,11 @@ public class UIManager : MonoBehaviour
     public void OnQuitClicked()
     {
         Application.Quit();
+    }
+
+    public void ChangeLaughter(LaughterSprite sprite)
+    {
+        SpriteBackground.sprite = LaughterSprites[(int)sprite];
     }
 
     IEnumerator OnGameOverCoroutine()

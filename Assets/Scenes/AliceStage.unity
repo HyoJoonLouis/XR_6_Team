@@ -257,7 +257,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: -0.2
       inSlope: 0.4
       outSlope: 0.4
       tangentMode: 34
@@ -266,7 +266,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.4
+      value: 0.2
       inSlope: 0.4
       outSlope: 0.4
       tangentMode: 34
@@ -996,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8191779380667274694, guid: f65544e23f370d241ab956507bfd9011, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8191779380667274694, guid: f65544e23f370d241ab956507bfd9011, type: 3}
       propertyPath: m_AnchorMax.x

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647724196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.68, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 4026654972348106695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.88, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1647724197}
@@ -138,20 +138,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -6.6666665
-      outSlope: -6.6666665
-      tangentMode: 34
+      inSlope: -14.0262165
+      outSlope: -14.0262165
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.043038424
     - serializedVersion: 3
       time: 1.5
       value: -10
-      inSlope: -6.6666665
-      outSlope: -6.6666665
-      tangentMode: 34
+      inSlope: -2.6361537
+      outSlope: -2.6361537
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.06321788
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -230,3 +230,4 @@ MonoBehaviour:
   MaxHp: 35
   renderer: {fileID: 0}
   time: 0.1
+  DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}

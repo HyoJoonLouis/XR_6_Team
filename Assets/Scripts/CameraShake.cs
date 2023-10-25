@@ -45,7 +45,7 @@ public class CameraShake : MonoBehaviour
         {
             if (time < 1)
                 time += Time.deltaTime;
-            this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
+            this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), this.transform.position.z);
         }
     }
 
@@ -55,7 +55,7 @@ public class CameraShake : MonoBehaviour
         {
             if (time > 0)
                 time -= Time.deltaTime;
-            this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
+            this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), this.transform.position.z);
         }
     }
 
