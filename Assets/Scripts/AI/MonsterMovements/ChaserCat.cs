@@ -5,32 +5,25 @@ using UnityEngine;
 public class ChaserCat : AIMovement
 {
     [Header("Chaser Cat")]
-    [SerializeField] Camera cam;
     [SerializeField] float DelayTime;
-    bool isUpsidedown = false;
+    [SerializeField] GameObject SpawnEffect;
 
     public override void OnEnable()
     {
         base.OnEnable();
-        cam = Camera.main;
+        ObjectPoolManager.SpawnObject(SpawnEffect, this.transform.position, this.transform.rotation);
     }
 
     private void OnDisable()
     {
-        isUpsidedown = false;
-        cam.transform.position = new Vector3(0, 0, -10);
-        cam.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        if(time >= DelayTime && isUpsidedown == false)
+        if(time >= DelayTime)
         {
-            isUpsidedown = true;
-            cam.transform.position = new Vector3(0, 0, 10);
-            cam.transform.rotation = Quaternion.Euler(180, 0, 0);
         }
     }
 }

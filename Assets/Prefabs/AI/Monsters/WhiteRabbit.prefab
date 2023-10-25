@@ -114,7 +114,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 3.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -167,7 +167,7 @@ MonoBehaviour:
   initPosition: {x: 0, y: 0}
   AmmoGameObject: {fileID: 7195823597200851465, guid: db986f40b5f39bf42aefe4b37e18ab2f, type: 3}
   AmmoStartTime: 1.5
-  DelayTime: 1.5
+  DelayTime: 2
   AmmoStartPosition: {fileID: 1647724197}
 --- !u!95 &2043727055
 Animator:
@@ -206,8 +206,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3.1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3.6}
+    newSize: {x: 3, y: 3.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -227,6 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 5
+  MaxHp: 35
   renderer: {fileID: 0}
   time: 0.1
