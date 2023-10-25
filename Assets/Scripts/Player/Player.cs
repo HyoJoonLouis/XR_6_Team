@@ -23,9 +23,9 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public GameObject MegicalSpace;
-    public GameObject[] onceWeapons;
+    public int MaxOnceWeaponCount = 3;
+    GameObject[] onceWeapons;
     Weapon weapon;
-    int MaxOnceWeaponCount = 3;
     int CurOnceWeaponCount = 0;
 
     [Header("UI")]
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour, ITakeDamage
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
 
+        onceWeapons = new GameObject[MaxOnceWeaponCount];
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
     }
@@ -135,25 +136,19 @@ public class Player : MonoBehaviour, ITakeDamage
             if (onceWeapons[i] == null)
                 continue;
         }
-
-        onceWeapons[CurOnceWeaponCount-- - 1].SetActive(false);
     }
 
-    private void OnTest(InputValue value)
+    public void AddOnceWeapon(GameObject onceweapon)
     {
-        if (CurOnceWeaponCount >= MaxOnceWeaponCount)
+        if (CurOnceWeaponCount >= MaxOnceWeaponCount - 1)
             return;
-        CurOnceWeaponCount += 1;
 
-        ActiveOnceWapon(CurOnceWeaponCount);
+        onceWeapons[CurOnceWeaponCount++] = onceweapon;
     }
 
-    void ActiveOnceWapon(int cursub)
+    public int GetOnceWeaponCount()
     {
-        for (int i = 0; i < cursub; ++i)
-        {
-            onceWeapons[i].SetActive(true);
-        }
+        return CurOnceWeaponCount;
     }
 
     #endregion Weapon
