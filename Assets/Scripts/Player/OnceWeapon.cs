@@ -24,6 +24,7 @@ public class OnceWeapon : BaseWeapon
         if (player.GetOnceWeaponCount() >= player.MaxOnceWeaponCount - 1)
             return;
 
-        // Destory
+        player.AddOnceWeapon(gameObject);
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 }
