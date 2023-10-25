@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5820053427873967909}
   - component: {fileID: 6329253987629279581}
+  - component: {fileID: 8732878540481742072}
   m_Layer: 6
   m_Name: DamageTrigger
   m_TagString: Untagged
@@ -58,6 +59,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8365304, y: 1.352987}
   m_EdgeRadius: 0
+--- !u!114 &8732878540481742072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111247491015367462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82813fa115ae18e4da7f6dda3451a9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyOnHit: 0
+  OnHitSpawnedEffect: {fileID: 2053174665937493428, guid: 116546ddc94bfe94d8e0b90daf052daa, type: 3}
+  Damage: 1
 --- !u!1 &4790472349505202476
 GameObject:
   m_ObjectHideFlags: 0

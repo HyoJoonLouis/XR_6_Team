@@ -27,6 +27,8 @@ public class AliceMovement : BossBaseMovement
 
         CurrentState = AliceState[State.Idle];
         CurrentState.OnStateEnter();
+
+        UIManager.instance.ChangeLaughter(LaughterSprite.Alice);
     }
 
     public void OnGameOver()
