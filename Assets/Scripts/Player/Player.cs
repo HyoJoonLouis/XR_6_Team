@@ -68,11 +68,16 @@ public class Player : MonoBehaviour, ITakeDamage
 
         isUnbeatTime = true;
         StartCoroutine(UnBeatTime());
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         cameraUI.transform.GetComponent<Camera>().GetComponent<CameraShake>().VibrateForTime(0.06f);
 =======
         cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.5f);
 >>>>>>> Stashed changes
+=======
+
+        cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.3f);
+>>>>>>> HyoJoon
     }
 
     IEnumerator UnBeatTime()
@@ -103,7 +108,7 @@ public class Player : MonoBehaviour, ITakeDamage
         if (worldpos.x < 0.02f) worldpos.x = 0.02f;
         if (worldpos.y < 0.1f) worldpos.y = 0.1f;
         if (worldpos.x > 0.98f) worldpos.x = 0.98f;
-        if (worldpos.y > 0.95f) worldpos.y = 0.95f;
+        if (worldpos.y > 0.90f) worldpos.y = 0.90f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
     }
 

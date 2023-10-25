@@ -8,9 +8,13 @@ public class CameraShake : MonoBehaviour
     [SerializeField] AnimationCurve yCurveUp;
     public GameObject player;
     float time = 0;
-    bool isShaking = false;
 
     [Header("Shaking")]
+<<<<<<< HEAD
+=======
+    [SerializeField] float Impulse;
+    [SerializeField] float Frequency;
+>>>>>>> HyoJoon
     float shakeTime = 0;
     CinemachineVirtualCamera cineCamera;
 
@@ -38,7 +42,7 @@ public class CameraShake : MonoBehaviour
     {
         if (this.transform.position.y <= 0.4f)
         {
-            if (time <= 1)
+            if (time < 1)
                 time += Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
@@ -48,7 +52,11 @@ public class CameraShake : MonoBehaviour
     {
         if (this.transform.position.y >= -0.4f)
         {
+<<<<<<< HEAD
             if (time >= -1)
+=======
+            if (time > 0)
+>>>>>>> HyoJoon
                 time -= Time.deltaTime;
             this.transform.position = new Vector3(0, yCurveUp.Evaluate(time), -10);
         }
@@ -65,11 +73,20 @@ public class CameraShake : MonoBehaviour
         while (shakeTime > 0)
         {
             shakeTime -= Time.deltaTime;
+<<<<<<< HEAD
             cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 2;
 
             yield return 0;
         }
         cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+=======
+            cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = Frequency;
+            cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = Impulse;
+            yield return 0;
+        }
+        cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+        cineCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+>>>>>>> HyoJoon
         yield return 0;
     }
 }
