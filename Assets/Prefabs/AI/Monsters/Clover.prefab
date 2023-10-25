@@ -150,6 +150,7 @@ MonoBehaviour:
   MaxHp: 4
   renderer: {fileID: 0}
   time: 0.1
+  DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}
 --- !u!114 &343327110741720693
 MonoBehaviour:
   m_ObjectHideFlags: 0

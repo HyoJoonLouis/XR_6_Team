@@ -11,6 +11,9 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
     [SerializeField] Renderer renderer;
     [SerializeField] float time;
 
+    [Header("Effect")]
+    [SerializeField] GameObject DieEffect;
+
     private void OnEnable()
     {
         currentHp = MaxHp;
@@ -24,6 +27,8 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
         StartCoroutine(ChangeRenderCoroutine());
         if(currentHp <= 0)
         {
+            if(DieEffect != null) 
+                ObjectPoolManager.SpawnObject(DieEffect, this.transform.position, this.transform.rotation);
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
         }
     }

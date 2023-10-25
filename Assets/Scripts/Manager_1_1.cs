@@ -26,6 +26,8 @@ public class Manager_1_1 : MonoBehaviour
         Phase1_1.Add(3, "SpawnSixClover");
         Phase1_1.Add(4, "SpawnTwoHeartTwoSpade");
         Phase1_1.Add(5, "SpawnOneDiamondTwoSpade");
+
+        UIManager.instance.ChangeLaughter(LaughterSprite.WhiteRabbit);
     }
 
     private void Start()
@@ -57,7 +59,9 @@ public class Manager_1_1 : MonoBehaviour
         SpawnTime *= 0.8f;
         yield return new WaitForSeconds(10);
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[8], Vector3.zero, this.transform.rotation);
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
+        SpawnTime *= 0.5f;
+        yield return new WaitForSeconds(10);
         //게임 종료
     }
 

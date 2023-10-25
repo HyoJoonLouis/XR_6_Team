@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 25
+  MaxHp: 15
   renderer: {fileID: 0}
   time: 0.1
+  DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}
 --- !u!61 &3507856181077108652
 BoxCollider2D:
   m_ObjectHideFlags: 0
