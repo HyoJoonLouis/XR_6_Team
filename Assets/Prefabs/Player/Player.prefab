@@ -341,7 +341,10 @@ MonoBehaviour:
   Speed: 10
   MaxHp: 3
   MegicalSpace: {fileID: 8848747313494126449}
-  onceWeapons: []
+  onceWeapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cameraUI: {fileID: 0}
 --- !u!114 &4389267962448649025
 MonoBehaviour:
@@ -422,7 +425,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 25, y: 15.002441}
+  m_Size: {x: 2.631579, y: 1.5792043}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -466,7 +469,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.631579, y: 1.5792043}
-    newSize: {x: 25, y: 15.002441}
+    newSize: {x: 2.631579, y: 1.5792043}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

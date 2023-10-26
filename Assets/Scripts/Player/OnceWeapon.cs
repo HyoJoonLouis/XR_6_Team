@@ -12,6 +12,7 @@ public class OnceWeapon : BaseWeapon
         Charging,
         Destroy,
         Heart,
+        Watch,
     }
 
     public WeaponType type;
@@ -20,7 +21,10 @@ public class OnceWeapon : BaseWeapon
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player = collision.gameObject.GetComponent<Player>();
+        if (player.GetOnceWeaponCount() >= player.MaxOnceWeaponCount - 1)
+            return;
 
-        this.gameObject.transform.SetParent(collision.gameObject.transform);
+        player.AddOnceWeapon(gameObject);
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 }
