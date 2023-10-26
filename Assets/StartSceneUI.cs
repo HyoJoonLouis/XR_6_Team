@@ -9,6 +9,9 @@ public class StartSceneUI : MonoBehaviour
 {
     public TextMeshProUGUI Text;
 
+    public GameObject BookCover;
+    public GameObject Book;
+
     int CurrentScene;
     public void Start()
     {
@@ -30,5 +33,11 @@ public class StartSceneUI : MonoBehaviour
     {
         CurrentScene = Mathf.Clamp(CurrentScene - 1, 0, 2);
         Text.text = CurrentScene.ToString();
+    }
+
+    public void OnChapterButtonClicked()
+    {
+        BookCover.SetActive(false);
+        Book.SetActive(true);
     }
 }

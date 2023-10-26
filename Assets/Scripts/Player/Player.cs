@@ -22,7 +22,6 @@ public class Player : MonoBehaviour, ITakeDamage
     Animator animator;
 
     [Header("Weapon")]
-    public GameObject MegicalSpace;
     public int MaxOnceWeaponCount = 3;
     GameObject[] onceWeapons;
     Weapon weapon;
@@ -114,7 +113,6 @@ public class Player : MonoBehaviour, ITakeDamage
     private void OnFire(InputValue value)
     {
         animator.SetBool("IsAttack", value.isPressed);
-        MegicalSpace.SetActive(value.isPressed);
 
         if (value.isPressed)
         {
