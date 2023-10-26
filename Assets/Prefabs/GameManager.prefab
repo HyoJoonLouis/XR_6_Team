@@ -52,8 +52,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  HpEmptySprite: {fileID: 21300000, guid: f0fe80721044776459aa1eec6301095f, type: 3}
-  HpFullSprite: {fileID: 21300000, guid: ad3a6daf3f3537e4cab8a050aaee017e, type: 3}
+  HpEmptySprite: {fileID: 21300000, guid: 2f9eb121c80470741ab568d975f1a100, type: 3}
+  HpFullSprite: {fileID: 21300000, guid: 8f15a12ebb78dec438dc87b765a9680d, type: 3}
   OnGameOverEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -14,6 +14,10 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
     [Header("Effect")]
     [SerializeField] GameObject DieEffect;
 
+    [Header("Items")]
+    [SerializeField] float DropPercent;
+    [SerializeField] List<GameObject> items;
+
     private void OnEnable()
     {
         currentHp = MaxHp;
@@ -29,6 +33,15 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
         {
             if(DieEffect != null) 
                 ObjectPoolManager.SpawnObject(DieEffect, this.transform.position, this.transform.rotation);
+            if(items.Count > 0)
+            {
+                float percent = Random.Range(0.0f, 1.0f);
+                Debug.Log(percent);
+                if(percent < DropPercent)
+                {
+                    ObjectPoolManager.SpawnObject(items[Random.Range(0, items.Count)],this.transform.position, this.transform.rotation);
+                }
+            }
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
         }
     }

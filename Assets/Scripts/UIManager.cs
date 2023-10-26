@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image[] Health;
     [SerializeField] Sprite HpEmptySprite;
     [SerializeField] Sprite HpFullSprite;
+    [SerializeField] Image[] Item;
+
+    [HideInInspector] public List<GameObject> items;
 
     
     [Header("Alice")]
@@ -52,6 +55,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void GetItem(GameObject item)
+    {
+        items.Add(item);
+    }
+
     public void GameOver()
     {
         OnGameOverEvent?.Invoke();
@@ -59,9 +67,9 @@ public class UIManager : MonoBehaviour
     
     }
 
-    public void OnRestartClicked()
+    public void OnRestartClicked(int i)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(i);
         Time.timeScale = 1;
     }
 
