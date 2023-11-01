@@ -151,6 +151,11 @@ MonoBehaviour:
   renderer: {fileID: 0}
   time: 0.1
   DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}
+  DropPercent: 0.3
+  items:
+  - {fileID: 4350444071356141071, guid: 08a52b8d184b12742b1675d31a4e626d, type: 3}
+  - {fileID: 4488858017699465254, guid: da54060d5e69da74ab7487e9f0aed2d6, type: 3}
+  - {fileID: 432513012831376786, guid: 1ddfb0ae06c4ff0488e90184a87e14e9, type: 3}
 --- !u!114 &343327110741720693
 MonoBehaviour:
   m_ObjectHideFlags: 0

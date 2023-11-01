@@ -179,3 +179,4 @@ MonoBehaviour:
   initPosition: {x: 0, y: 0}
   DelayTime: 0
   SpawnEffect: {fileID: 7543681651603613284, guid: be8ba540af7348e47b0a79877fbb844c, type: 3}
+  AttackEffect: {fileID: 4676983811668333786, guid: 75f89f0468a0a5348acb685505ed3657, type: 3}

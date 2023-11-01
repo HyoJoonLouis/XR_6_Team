@@ -16,7 +16,8 @@ public class Manager_1_1 : MonoBehaviour
 
     Dictionary<int, string> Phase1_1 = new Dictionary<int, string>();
 
-    void Awake()
+
+    private void Start()
     {
         player = FindObjectOfType<Player>();
 
@@ -28,10 +29,6 @@ public class Manager_1_1 : MonoBehaviour
         Phase1_1.Add(5, "SpawnOneDiamondTwoSpade");
 
         UIManager.instance.ChangeLaughter(LaughterSprite.WhiteRabbit);
-    }
-
-    private void Start()
-    {
         StartCoroutine(Phase1_1SpawnCoroutine());
     }
 
