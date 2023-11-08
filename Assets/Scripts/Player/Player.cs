@@ -23,9 +23,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public int MaxOnceWeaponCount = 3;
-    GameObject[] onceWeapons;
+    Stack<GameObject> onceWeapons;
     Weapon weapon;
-    int CurOnceWeaponCount = 0;
 
     [Header("UI")]
     public GameObject cameraUI;
@@ -37,8 +36,8 @@ public class Player : MonoBehaviour, ITakeDamage
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        onceWeapons = new Stack<GameObject>();
 
-        onceWeapons = new GameObject[MaxOnceWeaponCount];
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
     }
@@ -70,6 +69,14 @@ public class Player : MonoBehaviour, ITakeDamage
         StartCoroutine(UnBeatTime());
 
         cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.3f);
+    }
+
+    public void SetHp(float hp)
+    {
+        if (CurrentHp + hp > 3)
+            CurrentHp = 3;
+        else
+            CurrentHp += hp;
     }
 
     IEnumerator UnBeatTime()
@@ -126,27 +133,39 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void OnUse(InputValue value)
     {
-        if (CurOnceWeaponCount <= 0)
+        if (onceWeapons.Count <= 0)
             return;
-
-        for (int i = 0; i < 3; ++i)
-        {
-            if (onceWeapons[i] == null)
-                continue;
-        }
+        Debug.Log("ÀÛµ¿");
+        Debug.Log(onceWeapons.Count);
+        onceWeapons.Pop().GetComponent<OnceWeapon>().OnUse();
     }
 
     public void AddOnceWeapon(GameObject onceweapon)
     {
-        if (CurOnceWeaponCount >= MaxOnceWeaponCount - 1)
+        OnceWeapon once = onceweapon.GetComponent<OnceWeapon>();
+        if (onceWeapons.Count >= MaxOnceWeaponCount - 1 || once.GetLevel() == 3)
             return;
 
-        onceWeapons[CurOnceWeaponCount++] = onceweapon;
+        int itemName = (int)once.type;
+
+        for (int i = 0; i < onceWeapons.Count; ++i)
+        {
+            if (!onceWeapons.Contains(onceweapon))
+            {
+                onceWeapons.Push(onceweapon);
+                break;
+            }
+            else
+            {
+                if ((int)onceWeapons.ToArray()[i].GetComponent<OnceWeapon>().type == itemName)
+                    onceWeapons.ToArray()[i].GetComponent<OnceWeapon>().PlusLevel(1);
+            }
+        }
     }
 
     public int GetOnceWeaponCount()
     {
-        return CurOnceWeaponCount;
+        return onceWeapons.Count;
     }
 
     #endregion Weapon

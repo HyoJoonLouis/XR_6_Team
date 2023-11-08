@@ -13,6 +13,8 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField] protected GameObject ProjectileObject;     // 투사체 프리팹
     [SerializeField] protected int MaxAttack;                   // 최대 공격 횟수
     protected int CurrentAttack = 0;                            // 현재 공격 횟수
+    protected int level = 1;                                    // 아이템 레벨
+    protected int MaxOnceItem = 5;                              // 일회성 아이템 종류 갯수
 
     protected virtual void Awake()
     {
@@ -21,5 +23,25 @@ public class BaseWeapon : MonoBehaviour
     public float GetAtkSpd()
     {
         return AttackSpeed;
+    }
+
+    public int GetMaxItemAmount()
+    {
+        return MaxOnceItem;
+    }
+
+    public void SetLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public void PlusLevel(int amount)
+    {
+        this.level += amount;
+    }
+
+    public int GetLevel()
+    {
+        return level;
     }
 }

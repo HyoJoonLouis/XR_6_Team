@@ -124,7 +124,7 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileObject: {fileID: 0}
   MaxAttack: 0
-  type: 5
+  type: 3
   player: {fileID: 0}
 --- !u!61 &4789761338932988429
 BoxCollider2D:
