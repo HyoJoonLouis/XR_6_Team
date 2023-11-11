@@ -183,7 +183,7 @@ MonoBehaviour:
   renderer: {fileID: 0}
   time: 0.07
   DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}
-  DropPercent: 0.1
+  DropPercent: 0.99
   items:
   - {fileID: 4350444071356141071, guid: 08a52b8d184b12742b1675d31a4e626d, type: 3}
   - {fileID: 4488858017699465254, guid: da54060d5e69da74ab7487e9f0aed2d6, type: 3}

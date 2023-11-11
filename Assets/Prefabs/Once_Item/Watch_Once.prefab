@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7800511704229479137}
   - component: {fileID: 7971404283495642485}
   - component: {fileID: 5549329471210314123}
-  - component: {fileID: -398712243000049395}
   - component: {fileID: 9195121985108896937}
+  - component: {fileID: 4152793766231079206}
   m_Layer: 6
   m_Name: Watch_Once
   m_TagString: Untagged
@@ -107,25 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-398712243000049395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432513012831376786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423fc0c5f5c6ef141b397712154622f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: 0
-  AttackSpeed: 0
-  ProjectileSpeed: 0
-  ProjectileObject: {fileID: 0}
-  MaxAttack: 0
-  type: 6
-  player: {fileID: 0}
 --- !u!61 &9195121985108896937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,3 +133,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.76, y: 0.97}
   m_EdgeRadius: 0
+--- !u!114 &4152793766231079206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432513012831376786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8a32bd2ac9f6247874413a72ab9c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 5

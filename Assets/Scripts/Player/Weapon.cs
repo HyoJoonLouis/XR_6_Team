@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Weapon : BaseWeapon
 {
-    protected Player player;
+    Player player;
     bool isAttack = false;
     bool attackTime = true;
     public float time;

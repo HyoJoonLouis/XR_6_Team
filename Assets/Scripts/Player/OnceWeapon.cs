@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class OnceWeapon : BaseWeapon
 {
+    Player player;
     public enum WeaponType
     {
         Jabberwocky,
         Hedgehog,
         Flamingo,
+        Faketurtle,
         Heart,
         Watch,
+        Key,
     }
 
-    public WeaponType type;
-    Player player;
+    Dictionary<WeaponType, int> itemInfo;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        player = collision.gameObject.GetComponent<Player>();
-        ObjectPoolManager.ReturnObjectToPool(gameObject);
-        if (player.GetOnceWeaponCount() >= player.MaxOnceWeaponCount - 1)
-            return;
+        player = GetComponentInParent<Player>();
+        itemInfo = new Dictionary<WeaponType, int>();
 
-        player.AddOnceWeapon(gameObject);
-
+        for (int i = 0; i < MaxOnceItem; ++i)
+        {
+            itemInfo.Add((WeaponType)i, 1);
+        }
     }
 
     // Jabberwocky
@@ -45,10 +47,16 @@ public class OnceWeapon : BaseWeapon
 
     }
 
+    // Faketurtle
+    public void GuardBullet()
+    {
+
+    }
+
     // Heart
     public void HeartUp()
     {
-        player.SetHp(level);
+        player.SetHp(itemInfo[WeaponType.Heart]);
     }
 
     // Watch
@@ -57,9 +65,10 @@ public class OnceWeapon : BaseWeapon
 
     }
 
-    public void OnUse()
+    public void OnUse(int type)
     {
-        switch (type)
+        WeaponType w = (WeaponType)type;
+        switch (w)
         {
             case WeaponType.Jabberwocky:
                 DamageBeam();
@@ -70,6 +79,9 @@ public class OnceWeapon : BaseWeapon
             case WeaponType.Flamingo:
                 AreaBullet();
                 break;
+            case WeaponType.Faketurtle:
+                GuardBullet();
+                break;
             case WeaponType.Heart:
                 HeartUp();
                 break;
@@ -77,5 +89,22 @@ public class OnceWeapon : BaseWeapon
                 TimeStop();
                 break;
         }
+        itemInfo[w] = 1;
+    }
+
+    public int GetLevel(int itemname)
+    {
+        int value;
+        itemInfo.TryGetValue((WeaponType)itemname, out value);
+
+        return value;
+    }
+    
+    public void SetLevel(int itemname, int level, bool isPlus)
+    {
+        if (isPlus)
+            itemInfo[(WeaponType)itemname] += level;
+        else
+            itemInfo[(WeaponType)itemname] = level;
     }
 }

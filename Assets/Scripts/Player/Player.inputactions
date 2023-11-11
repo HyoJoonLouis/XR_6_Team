@@ -113,7 +113,7 @@
                     "name": "",
                     "id": "2f768533-84d0-4927-9eb2-cccbf63d4475",
                     "path": "<Keyboard>/x",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Use",

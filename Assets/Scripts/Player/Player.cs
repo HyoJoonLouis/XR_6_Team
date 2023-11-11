@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, ITakeDamage
     [Header("Info")]
     public float Speed;
     public float MaxHp;
-    float CurrentHp;
+    public float CurrentHp;
 
     [Header("Hit")]
     bool isUnbeatTime = false;
@@ -23,8 +23,10 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public int MaxOnceWeaponCount = 3;
-    Stack<GameObject> onceWeapons;
+    Stack<int> onceWeapons;
+    OnceWeapon once;
     Weapon weapon;
+    bool isUse = false;
 
     [Header("UI")]
     public GameObject cameraUI;
@@ -36,7 +38,8 @@ public class Player : MonoBehaviour, ITakeDamage
         weapon = GetComponentInChildren<Weapon>();
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        onceWeapons = new Stack<GameObject>();
+        once = GetComponentInChildren<OnceWeapon>();
+        onceWeapons = new Stack<int>();
 
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
@@ -135,31 +138,28 @@ public class Player : MonoBehaviour, ITakeDamage
     {
         if (onceWeapons.Count <= 0)
             return;
-        Debug.Log("ÀÛµ¿");
-        Debug.Log(onceWeapons.Count);
-        onceWeapons.Pop().GetComponent<OnceWeapon>().OnUse();
+
+        once.OnUse(onceWeapons.Pop());
     }
 
-    public void AddOnceWeapon(GameObject onceweapon)
+    public void AddOnceWeapon(int itemName)
     {
-        OnceWeapon once = onceweapon.GetComponent<OnceWeapon>();
-        if (onceWeapons.Count >= MaxOnceWeaponCount - 1 || once.GetLevel() == 3)
+        if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
             return;
 
-        int itemName = (int)once.type;
-
-        for (int i = 0; i < onceWeapons.Count; ++i)
+        if (itemName == (int)OnceWeapon.WeaponType.Key)
         {
-            if (!onceWeapons.Contains(onceweapon))
-            {
-                onceWeapons.Push(onceweapon);
-                break;
-            }
-            else
-            {
-                if ((int)onceWeapons.ToArray()[i].GetComponent<OnceWeapon>().type == itemName)
-                    onceWeapons.ToArray()[i].GetComponent<OnceWeapon>().PlusLevel(1);
-            }
+            int randNum = Random.Range(0, 3);
+            itemName = randNum;
+        }
+
+        if (onceWeapons.Contains(itemName) == false)
+        {
+            onceWeapons.Push(itemName);
+        }
+        else if (onceWeapons.Contains(itemName) == true)
+        {
+            once.SetLevel(itemName, 1, true);
         }
     }
 
