@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class OnceWeapon : BaseWeapon
 {
-    public GameObject flamingoObj;
+    [Header("Projectile Option")]
+    public GameObject flamingoPrefab;
+    public GameObject turtlePrefab;
+    public GameObject hedgehogPrefab;
 
     Player player;
+
     public enum WeaponType
     {
         Jabberwocky,
@@ -40,19 +44,30 @@ public class OnceWeapon : BaseWeapon
     // Hedgehog
     public void ThrowBullet()
     {
+        player.SetIsUse(true);
 
+        AttackPoint = 3;
+        ProjectileSpeed = 20f;
+
+        ObjectPoolManager.SpawnObject(hedgehogPrefab, new Vector3(), new Quaternion()).GetComponent<Hedgehog>().Init(player, AttackPoint, ProjectileSpeed);
     }
 
     // Flamingo
     public void AreaBullet()
     {
-        ObjectPoolManager.SpawnObject(flamingoObj, new Vector3(), new Quaternion()).GetComponent<Flamingo>().Init(AttackPoint, player);
+        AttackPoint = 10;
+
+        ObjectPoolManager.SpawnObject(flamingoPrefab, new Vector3(), new Quaternion()).GetComponent<Flamingo>().Init(AttackPoint, player);
     }
 
     // Faketurtle
     public void GuardBullet()
     {
+        player.SetIsUse(true);
 
+        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 0);
+        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 1);
+        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 2);
     }
 
     // Heart

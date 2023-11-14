@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, ITakeDamage
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
 
-        onceWeapons.Push(2);
+        onceWeapons.Push((int)OnceWeapon.WeaponType.Hedgehog);
     }
 
     private void Update()
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void OnUse(InputValue value)
     {
-        if (onceWeapons.Count <= 0)
+        if (onceWeapons.Count <= 0 || isUse)
             return;
 
         once.OnUse(onceWeapons.Pop());
@@ -168,6 +168,11 @@ public class Player : MonoBehaviour, ITakeDamage
     public int GetOnceWeaponCount()
     {
         return onceWeapons.Count;
+    }
+
+    public void SetIsUse(bool isUse)
+    {
+        this.isUse = isUse;
     }
 
     #endregion Weapon
