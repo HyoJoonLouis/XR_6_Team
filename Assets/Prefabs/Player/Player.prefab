@@ -49,6 +49,9 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileObject: {fileID: 0}
   MaxAttack: 0
+  flamingoPrefab: {fileID: 0}
+  turtlePrefab: {fileID: 4542860280270634170, guid: c5b60f3e586fd8d4396f22f81824dbe2, type: 3}
+  hedgehogPrefab: {fileID: 3602358596641508073, guid: ef891599045234745b3827832d73fba9, type: 3}
 --- !u!1 &4389267962448649081
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 7
   MaxHp: 3
+  CurrentHp: 0
   MaxOnceWeaponCount: 3
   cameraUI: {fileID: 0}
 --- !u!114 &4389267962448649025
@@ -169,7 +173,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &260968522
 SpriteRenderer:
   m_ObjectHideFlags: 0
