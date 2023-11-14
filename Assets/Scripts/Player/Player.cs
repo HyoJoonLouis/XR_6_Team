@@ -43,6 +43,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
+
+        onceWeapons.Push(2);
     }
 
     private void Update()

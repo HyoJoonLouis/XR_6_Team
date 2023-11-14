@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OnceWeapon : BaseWeapon
 {
+    public GameObject flamingoObj;
+
     Player player;
     public enum WeaponType
     {
@@ -44,7 +46,7 @@ public class OnceWeapon : BaseWeapon
     // Flamingo
     public void AreaBullet()
     {
-
+        ObjectPoolManager.SpawnObject(flamingoObj, new Vector3(), new Quaternion()).GetComponent<Flamingo>().Init(AttackPoint, player);
     }
 
     // Faketurtle

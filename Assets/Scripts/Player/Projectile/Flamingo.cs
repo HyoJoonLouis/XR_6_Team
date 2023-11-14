@@ -6,12 +6,21 @@ public class Flamingo : MonoBehaviour
 {
     public AnimationCurve SwishCurve;
     public Vector3 initPosition;
-    Transform startPosition;
     Player player;
     float time = 0;
+    float damage = 0;
+
+    public void Init(float dmg, Player p)
+    {
+        player = p;
+        damage = dmg;
+    }
 
     void Start()
     {
+        transform.rotation = Quaternion.Euler(0, 0, 45);
+        transform.position = new Vector3(player.transform.position.x + 3f, player.transform.position.y + 2f);
+        initPosition = new Vector3(player.transform.position.x + 0.5f, player.transform.position.y);
     }
 
     void Update()
@@ -23,21 +32,12 @@ public class Flamingo : MonoBehaviour
     {
         time += Time.deltaTime;
         transform.RotateAround(initPosition, Vector3.back, SwishCurve.Evaluate(time));
-
         if (SwishCurve.Evaluate(time) == 0)
-        {
-            transform.position = startPosition.position;
-            transform.rotation = startPosition.rotation;
-            this.gameObject.SetActive(false);
-        }
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
     }
 
-    private void OnEnable()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        player = GetComponentInParent<Player>();
-        transform.position = new Vector3(player.transform.position.x + 3f, player.transform.position.y + 2.2f);
-        startPosition = transform;
-        initPosition = new Vector3(player.transform.position.x + 0.5f, player.transform.position.y);
-        time = 0;
+        collision.GetComponent<ITakeDamage>().TakeDamage(damage);
     }
 }
