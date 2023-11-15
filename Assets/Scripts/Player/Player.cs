@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, ITakeDamage
         CurrentHp = MaxHp;
         UIManager.instance.SetHealth((int)CurrentHp);
 
-        onceWeapons.Push((int)OnceWeapon.WeaponType.Hedgehog);
+        onceWeapons.Push((int)WeaponType.Faketurtle);
     }
 
     private void Update()
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour, ITakeDamage
         if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
             return;
 
-        if (itemName == (int)OnceWeapon.WeaponType.Key)
+        if (itemName == (int)WeaponType.Key)
         {
             int randNum = Random.Range(0, 3);
             itemName = randNum;

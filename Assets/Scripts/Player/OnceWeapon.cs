@@ -1,6 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum WeaponType
+{
+    Jabberwocky,
+    Hedgehog,
+    Flamingo,
+    Faketurtle,
+    Heart,
+    Watch,
+    Key,
+}
 
 public class OnceWeapon : BaseWeapon
 {
@@ -11,16 +21,6 @@ public class OnceWeapon : BaseWeapon
 
     Player player;
 
-    public enum WeaponType
-    {
-        Jabberwocky,
-        Hedgehog,
-        Flamingo,
-        Faketurtle,
-        Heart,
-        Watch,
-        Key,
-    }
 
     Dictionary<WeaponType, int> itemInfo;
 
@@ -46,8 +46,8 @@ public class OnceWeapon : BaseWeapon
     {
         player.SetIsUse(true);
 
-        AttackPoint = 3;
-        ProjectileSpeed = 20f;
+        AttackPoint = 10;
+        ProjectileSpeed = 10;
 
         ObjectPoolManager.SpawnObject(hedgehogPrefab, new Vector3(), new Quaternion()).GetComponent<Hedgehog>().Init(player, AttackPoint, ProjectileSpeed);
     }

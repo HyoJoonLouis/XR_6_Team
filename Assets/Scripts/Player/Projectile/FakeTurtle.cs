@@ -52,4 +52,12 @@ public class FakeTurtle : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject != null)
+        {
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+        }
+    }
 }
