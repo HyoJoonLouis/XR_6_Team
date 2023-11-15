@@ -976,14 +976,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1203864879, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
-      propertyPath: turtlePrefab
-      value: 
-      objectReference: {fileID: 5768597763115986916, guid: f019d9d5ba41b62429ee8c1bd69c7e20, type: 3}
-    - target: {fileID: 1203864879, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
-      propertyPath: hedgehogPrefab
-      value: 
-      objectReference: {fileID: 108505097755941319, guid: dc474fc467a3b094eaeda18551f8a9e8, type: 3}
     - target: {fileID: 4389267962448649024, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
       propertyPath: cameraUI
       value: 
@@ -1036,10 +1028,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4389267962582763279, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
-      propertyPath: ProjectileObject
-      value: 
-      objectReference: {fileID: 8260383071265267383, guid: 5f54752c700c1fb469f9043d26c0e6c8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d7e2b33723072478468b6c61b59075, type: 3}
 --- !u!1 &1336405058
