@@ -6,21 +6,21 @@ public class Flamingo : MonoBehaviour
 {
     public AnimationCurve SwishCurve;
     public Vector3 initPosition;
-    Player player;
+    Vector3 playerPos;
     float time = 0;
     float damage = 0;
 
     public void Init(float dmg, Player p)
     {
-        player = p;
+        playerPos = p.GetComponent<Player>().transform.position;
         damage = dmg;
     }
 
     void Start()
     {
         transform.rotation = Quaternion.Euler(0, 0, 45);
-        transform.position = new Vector3(player.transform.position.x + 3f, player.transform.position.y + 2f);
-        initPosition = new Vector3(player.transform.position.x + 0.5f, player.transform.position.y);
+        transform.position = new Vector3(playerPos.x + 3f, playerPos.y + 2f);
+        initPosition = new Vector3(playerPos.x + 0.5f, playerPos.y);
     }
 
     void Update()

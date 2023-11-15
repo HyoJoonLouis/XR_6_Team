@@ -18,6 +18,8 @@ public class OnceWeapon : BaseWeapon
     public GameObject flamingoPrefab;
     public GameObject turtlePrefab;
     public GameObject hedgehogPrefab;
+    public GameObject jabberwockyPrefab;
+    public GameObject watchPrefab;
 
     Player player;
 
@@ -38,7 +40,36 @@ public class OnceWeapon : BaseWeapon
     // Jabberwocky
     public void DamageBeam()
     {
+        player.SetIsUse(true);
 
+        AttackPoint = 0.1f;
+        Duration = 5;
+        int level = GetLevel((int)WeaponType.Jabberwocky);
+
+        switch (level)
+        {
+            case 1:
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 1, 1);
+                break;
+            case 2:
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 2, 1);
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 2, 2);
+                break;
+            case 3:
+            default:
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 1);
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 2);
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                    GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 3);
+                break;
+        }
+
+        SetLevel(level, 1, false);
     }
 
     // Hedgehog
@@ -46,10 +77,27 @@ public class OnceWeapon : BaseWeapon
     {
         player.SetIsUse(true);
 
-        AttackPoint = 10;
         ProjectileSpeed = 10;
+        int level = GetLevel((int)WeaponType.Hedgehog);
 
-        ObjectPoolManager.SpawnObject(hedgehogPrefab, new Vector3(), new Quaternion()).GetComponent<Hedgehog>().Init(player, AttackPoint, ProjectileSpeed);
+        switch (level)
+        {
+            case 1:
+                AttackPoint = 10;
+                break;
+            case 2:
+                AttackPoint = 20;
+                break;
+            case 3:
+            default:
+                AttackPoint = 30;
+                break;
+        }
+
+        ObjectPoolManager.SpawnObject(hedgehogPrefab, new Vector3(), new Quaternion()).
+            GetComponent<Hedgehog>().Init(player, AttackPoint, ProjectileSpeed);
+
+        SetLevel(level, 1, false);
     }
 
     // Flamingo
@@ -57,7 +105,8 @@ public class OnceWeapon : BaseWeapon
     {
         AttackPoint = 10;
 
-        ObjectPoolManager.SpawnObject(flamingoPrefab, new Vector3(), new Quaternion()).GetComponent<Flamingo>().Init(AttackPoint, player);
+        ObjectPoolManager.SpawnObject(flamingoPrefab, new Vector3(), new Quaternion()).
+            GetComponent<Flamingo>().Init(AttackPoint, player);
     }
 
     // Faketurtle
@@ -65,9 +114,32 @@ public class OnceWeapon : BaseWeapon
     {
         player.SetIsUse(true);
 
-        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 0);
-        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 1);
-        ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).GetComponent<FakeTurtle>().Init(player, 2);
+        int level = GetLevel((int)WeaponType.Faketurtle);
+
+        switch (level)
+        {
+            case 1:
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 0, 1);
+                break;
+            case 2:
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 0, 2);
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 1, 2);
+                break;
+            case 3:
+            default:
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 0, 3);
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 1, 3);
+                ObjectPoolManager.SpawnObject(turtlePrefab, new Vector3(), new Quaternion()).
+                    GetComponent<FakeTurtle>().Init(player, 2, 3);
+                break;
+        }
+
+        SetLevel(level, 1, false);
     }
 
     // Heart
@@ -79,7 +151,25 @@ public class OnceWeapon : BaseWeapon
     // Watch
     public void TimeStop()
     {
+        int level = GetLevel((int)WeaponType.Watch);
+        switch (level)
+        {
+            case 1:
+                Duration = 1;
+                break;
+            case 2:
+                Duration = 3;
+                break;
+            case 3:
+            default:
+                Duration = 5;
+                break;
+        }
 
+        ObjectPoolManager.SpawnObject(watchPrefab, new Vector3(), new Quaternion()).
+            GetComponent<Watch>().Init(Duration);
+
+        SetLevel(level, 1, false);
     }
 
     public void OnUse(int type)

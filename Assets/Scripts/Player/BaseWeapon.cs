@@ -12,6 +12,7 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField] protected float ProjectileSpeed;           // 투사체 속도
     [SerializeField] protected GameObject ProjectileObject;     // 투사체 프리팹
     [SerializeField] protected int MaxAttack;                   // 최대 공격 횟수
+    protected float Duration;                                   // 지속 시간
     protected int CurrentAttack = 0;                            // 현재 공격 횟수
     protected int MaxOnceItem = 7;                              // 일회성 아이템 종류 갯수
 

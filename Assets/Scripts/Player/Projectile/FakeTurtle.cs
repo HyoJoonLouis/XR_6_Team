@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FakeTurtle : MonoBehaviour
 {
-    Player player;
-    int objSize = 3;
+    GameObject player;
+    int objSize;
     int objNum;
     float circleR = 1.5f;   //반지름
     float deg = 45;         //각도
@@ -13,10 +13,12 @@ public class FakeTurtle : MonoBehaviour
 
     float time = 0;
 
-    public void Init(Player p, int turtleNum)
+    public void Init(Player p, int turtleNum, int posType)
     {
         objNum = turtleNum;
-        player = p;
+        player = p.gameObject;
+
+        objSize = posType;
 
         StartCoroutine(Duration());
     }
@@ -46,7 +48,7 @@ public class FakeTurtle : MonoBehaviour
             if (time >= 10)
             {
                 time = 0;
-                player.SetIsUse(false);
+                player.GetComponent<Player>().SetIsUse(false);
                 ObjectPoolManager.ReturnObjectToPool(this.gameObject);
             }
             yield return new WaitForSeconds(0.001f);
@@ -55,9 +57,13 @@ public class FakeTurtle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != null)
-        {
-            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
-        }
+        if (collision.gameObject == null || collision.gameObject.layer == 8)
+            return;
+
+        ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+    }
+
+    public void TakeDamage(float value)
+    {
     }
 }

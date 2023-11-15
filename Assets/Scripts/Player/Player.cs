@@ -42,9 +42,6 @@ public class Player : MonoBehaviour, ITakeDamage
         onceWeapons = new Stack<int>();
 
         CurrentHp = MaxHp;
-        UIManager.instance.SetHealth((int)CurrentHp);
-
-        onceWeapons.Push((int)WeaponType.Faketurtle);
     }
 
     private void Update()
@@ -61,13 +58,9 @@ public class Player : MonoBehaviour, ITakeDamage
     public void TakeDamage(float value)
     {
         CurrentHp -= value;
-        UIManager.instance.SetHealth((int)CurrentHp);
 
         if (CurrentHp <= 0)
         {
-            // Gameover
-            UIManager.instance.GameOver();
-            return;
         }
 
         isUnbeatTime = true;
@@ -124,6 +117,9 @@ public class Player : MonoBehaviour, ITakeDamage
 
     private void OnFire(InputValue value)
     {
+        if (isUse)
+            return;
+
         animator.SetBool("IsAttack", value.isPressed);
 
         if (value.isPressed)

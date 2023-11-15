@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Hedgehog : MonoBehaviour
 {
-    Player player;
     float damage;
     float speed;
 
     public void Init(Player p, float damage, float projectileSpeed)
     {
-        player = p;
         this.damage = damage;
         speed = projectileSpeed;
 
-        transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y);
+        transform.position = new Vector3(p.transform.position.x + 2, p.transform.position.y);
     }
 
     void Update()
