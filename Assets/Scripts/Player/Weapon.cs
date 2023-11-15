@@ -30,7 +30,7 @@ public class Weapon : BaseWeapon
 
     public IEnumerator OnAttack()
     {
-        yield return new WaitForSeconds(AttackSpeed);
+        yield return new WaitForSecondsRealtime(AttackSpeed);
     
         if (!attackTime) attackTime = true;
     }

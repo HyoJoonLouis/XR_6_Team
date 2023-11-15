@@ -42,6 +42,8 @@ public class Player : MonoBehaviour, ITakeDamage
         onceWeapons = new Stack<int>();
 
         CurrentHp = MaxHp;
+
+        //onceWeapons.Push((int)WeaponType.Watch);
     }
 
     private void Update()

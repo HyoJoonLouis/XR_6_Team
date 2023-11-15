@@ -28,15 +28,20 @@ public class Fireball : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.right * Speed * Time.deltaTime);
+        transform.Translate(Vector3.right * Speed * Time.unscaledDeltaTime);
 
         if (this.transform.position.x < -13 || this.transform.position.x > 13 || this.transform.position.y > 7 || this.transform.position.y < -7)
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
 
         if (time < 1)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             this.transform.localScale = new Vector3(curveUp.Evaluate(time), curveUp.Evaluate(time), 1);
+        }
+
+        if (Time.timeScale == 0)
+        {
+            CircleCollider2D box = GetComponent<CircleCollider2D>();
         }
     }
 
@@ -44,6 +49,18 @@ public class Fireball : MonoBehaviour
     {
         collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(Damage);
         
+        CurrentAttack -= 1;
+        if (CurrentAttack <= 0)
+        {
+            ObjectPoolManager.SpawnObject(OnHitParticle, this.transform.position, this.transform.rotation);
+            ObjectPoolManager.ReturnObjectToPool(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(Damage);
+
         CurrentAttack -= 1;
         if (CurrentAttack <= 0)
         {

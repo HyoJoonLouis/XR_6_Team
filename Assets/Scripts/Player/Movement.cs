@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     {
         animator.SetFloat("MoveDirection", moveDirection.x);
 
-        transform.Translate(moveDirection * speed * Time.deltaTime);
+        transform.Translate(moveDirection * speed * Time.unscaledDeltaTime);
     }
 
     private void OnMove(InputValue value)
