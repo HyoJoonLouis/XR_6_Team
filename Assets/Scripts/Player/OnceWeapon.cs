@@ -22,6 +22,7 @@ public class OnceWeapon : BaseWeapon
     public GameObject watchPrefab;
 
     Player player;
+    public float time = 0;
 
 
     Dictionary<WeaponType, int> itemInfo;
@@ -49,22 +50,22 @@ public class OnceWeapon : BaseWeapon
         switch (level)
         {
             case 1:
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 1, 1);
                 break;
             case 2:
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 2, 1);
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 2, 2);
                 break;
             case 3:
             default:
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 1);
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 2);
-                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(), new Quaternion()).
+                ObjectPoolManager.SpawnObject(jabberwockyPrefab, new Vector3(0, 30), new Quaternion()).
                     GetComponent<Jabberwocky>().Init(player, Duration, AttackPoint, 3, 3);
                 break;
         }
@@ -184,7 +185,7 @@ public class OnceWeapon : BaseWeapon
                 ThrowBullet();
                 break;
             case WeaponType.Flamingo:
-                AreaBullet();
+                StartCoroutine(IdleFlamingo());
                 break;
             case WeaponType.Faketurtle:
                 GuardBullet();
@@ -213,5 +214,22 @@ public class OnceWeapon : BaseWeapon
             itemInfo[(WeaponType)itemname] += level;
         else
             itemInfo[(WeaponType)itemname] = level;
+    }
+
+    IEnumerator IdleFlamingo()
+    {
+        while (true)
+        {
+            time += Time.deltaTime;
+
+            if (time >= 0.13f)
+            {
+                AreaBullet();
+                time = 0;
+                break;
+            }
+
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

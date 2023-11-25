@@ -6,21 +6,21 @@ public class Flamingo : MonoBehaviour
 {
     public AnimationCurve SwishCurve;
     public Vector3 initPosition;
-    Vector3 playerPos;
+    Transform playerPos;
     float time = 0;
     float damage = 0;
+    Vector3 fb;
 
     public void Init(float dmg, Player p)
     {
-        playerPos = p.GetComponent<Player>().transform.position;
+        playerPos = p.transform;
         damage = dmg;
     }
 
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0, 0, 45);
-        transform.position = new Vector3(playerPos.x + 3f, playerPos.y + 2f);
-        initPosition = new Vector3(playerPos.x + 0.5f, playerPos.y);
+        transform.position = new Vector3(playerPos.position.x + 1.74f, playerPos.position.y + 2f);
+        initPosition = new Vector3(playerPos.position.x + 0.5f, playerPos.position.y);
     }
 
     void Update()
@@ -31,9 +31,19 @@ public class Flamingo : MonoBehaviour
     void SwishFlamingo()
     {
         time += Time.deltaTime;
-        transform.RotateAround(initPosition, Vector3.back, SwishCurve.Evaluate(time));
+
+        if (time <= 0.12f)
+            fb = Vector3.forward;
+        else if (time > 0.12f)
+            fb = Vector3.back;
+
+        transform.RotateAround(initPosition, fb, SwishCurve.Evaluate(time) * 1.7f);
         if (SwishCurve.Evaluate(time) == 0)
+        {
+            playerPos.GetComponent<Animator>().SetBool("IsFlamingo", false);
+            playerPos.GetComponent<Player>().SetIsMove(true);
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

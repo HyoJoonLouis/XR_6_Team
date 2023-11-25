@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, ITakeDamage
     OnceWeapon once;
     Weapon weapon;
     bool isUse = false;
+    bool isMove = true;
 
     [Header("UI")]
     public GameObject cameraUI;
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         CurrentHp = MaxHp;
 
-        //onceWeapons.Push((int)WeaponType.Watch);
+        onceWeapons.Push((int)WeaponType.Flamingo);
     }
 
     private void Update()
@@ -53,7 +54,8 @@ public class Player : MonoBehaviour, ITakeDamage
         else
             boxCollider.enabled = true;
 
-        move.Move(Speed);
+        if (isMove)
+            move.Move(Speed);
         CameraWorldSpace();
     }
 
@@ -139,7 +141,21 @@ public class Player : MonoBehaviour, ITakeDamage
         if (onceWeapons.Count <= 0 || isUse)
             return;
 
-        once.OnUse(onceWeapons.Pop());
+        int itemType;
+        itemType = onceWeapons.Pop();
+        once.OnUse(itemType);
+
+        switch (itemType)
+        {
+            case (int)WeaponType.Jabberwocky:
+                animator.SetFloat("JabberCount", 0.4f);
+                animator.SetBool("IsJabber", true);
+                break;
+            case (int)WeaponType.Flamingo:
+                animator.SetBool("IsFlamingo", true);
+                isMove = false;
+                break;
+        }
     }
 
     public void AddOnceWeapon(int itemName)
@@ -171,6 +187,11 @@ public class Player : MonoBehaviour, ITakeDamage
     public void SetIsUse(bool isUse)
     {
         this.isUse = isUse;
+    }
+
+    public void SetIsMove(bool isMove)
+    {
+        this.isMove = isMove;
     }
 
     #endregion Weapon

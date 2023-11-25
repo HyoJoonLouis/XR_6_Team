@@ -12,8 +12,9 @@ public class Jabberwocky : MonoBehaviour
     float laserTime = 0;
     float damage;
     int level = 1;
-    bool isOff = false;
     float posX, posY;
+    bool isOff = false;
+    bool idleAnim = false;
 
     // level
     // 1 - x+9.6 y-0.37
@@ -26,7 +27,7 @@ public class Jabberwocky : MonoBehaviour
         this.damage = damage;
         this.level = level;
 
-        posX = 9.6f;
+        posX = 9.9f;
         switch (level)
         {
             case 1:
@@ -52,32 +53,42 @@ public class Jabberwocky : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        StartCoroutine(DurationChecking());
+        StartCoroutine(WaitAnim());
     }
 
     void Update()
     {
-        transform.position = new Vector3(player.position.x + posX, player.position.y + posY);
-
-        if (blendTime < 0.3f)
-            blendTime += Time.deltaTime;
-        else if (blendTime <= 0.5f && blendTime >= 0.3f)
+        if (idleAnim)
         {
-            blendTime += Time.deltaTime;
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        }
-        else if (blendTime >= 0.5f && blendTime < 1f && isOff)
-            blendTime += Time.deltaTime;
-        else if (blendTime >= 1)
-        {
-            player.GetComponent<Player>().SetIsUse(false);
-            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
-            time = 0f;
-            blendTime = 0f;
-            isOff = false;
-        }
+            transform.position = new Vector3(player.position.x + posX, player.position.y + posY);
 
-        anim.SetFloat("LaserTime", blendTime);
+            if (blendTime < 0.3f)
+                blendTime += Time.deltaTime;
+            else if (blendTime <= 0.5f && blendTime >= 0.3f)
+            {
+                blendTime += Time.deltaTime;
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            else if (blendTime >= 0.5f && blendTime < 1f && isOff)
+            {
+                blendTime += Time.deltaTime;
+                player.GetComponent<Animator>().SetFloat("JabberCount", blendTime);
+            }
+            else if (blendTime >= 1)
+            {
+                player.GetComponent<Player>().SetIsUse(false);
+                ObjectPoolManager.ReturnObjectToPool(this.gameObject);
+                time = 0f;
+                player.GetComponent<Animator>().SetFloat("JabberCount", blendTime);
+                player.GetComponent<Animator>().SetBool("IsJabber", false);
+                blendTime = 0f;
+                idleAnim = false;
+                isOff = false;
+            }
+
+            anim.SetFloat("LaserTime", blendTime);
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -102,6 +113,24 @@ public class Jabberwocky : MonoBehaviour
             }
 
             time += Time.deltaTime;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    IEnumerator WaitAnim()
+    {
+        while (!idleAnim)
+        {
+            time += Time.deltaTime;
+            if (time >= 0.5f)
+            {
+                time = 0;
+                idleAnim = true;
+                this.GetComponent<Animator>().SetFloat("LaserTime", 0);
+                StartCoroutine(DurationChecking());
+                yield return 0;
+            }
 
             yield return new WaitForSeconds(0.01f);
         }
