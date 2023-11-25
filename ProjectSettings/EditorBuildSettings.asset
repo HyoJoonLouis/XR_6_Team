@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/1-1.unity
     guid: e957a81d020e01b489050d5dc0c8d659
   - enabled: 1
+    path: Assets/Scenes/1-2.unity
+    guid: 792f5b160db6cb84e9937326961df881
+  - enabled: 1
     path: Assets/Scenes/AliceStage.unity
     guid: f5a905b354ae65847afe3f4a5b6ed750
   m_configObjects:

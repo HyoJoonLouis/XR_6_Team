@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, ITakeDamage
     bool isUse = false;
 
     [Header("UI")]
+    private UIManager uiManager;
     public GameObject cameraUI;
 
     private void Start()
@@ -42,7 +43,8 @@ public class Player : MonoBehaviour, ITakeDamage
         onceWeapons = new Stack<int>();
 
         CurrentHp = MaxHp;
-        UIManager.instance.SetHealth((int)CurrentHp);
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.SetHealth((int)CurrentHp);
 
         onceWeapons.Push((int)WeaponType.Faketurtle);
     }
@@ -61,12 +63,12 @@ public class Player : MonoBehaviour, ITakeDamage
     public void TakeDamage(float value)
     {
         CurrentHp -= value;
-        UIManager.instance.SetHealth((int)CurrentHp);
+        uiManager.SetHealth((int)CurrentHp);
 
         if (CurrentHp <= 0)
         {
             // Gameover
-            UIManager.instance.GameOver();
+            uiManager.GameOver();
             return;
         }
 

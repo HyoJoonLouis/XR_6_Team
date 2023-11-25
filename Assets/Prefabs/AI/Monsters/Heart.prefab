@@ -104,7 +104,7 @@ Transform:
   m_GameObject: {fileID: 4790472349505202476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5820053427873967909}
@@ -253,6 +253,8 @@ MonoBehaviour:
   renderer: {fileID: 0}
   time: 0.1
   DieEffect: {fileID: 1099590925629677015, guid: 18715171bc67d924a9b79a1e562b1165, type: 3}
+  DropPercent: 0
+  items: []
 --- !u!61 &11140671042564066
 BoxCollider2D:
   m_ObjectHideFlags: 0
