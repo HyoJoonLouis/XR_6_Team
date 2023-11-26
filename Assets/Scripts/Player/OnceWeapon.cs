@@ -104,7 +104,23 @@ public class OnceWeapon : BaseWeapon
     // Flamingo
     public void AreaBullet()
     {
-        AttackPoint = 10;
+        player.SetIsUse(true);
+
+        int level = GetLevel((int)WeaponType.Flamingo);
+
+        switch (level)
+        {
+            case 1:
+                AttackPoint = 10;
+                break;
+            case 2:
+                AttackPoint = 20;
+                break;
+            case 3:
+            default:
+                AttackPoint = 30;
+                break;
+        }
 
         ObjectPoolManager.SpawnObject(flamingoPrefab, new Vector3(), new Quaternion()).
             GetComponent<Flamingo>().Init(AttackPoint, player);

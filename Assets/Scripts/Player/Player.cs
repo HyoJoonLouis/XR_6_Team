@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         CurrentHp = MaxHp;
 
-        onceWeapons.Push((int)WeaponType.Flamingo);
+        //onceWeapons.Push((int)WeaponType.Flamingo);
     }
 
     private void Update()

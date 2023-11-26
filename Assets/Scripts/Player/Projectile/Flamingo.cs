@@ -14,13 +14,9 @@ public class Flamingo : MonoBehaviour
     public void Init(float dmg, Player p)
     {
         playerPos = p.transform;
-        damage = dmg;
-    }
-
-    void Start()
-    {
         transform.position = new Vector3(playerPos.position.x + 1.74f, playerPos.position.y + 2f);
         initPosition = new Vector3(playerPos.position.x + 0.5f, playerPos.position.y);
+        damage = dmg;
     }
 
     void Update()

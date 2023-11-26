@@ -26,7 +26,10 @@ public class Watch : MonoBehaviour
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Watch_Explosion") &&
             anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            time = 0;
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
+        }
     }
 
     IEnumerator DurationCheck()
