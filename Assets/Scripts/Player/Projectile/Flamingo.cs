@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flamingo : MonoBehaviour
 {
     public AnimationCurve SwishCurve;
-    public Vector3 initPosition;
+    Vector3 initPosition;
     Transform playerPos;
     float time = 0;
     float damage = 0;
@@ -37,11 +37,12 @@ public class Flamingo : MonoBehaviour
         else if (time > 0.12f)
             fb = Vector3.back;
 
-        transform.RotateAround(initPosition, fb, SwishCurve.Evaluate(time) * 1.7f);
+        transform.RotateAround(initPosition, fb, SwishCurve.Evaluate(time) * 1.5f);
         if (SwishCurve.Evaluate(time) == 0)
         {
             playerPos.GetComponent<Animator>().SetBool("IsFlamingo", false);
             playerPos.GetComponent<Player>().SetIsMove(true);
+            time = 0;
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
         }
     }

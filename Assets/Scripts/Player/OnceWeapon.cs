@@ -222,7 +222,7 @@ public class OnceWeapon : BaseWeapon
         {
             time += Time.deltaTime;
 
-            if (time >= 0.13f)
+            if (time >= 0.09f)
             {
                 AreaBullet();
                 time = 0;

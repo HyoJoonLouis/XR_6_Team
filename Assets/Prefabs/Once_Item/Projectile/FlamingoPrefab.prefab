@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1305105822294837491}
   - component: {fileID: 1305105822294837452}
   - component: {fileID: 6572179339482603044}
+  - component: {fileID: 3383546955398335201}
   m_Layer: 7
   m_Name: FlamingoPrefab
   m_TagString: Untagged
@@ -131,7 +132,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  initPosition: {x: 0, y: 0, z: 0}
 --- !u!70 &6572179339482603044
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,9 +142,30 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.19719288, y: 0.85779375}
   m_Size: {x: 3.33793, y: 6.872629}
   m_Direction: 0
+--- !u!50 &3383546955398335201
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305105822294837489}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
