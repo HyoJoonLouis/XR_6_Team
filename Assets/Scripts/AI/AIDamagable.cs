@@ -36,7 +36,7 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
             if(items.Count > 0)
             {
                 float percent = Random.Range(0.0f, 1.0f);
-                //Debug.Log(percent);
+
                 if(percent < DropPercent)
                 {
                     ObjectPoolManager.SpawnObject(items[Random.Range(0, items.Count)],this.transform.position, this.transform.rotation);
