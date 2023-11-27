@@ -16,5 +16,9 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        if (instance != this)
+            Destroy(this.gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 }

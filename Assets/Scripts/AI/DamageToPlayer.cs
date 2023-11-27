@@ -11,7 +11,6 @@ public class DamageToPlayer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ITakeDamage player =  collision.GetComponent<ITakeDamage>();
-        Debug.Log("hi");
         if(player != null)
             player.TakeDamage(Damage);
 

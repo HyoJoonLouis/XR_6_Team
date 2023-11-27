@@ -33,7 +33,7 @@ public class ChatScript1_3 : MonoBehaviour
     [SerializeField] public List<Sprite> AliceSprite;
 
 
-    public Manager1_2 Manager;
+    public AliceMovement Manager;
 
     public GameObject Player;
     public GameObject Enemy;
@@ -50,7 +50,7 @@ public class ChatScript1_3 : MonoBehaviour
 
     void Start()
     {
-        Manager = FindObjectOfType<Manager1_2>();
+        Manager = FindObjectOfType<AliceMovement>();
 
         CurrentScript = -1;
 

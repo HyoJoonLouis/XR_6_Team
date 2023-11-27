@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIDamagable : MonoBehaviour, ITakeDamage
 {
     [SerializeField] float MaxHp;
-    float currentHp;
+    [SerializeField] float currentHp;
 
     [Header("Renderer")]
     [SerializeField] Renderer renderer;
@@ -17,6 +17,9 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
     [Header("Items")]
     [SerializeField] float DropPercent;
     [SerializeField] List<GameObject> items;
+
+    [Header("Boss")]
+    [SerializeField] bool GameOverOnDied;
 
     private void OnEnable()
     {
@@ -43,6 +46,13 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
                 }
             }
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
+
+            if(GameOverOnDied)
+            {
+                UIManager uiManager = FindObjectOfType<UIManager>();
+                uiManager.GameClearCanvas.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 

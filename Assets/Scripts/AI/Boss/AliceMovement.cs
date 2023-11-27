@@ -18,6 +18,15 @@ public class AliceMovement : BossBaseMovement
 
     private UIManager uiManager;
 
+
+   
+    public void StartStage()
+    {
+        StartGame = true;
+        CurrentState = AliceState[State.Idle];
+        CurrentState.OnStateEnter();
+    }
+
     void Start()
     {
         AliceState.Add(State.Idle, new AliceIdleState(this));
@@ -26,10 +35,7 @@ public class AliceMovement : BossBaseMovement
         AliceState.Add(State.Pattern5, new Pattern5(this));
         AliceState.Add(State.Pattern6, new Pattern6(this));
         AliceState.Add(State.Pattern7, new Pattern7(this));
-
-        CurrentState = AliceState[State.Idle];
-        CurrentState.OnStateEnter();
-
+    
         uiManager = FindObjectOfType<UIManager>();
     }
 

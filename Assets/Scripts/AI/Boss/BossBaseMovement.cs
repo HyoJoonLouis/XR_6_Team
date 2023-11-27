@@ -7,6 +7,7 @@ public class BossBaseMovement : AIMovement
     [Header("Boss Base")]
     public List<Transform> AmmoSpawnPosition;
     public Transform TargetTransform;
+    public bool StartGame;
 
     public BaseState CurrentState;
 
@@ -20,6 +21,9 @@ public class BossBaseMovement : AIMovement
     public override void Update()
     {
         base.Update();
+        if (!StartGame)
+            return;
+
         CurrentState.OnStateUpdate();
     }
     public void ChangeState(BaseState changeState)
