@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Weapon : BaseWeapon
 {
-    Player player;
+    public GameObject bulletSpawner;
     bool isAttack = false;
     bool attackTime = true;
     public float time;
@@ -14,8 +14,6 @@ public class Weapon : BaseWeapon
     protected override void Awake()
     {
         base.Awake();
-
-        player = GetComponentInParent<Player>();
     }
 
     private void Update()
@@ -40,8 +38,8 @@ public class Weapon : BaseWeapon
         if (isAttack && attackTime)
         {
             Fireball fire = ObjectPoolManager.SpawnObject(ProjectileObject, 
-                new Vector2(player.transform.position.x + 0.5f, player.transform.position.y), 
-                player.transform.rotation).GetComponent<Fireball>();
+                new Vector2(bulletSpawner.transform.position.x, bulletSpawner.transform.position.y),
+                bulletSpawner.transform.rotation).GetComponent<Fireball>();
             fire.Init(ProjectileSpeed, AttackPoint, MaxAttack);
             StartCoroutine(OnAttack());
             attackTime = false;
