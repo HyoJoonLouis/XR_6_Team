@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7971404283495642485}
   - component: {fileID: 9195121985108896937}
   - component: {fileID: 4152793766231079206}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Watch_Once
   m_TagString: Untagged
   m_Icon: {fileID: 0}

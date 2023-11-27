@@ -243,4 +243,9 @@ public class OnceWeapon : BaseWeapon
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+    public void ItemToPlayer(WeaponType type)
+    {
+        player.AddOnceWeapon((int)type);
+    }
 }

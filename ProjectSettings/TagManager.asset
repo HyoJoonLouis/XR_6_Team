@@ -15,8 +15,8 @@ TagManager:
   - AICollide
   - AI
   - Player
-  - 
-  - 
+  - Item
+  - ItemCollide
   - 
   - 
   - 

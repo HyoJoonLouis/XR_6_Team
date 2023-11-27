@@ -180,7 +180,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (itemName == (int)WeaponType.Key)
         {
-            int randNum = Random.Range(0, 3);
+            int randNum = Random.Range(0, 4);
             itemName = randNum;
         }
 
