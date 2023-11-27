@@ -10,17 +10,14 @@ public class Flamingo : MonoBehaviour
     float time = 0;
     float damage = 0;
     Vector3 fb;
+    public float speed;
 
     public void Init(float dmg, Player p)
     {
         playerPos = p.transform;
-        damage = dmg;
-    }
-
-    void Start()
-    {
         transform.position = new Vector3(playerPos.position.x + 1.74f, playerPos.position.y + 2f);
         initPosition = new Vector3(playerPos.position.x + 0.5f, playerPos.position.y);
+        damage = dmg;
     }
 
     void Update()
@@ -37,11 +34,12 @@ public class Flamingo : MonoBehaviour
         else if (time > 0.12f)
             fb = Vector3.back;
 
-        transform.RotateAround(initPosition, fb, SwishCurve.Evaluate(time) * 1.5f);
+        transform.RotateAround(initPosition, fb, SwishCurve.Evaluate(time) * Time.unscaledDeltaTime * speed);
         if (SwishCurve.Evaluate(time) == 0)
         {
             playerPos.GetComponent<Animator>().SetBool("IsFlamingo", false);
             playerPos.GetComponent<Player>().SetIsMove(true);
+            playerPos.GetComponent<Player>().SetIsUse(false);
             time = 0;
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
         }

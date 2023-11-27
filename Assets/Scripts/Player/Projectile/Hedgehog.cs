@@ -12,7 +12,8 @@ public class Hedgehog : MonoBehaviour
         this.damage = damage;
         speed = projectileSpeed;
 
-        transform.position = new Vector3(p.transform.position.x + 2, p.transform.position.y);
+        transform.position = new Vector3(p.transform.position.x + 0.5f, p.transform.position.y);
+        p.GetComponent<Player>().SetIsUse(false);
     }
 
     void Update()

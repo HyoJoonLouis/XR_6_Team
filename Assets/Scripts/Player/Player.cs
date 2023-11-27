@@ -23,14 +23,17 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public int MaxOnceWeaponCount = 3;
-    Stack<int> onceWeapons;
+    public GameObject itemEffect;
+    Queue<int> onceWeapons;
     OnceWeapon once;
     Weapon weapon;
     bool isUse = false;
     bool isMove = true;
+    float effectTime = 0;
 
     [Header("UI")]
     public GameObject cameraUI;
+    UIManager uiManager;
 
     private void Start()
     {
@@ -40,11 +43,14 @@ public class Player : MonoBehaviour, ITakeDamage
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         once = GetComponentInChildren<OnceWeapon>();
-        onceWeapons = new Stack<int>();
+        onceWeapons = new Queue<int>();
+        uiManager = FindObjectOfType<UIManager>();
 
         CurrentHp = MaxHp;
 
-        onceWeapons.Push((int)WeaponType.Flamingo);
+        uiManager.SetHealth((int)MaxHp);
+
+        onceWeapons.Enqueue((int)WeaponType.Jabberwocky);
     }
 
     private void Update()
@@ -62,6 +68,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public void TakeDamage(float value)
     {
         CurrentHp -= value;
+        uiManager.SetHealth((int)CurrentHp);
 
         if (CurrentHp <= 0)
         {
@@ -79,6 +86,7 @@ public class Player : MonoBehaviour, ITakeDamage
             CurrentHp = 3;
         else
             CurrentHp += hp;
+        uiManager.SetHealth((int)CurrentHp);
     }
 
     IEnumerator UnBeatTime()
@@ -142,7 +150,7 @@ public class Player : MonoBehaviour, ITakeDamage
             return;
 
         int itemType;
-        itemType = onceWeapons.Pop();
+        itemType = onceWeapons.Dequeue();
         once.OnUse(itemType);
 
         switch (itemType)
@@ -156,10 +164,16 @@ public class Player : MonoBehaviour, ITakeDamage
                 isMove = false;
                 break;
         }
+
+        uiManager.UseItem();
     }
 
     public void AddOnceWeapon(int itemName)
     {
+        itemEffect.SetActive(true);
+        effectTime = 0;
+        StartCoroutine(OnItemEffect());
+
         if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
             return;
 
@@ -171,7 +185,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (onceWeapons.Contains(itemName) == false)
         {
-            onceWeapons.Push(itemName);
+            onceWeapons.Enqueue(itemName);
+            uiManager.GetItem((WeaponType)itemName, once.GetLevel(itemName));
         }
         else if (onceWeapons.Contains(itemName) == true)
         {
@@ -192,6 +207,17 @@ public class Player : MonoBehaviour, ITakeDamage
     public void SetIsMove(bool isMove)
     {
         this.isMove = isMove;
+    }
+
+    IEnumerator OnItemEffect()
+    {
+        while (effectTime < 0.13f)
+        {
+            effectTime += Time.unscaledDeltaTime;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        itemEffect.SetActive(false);
+        yield return 0;
     }
 
     #endregion Weapon

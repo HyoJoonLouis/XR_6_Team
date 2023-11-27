@@ -41,8 +41,6 @@ public class OnceWeapon : BaseWeapon
     // Jabberwocky
     public void DamageBeam()
     {
-        player.SetIsUse(true);
-
         AttackPoint = 0.1f;
         Duration = 5;
         int level = GetLevel((int)WeaponType.Jabberwocky);
@@ -76,8 +74,6 @@ public class OnceWeapon : BaseWeapon
     // Hedgehog
     public void ThrowBullet()
     {
-        player.SetIsUse(true);
-
         ProjectileSpeed = 10;
         int level = GetLevel((int)WeaponType.Hedgehog);
 
@@ -104,7 +100,21 @@ public class OnceWeapon : BaseWeapon
     // Flamingo
     public void AreaBullet()
     {
-        AttackPoint = 10;
+        int level = GetLevel((int)WeaponType.Flamingo);
+
+        switch (level)
+        {
+            case 1:
+                AttackPoint = 10;
+                break;
+            case 2:
+                AttackPoint = 20;
+                break;
+            case 3:
+            default:
+                AttackPoint = 30;
+                break;
+        }
 
         ObjectPoolManager.SpawnObject(flamingoPrefab, new Vector3(), new Quaternion()).
             GetComponent<Flamingo>().Init(AttackPoint, player);
@@ -113,8 +123,6 @@ public class OnceWeapon : BaseWeapon
     // Faketurtle
     public void GuardBullet()
     {
-        player.SetIsUse(true);
-
         int level = GetLevel((int)WeaponType.Faketurtle);
 
         switch (level)
@@ -147,6 +155,7 @@ public class OnceWeapon : BaseWeapon
     public void HeartUp()
     {
         player.SetHp(itemInfo[WeaponType.Heart]);
+        player.SetIsUse(false);
     }
 
     // Watch
@@ -168,7 +177,7 @@ public class OnceWeapon : BaseWeapon
         }
 
         ObjectPoolManager.SpawnObject(watchPrefab, new Vector3(), new Quaternion()).
-            GetComponent<Watch>().Init(Duration);
+            GetComponent<Watch>().Init(Duration, player.transform);
 
         SetLevel(level, 1, false);
     }
@@ -176,6 +185,8 @@ public class OnceWeapon : BaseWeapon
     public void OnUse(int type)
     {
         WeaponType w = (WeaponType)type;
+
+        player.SetIsUse(true);
         switch (w)
         {
             case WeaponType.Jabberwocky:
@@ -222,7 +233,7 @@ public class OnceWeapon : BaseWeapon
         {
             time += Time.deltaTime;
 
-            if (time >= 0.09f)
+            if (time >= 0.025f)
             {
                 AreaBullet();
                 time = 0;
