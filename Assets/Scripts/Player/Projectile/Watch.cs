@@ -5,18 +5,19 @@ using UnityEngine;
 public class Watch : MonoBehaviour
 {
     Animator anim;
-    float duration;
+    float duration = 0;
     public float time = 0;
 
-    public void Init(float duration)
+    public void Init(float duration, Transform p)
     {
         this.duration = duration;
+        p.GetComponent<Player>().SetIsUse(false);
+        StartCoroutine(DurationCheck());
     }
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        StartCoroutine(DurationCheck());
     }
 
     void Update()
@@ -43,7 +44,7 @@ public class Watch : MonoBehaviour
             else if (time >= duration)
                 Time.timeScale = 1;
 
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.001f);
         }
     }
 }

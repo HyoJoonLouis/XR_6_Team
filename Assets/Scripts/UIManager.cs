@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite HpEmptySprite;
     [SerializeField] Sprite HpFullSprite;
     [SerializeField] Image[] Item;
+    [SerializeField] Sprite[] itemSprites;
+
 
     [HideInInspector] public List<GameObject> items;
 
@@ -48,9 +50,84 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void GetItem(GameObject item)
+    public void GetItem(WeaponType type, int level)
     {
-        items.Add(item);
+        switch (type)
+        {
+            case WeaponType.Jabberwocky:
+                ShowItemImage(itemSprites[0]);
+                break;
+            case WeaponType.Hedgehog:
+                ShowItemImage(itemSprites[1]);
+                break;
+            case WeaponType.Flamingo:
+                ShowItemImage(itemSprites[2]);
+                break;
+            case WeaponType.Faketurtle:
+                ShowItemImage(itemSprites[3]);
+                break;
+            case WeaponType.Heart:
+                ShowItemImage(itemSprites[4]);
+                break;
+            case WeaponType.Watch:
+                ShowItemImage(itemSprites[5]);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void ShowItemImage(Sprite sprite)
+    {
+        if (Item[0].sprite == null)
+        {
+            Item[0].sprite = sprite;
+            Color tempColor = Item[0].color;
+            tempColor.a = 255;
+            Item[0].color = tempColor;
+        }
+        else if (Item[1].sprite == null)
+        {
+            Item[1].sprite = sprite;
+            Color tempColor = Item[1].color;
+            tempColor.a = 255;
+            Item[1].color = tempColor;
+        }
+        else if (Item[2].sprite == null)
+        {
+            Item[2].sprite = sprite;
+            Color tempColor = Item[2].color;
+            tempColor.a = 255;
+            Item[2].color = tempColor;
+        }
+    }
+
+    public void UseItem()
+    {
+        if (Item[0].sprite != null)
+        {
+            Item[0].sprite = null;
+            Color tempColor = Item[0].color;
+            tempColor.a = 0;
+            Item[0].color = tempColor;
+
+            if (Item[1].sprite != null)
+            {
+                ShowItemImage(Item[1].sprite);
+                Item[1].sprite = null;
+                tempColor = Item[0].color;
+                tempColor.a = 0;
+                Item[1].color = tempColor;
+            }
+            if (Item[2].sprite != null)
+            {
+                ShowItemImage(Item[2].sprite);
+                Item[2].sprite = null;
+                tempColor = Item[2].color;
+                tempColor.a = 0;
+                Item[2].color = tempColor;
+            }
+        }
     }
 
     public void GameOver()

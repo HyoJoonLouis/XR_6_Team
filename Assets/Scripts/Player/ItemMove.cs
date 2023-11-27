@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class ItemMove : MonoBehaviour
 {
-    public enum WeaponType
-    {
-        Jabberwocky,
-        Hedgehog,
-        Flamingo,
-        Faketurtle,
-        Heart,
-        Watch,
-        Key,
-    }
-
     public WeaponType type;
     Player player;
 

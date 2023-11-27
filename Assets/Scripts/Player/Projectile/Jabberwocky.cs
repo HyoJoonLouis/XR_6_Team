@@ -48,12 +48,13 @@ public class Jabberwocky : MonoBehaviour
                     posY = -2.37f;
                 break;
         }
+
+        StartCoroutine(WaitAnim());
     }
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        StartCoroutine(WaitAnim());
     }
 
     void Update()
