@@ -51,6 +51,15 @@ public class StartSceneUI : MonoBehaviour
             if (GameManager.instance.SceneCompleted[i])
                 Scene[i].isCompleted = true;
         }
+
+        if(GameManager.instance.CurrentScene != -1)
+        {
+            BookCover.SetActive(false);
+            Background.SetActive(true);
+            Book.SetActive(true);
+            CurrentScene = GameManager.instance.CurrentScene - 1;
+            OnRightButtonClicked();
+        }
     }
 
     public void ChapterEnterClicked()

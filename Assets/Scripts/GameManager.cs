@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public List<bool> SceneCompleted;
 
+    public int CurrentScene;
+
     public void Awake()
     {
         if (instance == null)
@@ -20,5 +22,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
 
         DontDestroyOnLoad(gameObject);
+        CurrentScene = -1;
     }
 }

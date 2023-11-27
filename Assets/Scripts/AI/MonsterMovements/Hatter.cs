@@ -29,7 +29,7 @@ public class Hatter : AIMovement
         while (true)
         {
             isMoveable = false;
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-4.19f, -4.84f), 8 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-4.19f, -4.84f), 11 * Time.deltaTime);
             yield return null;
             //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 0));
             //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 45));
@@ -48,7 +48,7 @@ public class Hatter : AIMovement
         }
         while(true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-7.32f, -0.87f), 8 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-7.32f, -0.87f), 11 * Time.deltaTime);
             yield return null;
             if (Vector2.Distance(transform.position, new Vector2(-7.32f, -0.87f)) < 0.1f)
             {
@@ -57,7 +57,7 @@ public class Hatter : AIMovement
         }
         while(true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-0.98f, 3.17f), 9 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-0.98f, 3.17f), 12 * Time.deltaTime);
             yield return null;
             if (Vector2.Distance(transform.position, new Vector2(-0.98f, 3.17f)) < 0.1f)
             {
@@ -66,7 +66,7 @@ public class Hatter : AIMovement
         }
         while(true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(8.74f, -1f), 10 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(8.74f, -1f), 12 * Time.deltaTime);
             yield return null;
             if (Vector2.Distance(transform.position, new Vector2(8.74f, -1f)) < 0.1f)
             {
@@ -79,26 +79,36 @@ public class Hatter : AIMovement
             yield return null;
             if (Vector2.Distance(transform.position, new Vector2(1.5f, 0f)) < 0.1f)
             {
-                animator.Play("InsideHat");
                 break;
             }
         }
-
+        int random = Random.Range(0, 2);
         AmmoStartPosition = transform.GetChild(0);
 
-        while(true)
+        if(random == 0)
         {
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 0));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 45));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 90));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 135));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 180));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 225));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 270));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 315));
-            DelayTime = Random.Range(0.4f, 0.6f);
-            yield return new WaitForSeconds(DelayTime);
-            AmmoStartPosition.transform.Rotate(new Vector3(0, 0, 13));
+            for(int i = 0; i< 8; i++)
+            {
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[10], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 0));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[11], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 45));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[12], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 90));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[10], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 135));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[11], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 180));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[12], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 225));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[10], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 270));
+                ObjectPoolManager.SpawnObject(GameManager.instance.Ammos[11], AmmoStartPosition.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 315));
+                DelayTime = Random.Range(0.4f,0.8f);
+                yield return new WaitForSeconds(DelayTime);
+                AmmoStartPosition.transform.Rotate(new Vector3(0, 0, 13));
+            }
+            animator.Play("InsideHat");
+            yield return new WaitForSeconds(AmmoStartTime);
         }
+        else
+        {
+            animator.Play("Fake");
+            yield return new WaitForSeconds(2.0f + AmmoStartTime);
+        }
+        StartCoroutine(SpawnAmmo());
     }
 }

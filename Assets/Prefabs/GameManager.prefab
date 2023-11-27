@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2152415383440384508
+--- !u!1 &1843216726387977084
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,65 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 459748331686626113}
-  - component: {fileID: 1968940225905083700}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &459748331686626113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2152415383440384508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9118742480213105781}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1968940225905083700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2152415383440384508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99dae8aa8ddaf83419ef617e3441acf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LaughterSprites:
-  - {fileID: 21300000, guid: bdcc02ddf2720dc4996f1522388566f5, type: 3}
-  - {fileID: 21300000, guid: 56c598a5c3050de40ba63643c311b037, type: 3}
-  - {fileID: 21300000, guid: 904e824a4ac5e6a4983a52e72df53c4a, type: 3}
-  Health:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  HpEmptySprite: {fileID: 21300000, guid: 2f9eb121c80470741ab568d975f1a100, type: 3}
-  HpFullSprite: {fileID: 21300000, guid: 8f15a12ebb78dec438dc87b765a9680d, type: 3}
-  OnGameOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &9118742480213105780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9118742480213105781}
-  - component: {fileID: 9118742480213105782}
+  - component: {fileID: 1843216726387977085}
+  - component: {fileID: 1843216726387977086}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -74,29 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9118742480213105781
+--- !u!4 &1843216726387977085
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9118742480213105780}
+  m_GameObject: {fileID: 1843216726387977084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 459748331686626113}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9118742480213105782
+--- !u!114 &1843216726387977086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9118742480213105780}
+  m_GameObject: {fileID: 1843216726387977084}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3be7436bea90eee48be52e8c96da1c5a, type: 3}
@@ -108,8 +50,8 @@ MonoBehaviour:
   - {fileID: 4180021978574540650, guid: 6b4f51b484e7d4d4ea491993237b54ba, type: 3}
   - {fileID: 6420047486200513929, guid: 0eb7c46274cf01d4a8755ba4330c15b1, type: 3}
   - {fileID: 4026654972348106695, guid: b21d300a197e4454eaea04fa1b8a330d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6295473809252400391, guid: 8d2f0e4288750834fafca52c3d4e10bb, type: 3}
+  - {fileID: 5198310365415287814, guid: 710476b090333b346b126ba91bc78446, type: 3}
   - {fileID: 0}
   - {fileID: 5697340841093579391, guid: 40fd42f4f69c25441894ffa589d5fa7e, type: 3}
   Ammos:
@@ -122,3 +64,6 @@ MonoBehaviour:
   - {fileID: 4526684898710637152, guid: fd5a216ddc47a054e9e2fc0275e198bd, type: 3}
   - {fileID: 658949887680120997, guid: d70a10e3c1cc98f4ea87ab2c21f542bb, type: 3}
   - {fileID: 4092646131303259030, guid: 06a96b60c3e890f4495fedfe3e07d153, type: 3}
+  - {fileID: 4566677124165565305, guid: c51eb6fedba4a504389eda0767e4170c, type: 3}
+  SceneCompleted: 000000000000
+  CurrentScene: 0

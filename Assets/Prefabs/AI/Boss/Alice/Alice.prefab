@@ -235,6 +235,7 @@ MonoBehaviour:
   DropPercent: 0
   items: []
   GameOverOnDied: 1
+  Scene: 4
 --- !u!61 &2079934791533171947
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class CupSciprt : MonoBehaviour
             if (Vector2.Distance(this.transform.position, TargetTransform) < 0.1f)
                 break;
         }
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(1f);
         Animator animator = GetComponent<Animator>();
         animator.Play("Attack");
         collider.enabled = true;

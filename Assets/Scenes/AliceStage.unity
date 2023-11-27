@@ -362,7 +362,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1260285343}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GameOver
+        m_MethodName: OnQuitClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -659,6 +659,23 @@ MonoBehaviour:
     AliceEmotion: 0
     AliceName: "<color=#2ED9FE>\uC5D8\uB9AC\uC2A4</color>"
     script: "\uC8FC\uC778\uACF5, \uB4F1\uC7A5!"
+  - isPlayer: 010000
+    PlayerEmotion: 1
+    PlayerName: <color=#FE3F78>L</color>
+    RabbitEmotion: 0
+    RabbitName: 
+    AliceEmotion: 0
+    AliceName: "<color=#2ED9FE>\uC5D8\uB9AC\uC2A4</color>"
+    script: "\uC800\uB7F0. \uADF8\uB7EC\uAC8C, \uB204\uAC00 \uBB38 \uC55E\uC5D0 \uC11C
+      \uC788\uC73C\uB798?"
+  - isPlayer: 000100
+    PlayerEmotion: 0
+    PlayerName: <color=#FE3F78>L</color>
+    RabbitEmotion: 0
+    RabbitName: "<color=#392685>\uD770\uD1A0\uB07C</color>"
+    AliceEmotion: 0
+    AliceName: "<color=#2ED9FE>\uC5D8\uB9AC\uC2A4</color>"
+    script: "\uC544\uC57C\uC57C... \uBB50\uB77C\uACE0?! \uC800 \uB140\uC11D\uC774,,,!"
   - isPlayer: 000001
     PlayerEmotion: 0
     PlayerName: <color=#FE3F78>L</color>
@@ -666,7 +683,7 @@ MonoBehaviour:
     RabbitName: 
     AliceEmotion: 1
     AliceName: "<color=#2ED9FE>\uC5D8\uB9AC\uC2A4</color>"
-    script: "\uB2E4\uB4E4 \uADF8\uB9CC. \uC774\uAC8C \uB300\uCCB4 \uBB34\uC2A8\\n\uC18C\uB780\uC774\uC57C?"
+    script: "\uB2E4\uB4E4 \uADF8\uB9CC. \uC774\uAC8C \uB300\uCCB4 \uBB34\uC2A8\\n\uC18C\uB780\uC774\uC57C?!"
   - isPlayer: 000001
     PlayerEmotion: 0
     PlayerName: <color=#FE3F78>L</color>

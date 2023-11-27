@@ -10,6 +10,8 @@ public class ReturnToMainScene : MonoBehaviour
     public void Return()
     {
         GameManager.instance.SceneCompleted[CurrentScene] = true;
+        GameManager.instance.CurrentScene = CurrentScene;
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }

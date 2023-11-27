@@ -129,6 +129,7 @@ public class UIManager : MonoBehaviour
     public void OnQuitClicked()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     IEnumerator OnGameOverCoroutine()

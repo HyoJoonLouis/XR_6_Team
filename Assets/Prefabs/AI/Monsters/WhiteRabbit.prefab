@@ -235,3 +235,4 @@ MonoBehaviour:
   DropPercent: 0
   items: []
   GameOverOnDied: 1
+  Scene: 2
