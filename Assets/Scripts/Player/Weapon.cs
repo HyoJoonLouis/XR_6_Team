@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Weapon : BaseWeapon
 {
-    Player player;
+    Transform player;
     bool isAttack = false;
     bool attackTime = true;
     public float time;
@@ -15,7 +15,10 @@ public class Weapon : BaseWeapon
     {
         base.Awake();
 
-        player = GetComponentInParent<Player>();
+        if (GetComponentInParent<Player>() == null)
+            player = GetComponentInParent<TutorialPlayer>().transform;
+        else
+            player = GetComponentInParent<Player>().transform;
     }
 
     private void Update()
