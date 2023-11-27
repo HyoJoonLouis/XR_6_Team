@@ -16,6 +16,8 @@ public class AliceMovement : BossBaseMovement
 
     public Dictionary<State, BaseState> AliceState = new Dictionary<State, BaseState>();
 
+    private UIManager uiManager;
+
     void Start()
     {
         AliceState.Add(State.Idle, new AliceIdleState(this));
@@ -28,7 +30,7 @@ public class AliceMovement : BossBaseMovement
         CurrentState = AliceState[State.Idle];
         CurrentState.OnStateEnter();
 
-        UIManager.instance.ChangeLaughter(LaughterSprite.Alice);
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     public void OnGameOver()

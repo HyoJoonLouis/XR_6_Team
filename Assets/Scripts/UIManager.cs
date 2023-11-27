@@ -14,8 +14,6 @@ public enum LaughterSprite
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-
     [SerializeField] List<Sprite> LaughterSprites;
 
     [Header("Player")]
@@ -30,15 +28,10 @@ public class UIManager : MonoBehaviour
     [Header("Alice")]
     public UnityEvent OnGameOverEvent;
     GameObject GameOverCanvas;
-    Image SpriteBackground;
 
     private void Awake()
-    {
-        if(instance == null)
-            instance = this;
-
+    { 
         GameOverCanvas = GameObject.Find("GameOverCanvas");
-        SpriteBackground = GameObject.Find("MonsterBackground").GetComponent<Image>();
         GameOverCanvas.SetActive(false);
     }
 
@@ -47,7 +40,7 @@ public class UIManager : MonoBehaviour
         int i;
         for(i = 0; i< value ; i++)
         {
-            Health[i].sprite = HpFullSprite;
+            Health[i].sprite = HpFullSprite; 
         }
         for(;i< Health.Length; i++)
         {
@@ -76,11 +69,6 @@ public class UIManager : MonoBehaviour
     public void OnQuitClicked()
     {
         Application.Quit();
-    }
-
-    public void ChangeLaughter(LaughterSprite sprite)
-    {
-        SpriteBackground.sprite = LaughterSprites[(int)sprite];
     }
 
     IEnumerator OnGameOverCoroutine()

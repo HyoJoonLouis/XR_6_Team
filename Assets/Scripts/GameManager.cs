@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Monsters;
     public List<GameObject> Ammos;
 
+    public List<bool> SceneCompleted;
+
     public void Awake()
     {
         if (instance == null)

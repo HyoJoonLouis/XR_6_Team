@@ -8,6 +8,7 @@ public class Hatter : AIMovement
     [SerializeField] GameObject AmmoGameObject;
     [SerializeField] float AmmoStartTime;
     [SerializeField] float DelayTime;
+    Transform AmmoStartPosition;
 
     Coroutine coroutine;
     // Update is called once per frame
@@ -22,19 +23,82 @@ public class Hatter : AIMovement
 
     IEnumerator SpawnAmmo()
     {
+        Animator animator = GetComponent<Animator>();
+        animator.Play("OutsideHat");
+        yield return new WaitForSeconds(1.5f);
         while (true)
         {
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 0));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 45));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 90));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 135));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 180));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 225));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 270));
-            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 315));
+            isMoveable = false;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-4.19f, -4.84f), 8 * Time.deltaTime);
+            yield return null;
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 0));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 45));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 90));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 135));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 180));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 225));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 270));
+            //ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 315));
+            //DelayTime = Random.Range(0.4f, 0.6f);
+            //yield return new WaitForSeconds(DelayTime);
+            if(Vector2.Distance(transform.position, new Vector2(-4.19f, -4.84f)) < 0.1f){
+                break;
+            }
+            //this.transform.Rotate(new Vector3(0, 0, 13));
+        }
+        while(true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-7.32f, -0.87f), 8 * Time.deltaTime);
+            yield return null;
+            if (Vector2.Distance(transform.position, new Vector2(-7.32f, -0.87f)) < 0.1f)
+            {
+                break;
+            }
+        }
+        while(true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-0.98f, 3.17f), 9 * Time.deltaTime);
+            yield return null;
+            if (Vector2.Distance(transform.position, new Vector2(-0.98f, 3.17f)) < 0.1f)
+            {
+                break;
+            }
+        }
+        while(true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(8.74f, -1f), 10 * Time.deltaTime);
+            yield return null;
+            if (Vector2.Distance(transform.position, new Vector2(8.74f, -1f)) < 0.1f)
+            {
+                break;
+            }
+        }
+        while(true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(1.5f, 0f), 5 * Time.deltaTime);
+            yield return null;
+            if (Vector2.Distance(transform.position, new Vector2(1.5f, 0f)) < 0.1f)
+            {
+                animator.Play("InsideHat");
+                break;
+            }
+        }
+
+        AmmoStartPosition = transform.GetChild(0);
+
+        while(true)
+        {
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 0));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 45));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 90));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 135));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 180));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 225));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 270));
+            ObjectPoolManager.SpawnObject(AmmoGameObject, transform.position, Quaternion.Euler(0, 0, AmmoStartPosition.transform.eulerAngles.z + 315));
             DelayTime = Random.Range(0.4f, 0.6f);
             yield return new WaitForSeconds(DelayTime);
-            this.transform.Rotate(new Vector3(0, 0, 13));
+            AmmoStartPosition.transform.Rotate(new Vector3(0, 0, 13));
         }
     }
 }
