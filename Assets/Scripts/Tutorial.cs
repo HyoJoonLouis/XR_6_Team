@@ -75,7 +75,7 @@ public class Tutorial : MonoBehaviour
         PlayerChatBox.gameObject.SetActive(true);
         PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);
         PlayerEmotion.sprite = QueenSprite[(int)scripts[CurrentScript].QueenEmotion];
-        PlayerText.text = scripts[CurrentScript].script;
+        PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
     }
 
     IEnumerator PlayGameCoroutine()

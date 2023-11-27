@@ -380,13 +380,13 @@ MonoBehaviour:
       \uD558\uC9C0."
   - QueenEmotion: 0
     script: "\uB0B4\uAC00 \uB108\uC5D0\uAC8C \uD798\uC744 \uC804\uB2EC\uD588\uC73C\uB2C8
-      \uC774\uC81C \uB0A0 \uC218 \uC788\uC744 \uAC83\uC774\uC57C. \uBC29\uD5A5\uD0A4\uB97C
+      \uC774\uC81C \uB0A0 \uC218\\n\uC788\uC744 \uAC83\uC774\uC57C.\\n\uBC29\uD5A5\uD0A4\uB97C
       \uB20C\uB7EC\uC11C \uC5B4\uC11C \uC6C0\uC9C1\uC5EC \uBCF4\uAC70\uB77C."
   - QueenEmotion: 1
     script: "\uCC98\uC74C\uCE58\uACE4 \uC801\uC751\uC774 \uBE60\uB974\uB124."
   - QueenEmotion: 0
     script: "\uB2E4\uC74C\uC740 \uACF5\uACA9\uC774\uB2E4. 'Z' \uD0A4\uB97C \uB20C\uB7EC
-      \uCD1D\uC744 \uBC1C\uC0AC\uD574 \uBCF4\uAC70\uB77C. \uD45C\uC801\uC740 \uC800\uAE30,
+      \uCD1D\uC744 \uBC1C\uC0AC\uD574\\n\uBCF4\uAC70\uB77C. \uD45C\uC801\uC740 \uC800\uAE30,
       \uD5C8\uC218\uC544\uBE44\uB85C \uD558\uC9C0."
   - QueenEmotion: 2
     script: "\uC774\uC81C \uC775\uC219\uD574\uC9C4 \uAC83 \uAC19\uB124."
@@ -669,6 +669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 948138750686589035, guid: cd9b49129face9f4287af57e5dfdc51c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9b49129face9f4287af57e5dfdc51c, type: 3}
 --- !u!1001 &1191642318
@@ -779,8 +783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.972897, y: 5.973303}
-  m_SizeDelta: {x: 755.6053, y: 168.95}
+  m_AnchoredPosition: {x: 24.972897, y: 5.9733}
+  m_SizeDelta: {x: 726.5609, y: 154.4278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254370398
 MonoBehaviour:
@@ -829,8 +833,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1821,6 +1825,7 @@ MonoBehaviour:
   - {fileID: 2454902903029750902}
   - {fileID: 3982615037406544775}
   - {fileID: 2783142139445445704}
+  itemSprites: []
   items: []
   OnGameOverEvent:
     m_PersistentCalls:

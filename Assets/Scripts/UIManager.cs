@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject GameClearCanvas;
 
+
     private void Awake()
     { 
         GameOverCanvas = GameObject.Find("GameOverCanvas");
@@ -127,7 +128,7 @@ public class UIManager : MonoBehaviour
 
     public void OnQuitClicked()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     IEnumerator OnGameOverCoroutine()

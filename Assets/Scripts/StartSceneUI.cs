@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -95,7 +96,9 @@ public class StartSceneUI : MonoBehaviour
         else
             StartButton.SetActive(true);
 
+        EventSystem.current.SetSelectedGameObject(null);
     }
+
     public void OnLeftButtonClicked()
     {
         CurrentScene = Mathf.Clamp(CurrentScene - 1, 0, Scene.Count - 1);
@@ -128,6 +131,8 @@ public class StartSceneUI : MonoBehaviour
         }
         else
             StartButton.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void OnChapterButtonClicked()
