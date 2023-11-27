@@ -72,6 +72,9 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (CurrentHp <= 0)
         {
+            uiManager.GameOver();
+            isUse = true;
+            isMove = false;
         }
 
         isUnbeatTime = true;
