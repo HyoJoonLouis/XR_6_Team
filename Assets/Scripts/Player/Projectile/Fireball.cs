@@ -56,16 +56,4 @@ public class Fireball : MonoBehaviour
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(Damage);
-
-        CurrentAttack -= 1;
-        if (CurrentAttack <= 0)
-        {
-            ObjectPoolManager.SpawnObject(OnHitParticle, this.transform.position, this.transform.rotation);
-            ObjectPoolManager.ReturnObjectToPool(gameObject);
-        }
-    }
 }

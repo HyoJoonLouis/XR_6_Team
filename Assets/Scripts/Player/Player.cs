@@ -23,11 +23,13 @@ public class Player : MonoBehaviour, ITakeDamage
 
     [Header("Weapon")]
     public int MaxOnceWeaponCount = 3;
+    public GameObject itemEffect;
     Queue<int> onceWeapons;
     OnceWeapon once;
     Weapon weapon;
     bool isUse = false;
     bool isMove = true;
+    float effectTime = 0;
 
     [Header("UI")]
     public GameObject cameraUI;
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         uiManager.SetHealth((int)MaxHp);
 
-        //onceWeapons.Enqueue((int)WeaponType.Flamingo);
+        onceWeapons.Enqueue((int)WeaponType.Jabberwocky);
     }
 
     private void Update()
@@ -168,6 +170,10 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public void AddOnceWeapon(int itemName)
     {
+        itemEffect.SetActive(true);
+        effectTime = 0;
+        StartCoroutine(OnItemEffect());
+
         if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
             return;
 
@@ -201,6 +207,17 @@ public class Player : MonoBehaviour, ITakeDamage
     public void SetIsMove(bool isMove)
     {
         this.isMove = isMove;
+    }
+
+    IEnumerator OnItemEffect()
+    {
+        while (effectTime < 0.13f)
+        {
+            effectTime += Time.unscaledDeltaTime;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        itemEffect.SetActive(false);
+        yield return 0;
     }
 
     #endregion Weapon

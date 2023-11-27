@@ -52,29 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void GetItem(WeaponType type, int level)
     {
-        switch (type)
-        {
-            case WeaponType.Jabberwocky:
-                ShowItemImage(itemSprites[0]);
-                break;
-            case WeaponType.Hedgehog:
-                ShowItemImage(itemSprites[1]);
-                break;
-            case WeaponType.Flamingo:
-                ShowItemImage(itemSprites[2]);
-                break;
-            case WeaponType.Faketurtle:
-                ShowItemImage(itemSprites[3]);
-                break;
-            case WeaponType.Heart:
-                ShowItemImage(itemSprites[4]);
-                break;
-            case WeaponType.Watch:
-                ShowItemImage(itemSprites[5]);
-                break;
-            default:
-                break;
-        }
+        ShowItemImage(itemSprites[(int)type]);
     }
 
     public void ShowItemImage(Sprite sprite)

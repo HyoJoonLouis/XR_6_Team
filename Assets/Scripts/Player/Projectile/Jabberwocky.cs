@@ -115,7 +115,7 @@ public class Jabberwocky : MonoBehaviour
 
             time += Time.deltaTime;
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
@@ -133,7 +133,7 @@ public class Jabberwocky : MonoBehaviour
                 yield return 0;
             }
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 }
