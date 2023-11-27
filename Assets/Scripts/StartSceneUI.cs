@@ -29,6 +29,7 @@ public class StartSceneUI : MonoBehaviour
     public TextMeshProUGUI CompleteText;
     public Image RightImage;
     public Button RightButton;
+    public GameObject Background;
 
     public GameObject BookCover;
     public GameObject Book;
@@ -53,6 +54,8 @@ public class StartSceneUI : MonoBehaviour
 
     public void ChapterEnterClicked()
     {
+        if (!Scene[CurrentScene - 1].isCompleted)
+            return;
         SceneManager.LoadScene(CurrentScene);
     }
 
@@ -103,12 +106,16 @@ public class StartSceneUI : MonoBehaviour
         ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");
         if (!Scene[CurrentScene].isCompleted)
         {
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
             RightImage.sprite = Scene[CurrentScene].RightSprite;
             Stamp.SetActive(false);
-            
         }
         else
         {
+            CompleteLine.SetActive(true);
+            CompleteText.gameObject.SetActive(true);
+            CompleteText.text = Scene[CurrentScene].CompleteText.Replace("\\n", "\n");
             RightImage.sprite = Scene[CurrentScene].CompleteSprite;
             Stamp.SetActive(true);
         }
@@ -130,6 +137,7 @@ public class StartSceneUI : MonoBehaviour
 
     IEnumerator OnChapterButtonClickedCoroutine()
     {
+        Background.SetActive(true);
         BookCover.SetActive(false);
         Open.gameObject.SetActive(true);
         Open.Play("Open");
