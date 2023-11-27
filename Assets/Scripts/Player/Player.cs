@@ -50,7 +50,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         uiManager.SetHealth((int)MaxHp);
 
-        onceWeapons.Enqueue((int)WeaponType.Jabberwocky);
+        //onceWeapons.Enqueue((int)WeaponType.Watch);
     }
 
     private void Update()
