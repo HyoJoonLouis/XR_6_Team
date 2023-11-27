@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 337, y: 5}
+  m_AnchoredPosition: {x: 368, y: 5}
   m_SizeDelta: {x: 783, y: 977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3570842
@@ -979,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165, y: 5}
+  m_AnchoredPosition: {x: -175, y: 5}
   m_SizeDelta: {x: 1599, y: 974}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984703274
@@ -1267,7 +1267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 741, y: 262}
+  m_AnchoredPosition: {x: 769, y: 252}
   m_SizeDelta: {x: 233, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131772419
@@ -1409,7 +1409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 741, y: 393}
+  m_AnchoredPosition: {x: 766, y: 377}
   m_SizeDelta: {x: 230, y: 134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144016496
@@ -2031,7 +2031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 817, y: 97}
+  m_AnchoredPosition: {x: 802, y: 116}
   m_SizeDelta: {x: 138, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537210951
@@ -2104,7 +2104,7 @@ MonoBehaviour:
   Scene:
   - Chapter: Prologue
     KoreanChapter: "\uD504\uB864\uB85C\uADF8"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "<color=#C00000>\uC608\uC5B8\uC790</color>\uB294 <color=#C00000>\uD558\uD2B8
       \uC131\uC758 \uC8FC\uC778\uACF5</color>\uC774 <color=#C00000>'\uC5D8(AL)...'</color>\uC774\uB77C\uB294
       \uC608\uC5B8\uC744 \uD558\uB2E4 \uB9D0\uACE0, \uC138\uC0C1\uC744 \uB5A0\uB0AC\uB2E4.\\n\uADF8\uB7EC\uC790
@@ -2219,7 +2219,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f8c80e57328727243b5d167b13d3aa1d, type: 3}
   - Chapter: ENDING
     KoreanChapter: "\uB9C8\uC8FC\uD55C \uC9C4\uC2E4 "
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "<color=#C00000>L</color>\uC774 \uBA38\uB9AC\uC5D0 \uBE5B\uB098\uB294
       <color=#C00000>\uC655\uAD00</color>\uC744 \uC4F0\uB824\uB294 \uC21C\uAC04 \uAC11\uC790\uAE30
       '\uD391!' \uC18C\uB9AC\uC640 \uD568\uAED8 <color=#C00000>\uC655\uAD00</color>\uC774
@@ -2239,6 +2239,7 @@ MonoBehaviour:
   CompleteText: {fileID: 1253456662}
   RightImage: {fileID: 2032767813}
   RightButton: {fileID: 628056893}
+  Background: {fileID: 1109065156}
   BookCover: {fileID: 3570840}
   Book: {fileID: 2004312002}
   Stamp: {fileID: 1684220201}
@@ -2372,7 +2373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.791}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 534, y: -296}
+  m_AnchoredPosition: {x: 557, y: -268}
   m_SizeDelta: {x: 136, y: 158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684220203
@@ -2449,8 +2450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -47.984985, y: -13.39}
-  m_SizeDelta: {x: 1739.97, y: 1505.2202}
+  m_AnchoredPosition: {x: -29.5302, y: -13.39}
+  m_SizeDelta: {x: 1800, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1729142383
 Animator:
@@ -3194,7 +3195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 816, y: 244}
+  m_AnchoredPosition: {x: 806, y: 244}
   m_SizeDelta: {x: 127, y: 127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069872729
@@ -3272,7 +3273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 734, y: 137}
+  m_AnchoredPosition: {x: 768, y: 127}
   m_SizeDelta: {x: 236, y: 126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084907857
