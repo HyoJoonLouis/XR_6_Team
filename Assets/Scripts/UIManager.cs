@@ -29,10 +29,14 @@ public class UIManager : MonoBehaviour
     public UnityEvent OnGameOverEvent;
     GameObject GameOverCanvas;
 
+    public GameObject GameClearCanvas;
+
     private void Awake()
     { 
         GameOverCanvas = GameObject.Find("GameOverCanvas");
         GameOverCanvas.SetActive(false);
+        GameClearCanvas = GameObject.Find("GameClearCanvas");
+        GameClearCanvas.SetActive(false);
     }
 
     public void SetHealth(int value)

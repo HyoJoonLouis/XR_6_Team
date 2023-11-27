@@ -214,6 +214,7 @@ MonoBehaviour:
   - {fileID: 6524138094721610866}
   - {fileID: 6524138094701302507}
   TargetTransform: {fileID: 0}
+  StartGame: 0
 --- !u!114 &2072168257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,8 +228,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 400
+  currentHp: 0
   renderer: {fileID: 0}
   time: 0.1
+  DieEffect: {fileID: 0}
+  DropPercent: 0
+  items: []
+  GameOverOnDied: 1
 --- !u!61 &2079934791533171947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -388,4 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82813fa115ae18e4da7f6dda3451a9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnHit: 0
+  OnHitSpawnedEffect: {fileID: 0}
   Damage: 1

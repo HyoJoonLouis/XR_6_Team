@@ -13,6 +13,7 @@ public class StartSceneClass
     public string KoreanChapter;
     public bool isCompleted;
     public string ExaplainText;
+    public string CompleteText;
     public Sprite RightSprite;
     public Sprite CompleteSprite;
 }
@@ -20,31 +21,39 @@ public class StartSceneClass
 
 public class StartSceneUI : MonoBehaviour
 {
-
     [SerializeField] public List<StartSceneClass> Scene;
 
     public TextMeshProUGUI ChapterText;
     public TextMeshProUGUI KoreanText;
     public TextMeshProUGUI ExplainText;
+    public TextMeshProUGUI CompleteText;
     public Image RightImage;
     public Button RightButton;
 
     public GameObject BookCover;
     public GameObject Book;
     public GameObject Stamp;
+    public GameObject CompleteLine;
 
     public Animator Open;
     public Animator Flip;
+
+    public GameObject StartButton;
 
     int CurrentScene;
     public void Start()
     {
         CurrentScene = -1;
-
+        for(int i = 0; i< Scene.Count; i++)
+        {
+            if (GameManager.instance.SceneCompleted[i])
+                Scene[i].isCompleted = true;
+        }
     }
+
     public void ChapterEnterClicked()
     {
-        SceneManager.LoadScene(CurrentScene + 1);
+        SceneManager.LoadScene(CurrentScene);
     }
 
     public void OnRightButtonClicked()
@@ -52,27 +61,46 @@ public class StartSceneUI : MonoBehaviour
         Flip.gameObject.SetActive(true);
         Flip.Play("Flip");
         Invoke("CloseFlip", 0.3f);
-        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count);
+
+        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count - 1);
+
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
-        ExplainText.text = Scene[CurrentScene].ExaplainText;
+        ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");
         if (!Scene[CurrentScene].isCompleted)
         {
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
             RightImage.sprite = Scene[CurrentScene].RightSprite;
             Stamp.SetActive(false);
         }
         else
         {
+            CompleteLine.SetActive(true);
+            CompleteText.gameObject.SetActive(true);
+            CompleteText.text = Scene[CurrentScene].CompleteText.Replace("\\n", "\n");
             RightImage.sprite = Scene[CurrentScene].CompleteSprite;
             Stamp.SetActive(true);
         }
+
+        if (CurrentScene == 0 || CurrentScene == 5)
+        {
+            StartButton.SetActive(false);
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
+        }
+        else
+            StartButton.SetActive(true);
+
     }
     public void OnLeftButtonClicked()
     {
-        CurrentScene = Mathf.Clamp(CurrentScene - 1, 0, Scene.Count);
+        CurrentScene = Mathf.Clamp(CurrentScene - 1, 0, Scene.Count - 1);
+        
+
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
-        ExplainText.text = Scene[CurrentScene].ExaplainText;
+        ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");
         if (!Scene[CurrentScene].isCompleted)
         {
             RightImage.sprite = Scene[CurrentScene].RightSprite;
@@ -84,6 +112,15 @@ public class StartSceneUI : MonoBehaviour
             RightImage.sprite = Scene[CurrentScene].CompleteSprite;
             Stamp.SetActive(true);
         }
+
+        if (CurrentScene == 0 || CurrentScene == 5)
+        {
+            StartButton.SetActive(false);
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
+        }
+        else
+            StartButton.SetActive(true);
     }
 
     public void OnChapterButtonClicked()
