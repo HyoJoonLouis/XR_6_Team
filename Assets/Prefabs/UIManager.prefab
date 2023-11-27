@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7868960916075632930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7868960916075632940}
+  - component: {fileID: 7868960916075632931}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7868960916075632940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868960916075632930}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7868960916075632931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868960916075632930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99dae8aa8ddaf83419ef617e3441acf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaughterSprites:
+  - {fileID: 21300000, guid: bdcc02ddf2720dc4996f1522388566f5, type: 3}
+  - {fileID: 21300000, guid: 56c598a5c3050de40ba63643c311b037, type: 3}
+  - {fileID: 21300000, guid: 904e824a4ac5e6a4983a52e72df53c4a, type: 3}
+  Health:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  HpEmptySprite: {fileID: 21300000, guid: 2f9eb121c80470741ab568d975f1a100, type: 3}
+  HpFullSprite: {fileID: 21300000, guid: 8f15a12ebb78dec438dc87b765a9680d, type: 3}
+  Item:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemSprites:
+  - {fileID: 21300000, guid: 945de1f2bfe6b1e41b6039a8bb1e39d1, type: 3}
+  - {fileID: 21300000, guid: 30f6e9d6f9d81234a95e9b27d54ad58e, type: 3}
+  - {fileID: 21300000, guid: b203d5d3ae5e5984aacbb8f81e68d66f, type: 3}
+  - {fileID: 21300000, guid: 8b2a0e3d3ab049242a10a6cfd2d3dedd, type: 3}
+  - {fileID: 21300000, guid: d61232cde896c2c42b7bb29f645ca270, type: 3}
+  - {fileID: 21300000, guid: da5dad546bdd8b042b5a7e1ab6af1f31, type: 3}
+  items: []
+  OnGameOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
