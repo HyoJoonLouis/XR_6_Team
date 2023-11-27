@@ -40,7 +40,7 @@ public class Watch : MonoBehaviour
             time += Time.unscaledDeltaTime;
 
             if (time < duration)
-                Time.timeScale = 0.1f;
+                Time.timeScale = 0.05f;
             else if (time >= duration)
                 Time.timeScale = 1;
 

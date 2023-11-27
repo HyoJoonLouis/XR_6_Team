@@ -80,14 +80,14 @@ public class OnceWeapon : BaseWeapon
         switch (level)
         {
             case 1:
-                AttackPoint = 10;
+                AttackPoint = 30;
                 break;
             case 2:
-                AttackPoint = 20;
+                AttackPoint = 50;
                 break;
             case 3:
             default:
-                AttackPoint = 30;
+                AttackPoint = 70;
                 break;
         }
 
