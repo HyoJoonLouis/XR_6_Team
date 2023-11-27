@@ -106,7 +106,7 @@ public class ChatScript : MonoBehaviour
             return;
         }
 
-        CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
+        CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count - 1);
         if (scripts[CurrentScript].isPlayer)
         {
             EnemyChatBox.gameObject.SetActive(false);
