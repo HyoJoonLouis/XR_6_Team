@@ -50,7 +50,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
         uiManager.SetHealth((int)MaxHp);
 
-        //onceWeapons.Enqueue((int)WeaponType.Watch);
+        onceWeapons.Enqueue((int)WeaponType.Flamingo);
     }
 
     private void Update()
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour, ITakeDamage
 
     IEnumerator OnItemEffect()
     {
-        while (effectTime < 0.13f)
+        while (effectTime < 0.06f)
         {
             effectTime += Time.unscaledDeltaTime;
             yield return new WaitForSecondsRealtime(0.01f);
