@@ -73,6 +73,7 @@ public class Player : MonoBehaviour, ITakeDamage
             uiManager.GameOver();
             isUse = true;
             isMove = false;
+            OnPlayerDied();
         }
 
         isUnbeatTime = true;

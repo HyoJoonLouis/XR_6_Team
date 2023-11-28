@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 6
+  speed: 5
