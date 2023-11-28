@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class TutorialPlayer : MonoBehaviour
+public class TutorialPlayer : MonoBehaviour, ITakeDamage
 {
     [Header("Info")]
     public float Speed;
@@ -22,13 +22,17 @@ public class TutorialPlayer : MonoBehaviour
     Queue<int> onceWeapons;
     OnceWeapon once;
     Weapon weapon;
-    bool isUse = false;
-    bool isMove = true;
-    float effectTime = 0;
+    bool isUse;
+    bool isMove;
 
     [Header("UI")]
     public GameObject cameraUI;
     UIManager uiManager;
+
+    Tutorial tutorial;
+    public int scriptCount = 0;
+    public int count = 0;
+    int scriptNum = 0;
 
     private void Start()
     {
@@ -38,17 +42,37 @@ public class TutorialPlayer : MonoBehaviour
         once = GetComponentInChildren<OnceWeapon>();
         onceWeapons = new Queue<int>();
         uiManager = FindObjectOfType<UIManager>();
+        tutorial = FindObjectOfType<Tutorial>();
 
         CurrentHp = MaxHp;
 
         uiManager.SetHealth((int)MaxHp);
+        isMove = true;
+        isUse = true;
+        StartCoroutine(TutorialScript());
     }
 
     private void Update()
     {
         if (isMove)
             move.Move(Speed);
+
         CameraWorldSpace();
+    }
+
+
+
+    public void TakeDamage(float value)
+    {
+    }
+
+    public void SetHp(float hp)
+    {
+        if (CurrentHp + hp > 3)
+            CurrentHp = 3;
+        else
+            CurrentHp += hp;
+        uiManager.SetHealth((int)CurrentHp);
     }
 
     void CameraWorldSpace()
@@ -61,9 +85,48 @@ public class TutorialPlayer : MonoBehaviour
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
     }
 
-    public void OnPlayerDied()
+    IEnumerator TutorialScript()
     {
-        this.gameObject.SetActive(false);
+        while (true)
+        {
+            switch (count)
+            {
+                case 0:
+                    if (animator.GetFloat("MoveDirection") > 0 || animator.GetFloat("MoveDirection") < 0)
+                        scriptCount++;
+                    if (scriptCount >= 4)
+                    {
+                        tutorial.StartChat();
+                        scriptCount = 0;
+                        isUse = false;
+                        count++;
+                    }
+                    break;
+                case 1:
+                    if (scriptCount >= 1)
+                    {
+                        tutorial.StartChat();
+                        count++;
+                    }
+                    break;
+                case 2:
+                    if (scriptCount >= 1)
+                    {
+                        tutorial.StartChat();
+                        scriptCount = 0;
+                        count++;
+                    }
+                    break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+    }
+
+    public void SetCount()
+    {
+        scriptCount++;
     }
 
     #region Weapon
@@ -96,10 +159,6 @@ public class TutorialPlayer : MonoBehaviour
 
         switch (itemType)
         {
-            case (int)WeaponType.Jabberwocky:
-                animator.SetFloat("JabberCount", 0.4f);
-                animator.SetBool("IsJabber", true);
-                break;
             case (int)WeaponType.Flamingo:
                 animator.SetBool("IsFlamingo", true);
                 isMove = false;
@@ -107,12 +166,14 @@ public class TutorialPlayer : MonoBehaviour
         }
 
         uiManager.UseItem();
+
+        if (count == 2)
+            scriptCount++;
     }
 
     public void AddOnceWeapon(int itemName)
     {
         itemEffect.SetActive(true);
-        effectTime = 0;
         StartCoroutine(OnItemEffect());
 
         if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
@@ -120,7 +181,7 @@ public class TutorialPlayer : MonoBehaviour
 
         if (itemName == (int)WeaponType.Key)
         {
-            int randNum = Random.Range(0, 3);
+            int randNum = (int)WeaponType.Flamingo;
             itemName = randNum;
         }
 
@@ -152,16 +213,17 @@ public class TutorialPlayer : MonoBehaviour
 
     IEnumerator OnItemEffect()
     {
-        while (effectTime < 0.06f)
+        while (true)
         {
-            effectTime += Time.unscaledDeltaTime;
+            if (itemEffect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GetItemAnim") &&
+                itemEffect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                itemEffect.SetActive(false);
+            }
+
             yield return new WaitForSecondsRealtime(0.01f);
         }
-        itemEffect.SetActive(false);
-        yield return 0;
     }
 
     #endregion Weapon
-
-
 }

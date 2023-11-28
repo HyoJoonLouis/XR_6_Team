@@ -12,6 +12,11 @@ public class Player : MonoBehaviour, ITakeDamage
     public float MaxHp;
     public float CurrentHp;
 
+    [Header("Hit")]
+    bool isUnbeatTime = false;
+    Renderer render;
+    BoxCollider2D boxCollider;
+
     [Header("Movement")]
     Movement move;
     Animator animator;
@@ -35,27 +40,46 @@ public class Player : MonoBehaviour, ITakeDamage
         animator = GetComponent<Animator>();
         move = GetComponent<Movement>();
         weapon = GetComponentInChildren<Weapon>();
+        render = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
         once = GetComponentInChildren<OnceWeapon>();
         onceWeapons = new Queue<int>();
         uiManager = FindObjectOfType<UIManager>();
 
         CurrentHp = MaxHp;
-        isMove = true;
 
         uiManager.SetHealth((int)MaxHp);
     }
 
     private void Update()
     {
+        if (isUnbeatTime)
+            boxCollider.enabled = false;
+        else
+            boxCollider.enabled = true;
+
         if (isMove)
             move.Move(Speed);
         CameraWorldSpace();
     }
 
-
-
     public void TakeDamage(float value)
     {
+        CurrentHp -= value;
+        uiManager.SetHealth((int)CurrentHp);
+
+        if (CurrentHp <= 0)
+        {
+            uiManager.GameOver();
+            isUse = true;
+            isMove = false;
+            OnPlayerDied();
+        }
+
+        isUnbeatTime = true;
+        StartCoroutine(UnBeatTime());
+
+        cameraUI.transform.GetComponent<CameraShake>().VibrateForTime(0.3f);
     }
 
     public void SetHp(float hp)
@@ -67,6 +91,28 @@ public class Player : MonoBehaviour, ITakeDamage
         uiManager.SetHealth((int)CurrentHp);
     }
 
+    IEnumerator UnBeatTime()
+    {
+        int countTime = 0;
+
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+                render.material.color = new Color32(255, 255, 255, 90);
+            else
+                render.material.color = new Color32(255, 255, 255, 180);
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+
+        render.material.color = new Color32(255, 255, 255, 255);
+        isUnbeatTime = false;
+
+        yield return null;
+    }
+
     void CameraWorldSpace()
     {
         Vector3 worldpos = Camera.main.WorldToViewportPoint(this.transform.position);
@@ -75,6 +121,11 @@ public class Player : MonoBehaviour, ITakeDamage
         if (worldpos.x > 0.98f) worldpos.x = 0.98f;
         if (worldpos.y > 0.90f) worldpos.y = 0.90f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
+    }
+
+    public void OnPlayerDied()
+    {
+        this.gameObject.SetActive(false);
     }
 
     #region Weapon
