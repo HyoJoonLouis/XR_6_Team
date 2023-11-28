@@ -123,7 +123,8 @@ public class Player : MonoBehaviour, ITakeDamage
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
     }
 
-    public void OnPlayerDied() {
+    public void OnPlayerDied()
+    {
         this.gameObject.SetActive(false);
     }
 
