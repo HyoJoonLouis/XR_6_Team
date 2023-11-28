@@ -61,7 +61,6 @@ public class ItemMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.GetComponent<OnceWeapon>().ItemToPlayer(type);
-        GameObject.FindObjectOfType<Tutorial>().StartChat();
         ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 

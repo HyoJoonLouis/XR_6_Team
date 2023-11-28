@@ -245,7 +245,7 @@ MonoBehaviour:
   MaxHp: 100
   currentHp: 0
   renderer: {fileID: 0}
-  time: 0
+  time: 0.07
   DieEffect: {fileID: 0}
   DropPercent: 0
   items: []

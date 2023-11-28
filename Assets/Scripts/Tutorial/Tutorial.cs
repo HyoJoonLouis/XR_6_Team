@@ -113,7 +113,6 @@ public class Tutorial : MonoBehaviour
 
     public int StartChat()
     {
-        canChat = true;
         GetComponent<Animator>().Play("Close");
         Invoke("asd", 0.5f);
         return CurrentScript;
@@ -121,6 +120,7 @@ public class Tutorial : MonoBehaviour
 
     public void asd()
     {
+        canChat = true;
         CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
         PlayerChatBox.gameObject.SetActive(true);
         PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);

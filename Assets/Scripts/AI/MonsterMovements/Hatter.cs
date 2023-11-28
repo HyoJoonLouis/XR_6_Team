@@ -75,9 +75,9 @@ public class Hatter : AIMovement
         }
         while(true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(1.5f, 0f), 5 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(0.5f, 0f), 5 * Time.deltaTime);
             yield return null;
-            if (Vector2.Distance(transform.position, new Vector2(1.5f, 0f)) < 0.1f)
+            if (Vector2.Distance(transform.position, new Vector2(0.5f, 0f)) < 0.1f)
             {
                 break;
             }

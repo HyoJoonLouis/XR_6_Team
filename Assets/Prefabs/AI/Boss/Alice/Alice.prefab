@@ -232,7 +232,7 @@ MonoBehaviour:
   currentHp: 0
   renderer: {fileID: 0}
   time: 0.1
-  DieEffect: {fileID: 0}
+  DieEffect: {fileID: 3379766348128113057, guid: bdb95bf3041be1f47853f4ad78246332, type: 3}
   DropPercent: 0
   items: []
   GameOverOnDied: 1

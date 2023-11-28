@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AIDamagable : MonoBehaviour, ITakeDamage
 {
+    private Player player;
     [SerializeField] float MaxHp;
     [SerializeField] float currentHp;
 
@@ -20,9 +21,6 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
 
     [Header("Boss")]
     [SerializeField] bool GameOverOnDied;
-    [SerializeField] bool Tutorial;
-    bool first = false;
-    int i = 0;
 
     [Header("Sound")]
     [SerializeField] AudioClip[] audioClips;
@@ -41,14 +39,6 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
         currentHp -= value;
         StartCoroutine(ChangeRenderCoroutine());
         audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
-        if(!first)
-            i++;
-
-        if (i > 5 && Tutorial)
-        {
-            first = true;
-            GameObject.FindObjectOfType<Tutorial>().StartChat();
-        }
 
         
         if(currentHp <= 0)
@@ -64,17 +54,45 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
                     ObjectPoolManager.SpawnObject(items[Random.Range(0, items.Count)],this.transform.position, this.transform.rotation);
                 }
             }
-            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
 
             if(GameOverOnDied)
             {
-                UIManager uiManager = FindObjectOfType<UIManager>();
-                uiManager.GameClearCanvas.SetActive(true);
-                Time.timeScale = 0;
+                StartCoroutine(Died());
+                return;
             }
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
         }
     }
 
+    IEnumerator Died()
+    {
+        GetComponent<AIMovement>().isMoveable = false;
+        GetComponent<Collider2D>().enabled = false;
+        player = FindObjectOfType<Player>();
+        player.CurrentHp = 100000;
+        int i = 0;
+        while(true)
+        {
+            i++;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, -15), 3 * Time.deltaTime);
+            yield return null;
+            if (i > 30)
+            {
+                i = 0;
+                ObjectPoolManager.SpawnObject(DieEffect, transform.position + new Vector3(Random.RandomRange(0, 3), Random.RandomRange(0, 3),0), this.transform.rotation);
+            }
+            if(Vector2.Distance(transform.position, new Vector2(transform.position.x, -15)) < 0.1f)
+                 break;
+        }
+        GameOver();
+    }
+
+    public void GameOver()
+    {
+        UIManager uiManager = FindObjectOfType<UIManager>();
+        uiManager.GameClearCanvas.SetActive(true);
+        Time.timeScale = 0;
+    }
     IEnumerator ChangeRenderCoroutine()
     {
         renderer.material.SetFloat("_Lerp", 0.7f);

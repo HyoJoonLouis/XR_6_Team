@@ -63,7 +63,9 @@ public class Manager1_2 : MonoBehaviour
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[5], new Vector3(7.2f, -4.8f, 0), this.transform.rotation);
         yield return new WaitForSeconds(20);
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[8], Vector3.zero, this.transform.rotation);
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(20);
+        ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[5], new Vector3(7.2f, -4.8f, 0), this.transform.rotation);
+        yield return new WaitForSeconds(10);
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[6], new Vector3(15, 0, 0), this.transform.rotation);
         yield return new WaitForSeconds(20);
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[8], Vector3.zero, this.transform.rotation);

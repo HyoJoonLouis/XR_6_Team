@@ -46,6 +46,7 @@ public class StartSceneUI : MonoBehaviour
 
     public AudioClip audioClip;
     private AudioSource audioSource;
+    public AudioClip FlipClip;
     public void Start()
     {
         CurrentScene = -1;
@@ -76,6 +77,9 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnRightButtonClicked()
     {
+        if (CurrentScene == 5)
+            return;
+
         Flip.gameObject.SetActive(true);
         Flip.Play("Flip");
         Invoke("CloseFlip", 0.3f);
@@ -110,12 +114,17 @@ public class StartSceneUI : MonoBehaviour
         else
             StartButton.SetActive(true);
 
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(FlipClip);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void OnLeftButtonClicked()
     {
+        if (CurrentScene == 0)
+            return;
+        Flip.gameObject.SetActive(true);
+        Flip.Play("Back");
+        Invoke("CloseFlip", 0.3f);
         CurrentScene = Mathf.Clamp(CurrentScene - 1, 0, Scene.Count - 1);
         
 
@@ -148,7 +157,7 @@ public class StartSceneUI : MonoBehaviour
             StartButton.SetActive(true);
 
 
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(FlipClip);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -168,7 +177,37 @@ public class StartSceneUI : MonoBehaviour
         Open.Play("Open");
         yield return new WaitForSeconds(0.5f);
         Book.SetActive(true);
-        OnRightButtonClicked();
+        CurrentScene = 0;
+        ChapterText.text = Scene[CurrentScene].Chapter;
+        KoreanText.text = Scene[CurrentScene].KoreanChapter;
+        ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");
+        if (!Scene[CurrentScene].isCompleted)
+        {
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
+            RightImage.sprite = Scene[CurrentScene].RightSprite;
+            Stamp.SetActive(false);
+        }
+        else
+        {
+            CompleteLine.SetActive(true);
+            CompleteText.gameObject.SetActive(true);
+            CompleteText.text = Scene[CurrentScene].CompleteText.Replace("\\n", "\n");
+            RightImage.sprite = Scene[CurrentScene].CompleteSprite;
+            Stamp.SetActive(true);
+        }
+
+        if (CurrentScene == 0 || CurrentScene == 5)
+        {
+            StartButton.SetActive(false);
+            CompleteLine.SetActive(false);
+            CompleteText.gameObject.SetActive(false);
+        }
+        else
+            StartButton.SetActive(true);
+
+        audioSource.PlayOneShot(FlipClip);
+        EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForSeconds(1);
         Open.gameObject.SetActive(false);
     }
