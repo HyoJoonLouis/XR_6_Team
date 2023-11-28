@@ -29,6 +29,10 @@ public class TutorialPlayer : Player, ITakeDamage
     public GameObject cameraUI;
     UIManager uiManager;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip[] attackAudioClips;
+    private AudioSource audioSource;
+
     Tutorial tutorial;
     public int scriptCount = 0;
     public int count = 0;
@@ -50,6 +54,7 @@ public class TutorialPlayer : Player, ITakeDamage
         isMove = true;
         isUse = true;
         StartCoroutine(TutorialScript());
+        StartCoroutine(PlayAttackSound());
     }
 
     private void Update()
@@ -89,6 +94,17 @@ public class TutorialPlayer : Player, ITakeDamage
         if (worldpos.x > 0.98f) worldpos.x = 0.98f;
         if (worldpos.y > 0.90f) worldpos.y = 0.90f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
+    }
+
+    IEnumerator PlayAttackSound()
+    {
+        while (true)
+        {
+            if (weapon.GetIsAttack())
+                audioSource.PlayOneShot(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 
     IEnumerator TutorialScript()
