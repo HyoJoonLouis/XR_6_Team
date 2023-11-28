@@ -49,6 +49,8 @@ public class Player : MonoBehaviour, ITakeDamage
         CurrentHp = MaxHp;
 
         uiManager.SetHealth((int)MaxHp);
+
+        onceWeapons.Enqueue((int)WeaponType.Flamingo);
     }
 
     private void Update()
@@ -212,13 +214,16 @@ public class Player : MonoBehaviour, ITakeDamage
 
     IEnumerator OnItemEffect()
     {
-        while (effectTime < 0.06f)
+        while (true)
         {
-            effectTime += Time.unscaledDeltaTime;
+            if (itemEffect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GetItemAnim") &&
+                itemEffect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                itemEffect.SetActive(false);
+            }
+
             yield return new WaitForSecondsRealtime(0.01f);
         }
-        itemEffect.SetActive(false);
-        yield return 0;
     }
 
     #endregion Weapon

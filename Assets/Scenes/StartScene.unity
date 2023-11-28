@@ -2174,7 +2174,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 2755e632585cf2e4d8224b9139edccb6, type: 3}
   - Chapter: Chapter.2
     KoreanChapter: "\uC815\uC2E0 \uC0AC\uB098\uC6B4 \uD2F0 \uD30C\uD2F0"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>\uB97C
       \uBE60\uB974\uAC8C \uCAD3\uC544\uAC14\uC9C0\uB9CC \uB05D\uB0B4 \uB193\uCCE4\uACE0,
       <color=#C00000>L</color>\uC740 \uC232\uC18D\uC5D0\uC11C \uD55C\uCC38\uC744
@@ -2198,7 +2198,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f9b70504f9da18445a82cf5c3daa067b, type: 3}
   - Chapter: Chapter.3
     KoreanChapter: "\uC568\uB9AC\uC2A4\uC640 \uB9DE\uB300\uACB0"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>
       \uACC4\uC18D \uCAD3\uB2E4 \uBCF4\uB2C8 \uC5B4\uB290\uC0C8 \uB208\uC55E\uC5D0\\n<color=#C00000>\uD558\uD2B8
       \uC131</color>\uC774 \uBCF4\uC600\uACE0, <color=#C00000>L</color>\uC740 \uC131
