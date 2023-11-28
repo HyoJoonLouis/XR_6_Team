@@ -11,6 +11,8 @@ public class ReturnToMainScene : MonoBehaviour
     {
         GameManager.instance.SceneCompleted[CurrentScene] = true;
         GameManager.instance.CurrentScene = CurrentScene;
+        if (CurrentScene == 4)
+            GameManager.instance.SceneCompleted[CurrentScene + 1] = true;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }

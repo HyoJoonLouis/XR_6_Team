@@ -1057,8 +1057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 339, y: -354}
-  m_SizeDelta: {x: 304, y: 145}
+  m_AnchoredPosition: {x: 339, y: -371}
+  m_SizeDelta: {x: 350, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1064344936
 MonoBehaviour:
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47df3ba6101576a4b9e8f42b24d7eb0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f77afccf00e25f4aa80878ece895d0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2230,7 +2230,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 71584b12e431deb44a420ad708c85a01, type: 3}
   - Chapter: Chapter.0
     KoreanChapter: "\uD558\uD2B8 \uC5EC\uC655\uACFC\uC758 \uB9CC\uB0A8"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "<color=#C00000>L</color>\uC740 \uD3C9\uC0DD\uC744 \uAFC8\uAFD4\uC654\uB358
       \uC608\uC5B8 \uC18D\uC758 \uC8FC\uC778\uACF5 \uC790\uB9AC\uB97C\\n\uBE7C\uC557\uC544
       \uBC84\uB9B0 <color=#C00000>\uC568\uB9AC\uC2A4</color>\uB97C \uB04C\uC5B4\uB0B4\uB9AC\uAE30
@@ -2251,7 +2251,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 0d06d2f6c0b82044c98e3d7b0ba4cb07, type: 3}
   - Chapter: Chapter.1
     KoreanChapter: "\uC5EC\uC815\uC758 \uC2DC\uC791"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "<color=#C00000>L</color>\uC740 <color=#C00000>\uC5D8\uB9AC\uC2A4</color>\uAC00
       \uC788\uB294 \uD558\uD2B8 \uC131\uC73C\uB85C \uAC00\uAE30 \uC704\uD574 <color=#C00000>\uD558\uD2B8\\n\uC5EC\uC655</color>\uC5D0\uAC8C
       \uAE38\uC744 \uBB3C\uC5C8\uACE0,\\n\uC232\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC11C
@@ -2272,7 +2272,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 2755e632585cf2e4d8224b9139edccb6, type: 3}
   - Chapter: Chapter.2
     KoreanChapter: "\uC815\uC2E0 \uC0AC\uB098\uC6B4 \uD2F0 \uD30C\uD2F0"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>\uB97C
       \uBE60\uB974\uAC8C \uCAD3\uC544\uAC14\uC9C0\uB9CC \uB05D\uB0B4 \uB193\uCCE4\uACE0,
       <color=#C00000>L</color>\uC740 \uC232\uC18D\uC5D0\uC11C \uD55C\uCC38\uC744
@@ -2296,7 +2296,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f9b70504f9da18445a82cf5c3daa067b, type: 3}
   - Chapter: Chapter.3
     KoreanChapter: "\uC568\uB9AC\uC2A4\uC640 \uB9DE\uB300\uACB0"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>
       \uACC4\uC18D \uCAD3\uB2E4 \uBCF4\uB2C8 \uC5B4\uB290\uC0C8 \uB208\uC55E\uC5D0\\n<color=#C00000>\uD558\uD2B8
       \uC131</color>\uC774 \uBCF4\uC600\uACE0, <color=#C00000>L</color>\uC740 \uC131
@@ -2317,7 +2317,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f8c80e57328727243b5d167b13d3aa1d, type: 3}
   - Chapter: ENDING
     KoreanChapter: "\uB9C8\uC8FC\uD55C \uC9C4\uC2E4 "
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "<color=#C00000>L</color>\uC774 \uBA38\uB9AC\uC5D0 \uBE5B\uB098\uB294
       <color=#C00000>\uC655\uAD00</color>\uC744 \uC4F0\uB824\uB294 \uC21C\uAC04 \uAC11\uC790\uAE30
       '\uD391!' \uC18C\uB9AC\uC640 \uD568\uAED8 <color=#C00000>\uC655\uAD00</color>\uC774
@@ -2346,6 +2346,7 @@ MonoBehaviour:
   Flip: {fileID: 268754753}
   StartButton: {fileID: 1064344934}
   audioClip: {fileID: 8300000, guid: 51498fd4ff262b243a7576448ee77628, type: 3}
+  FlipClip: {fileID: 8300000, guid: 150733866e89f68459047228077f4322, type: 3}
 --- !u!4 &1541978720
 Transform:
   m_ObjectHideFlags: 0
