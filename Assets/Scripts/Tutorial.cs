@@ -72,8 +72,14 @@ public class Tutorial : MonoBehaviour
             StartCoroutine("PlayGameCoroutine");
             return;
         }
-        if (CurrentScript == 1 || CurrentScript == 3 || CurrentScript == 7 || CurrentScript == 8)
+        if (CurrentScript == 1|| CurrentScript == 7 || CurrentScript == 8)
         {
+            StopChat();
+            return;
+        }
+        if(CurrentScript == 3)
+        {
+            ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[9], new Vector3(5.99f, -1.31f, 0), transform.rotation);
             StopChat();
             return;
         }
@@ -85,7 +91,7 @@ public class Tutorial : MonoBehaviour
         PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
     }
 
-    public void StartChat()
+    public int StartChat()
     {
         canChat = true;
         CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
@@ -93,6 +99,7 @@ public class Tutorial : MonoBehaviour
         PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);
         PlayerEmotion.sprite = QueenSprite[(int)scripts[CurrentScript].QueenEmotion];
         PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
+        return CurrentScript;
     }
 
 
