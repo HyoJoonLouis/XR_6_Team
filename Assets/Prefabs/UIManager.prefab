@@ -59,13 +59,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   itemSprites:
-  - {fileID: 21300000, guid: 945de1f2bfe6b1e41b6039a8bb1e39d1, type: 3}
-  - {fileID: 21300000, guid: 30f6e9d6f9d81234a95e9b27d54ad58e, type: 3}
-  - {fileID: 21300000, guid: b203d5d3ae5e5984aacbb8f81e68d66f, type: 3}
-  - {fileID: 21300000, guid: 8b2a0e3d3ab049242a10a6cfd2d3dedd, type: 3}
-  - {fileID: 21300000, guid: d61232cde896c2c42b7bb29f645ca270, type: 3}
-  - {fileID: 21300000, guid: da5dad546bdd8b042b5a7e1ab6af1f31, type: 3}
+  - {fileID: 21300000, guid: 30d35147b3c89314e8458455f9e3848a, type: 3}
+  - {fileID: 21300000, guid: 73565862a546c944983652d51ed41a22, type: 3}
+  - {fileID: 21300000, guid: 0c6d5ce3e3ad7bb4184214eb2efb9cbf, type: 3}
+  - {fileID: 21300000, guid: f8cd82cdb431c21419182dc48e9335bd, type: 3}
+  - {fileID: 21300000, guid: c18a8f8b2e5260745bc0b9b019bb24f6, type: 3}
+  - {fileID: 21300000, guid: 82e4c41662cb5754cbd35d36e8571a80, type: 3}
   items: []
   OnGameOverEvent:
     m_PersistentCalls:
       m_Calls: []
+  GameClearCanvas: {fileID: 0}
