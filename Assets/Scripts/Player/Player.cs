@@ -171,6 +171,7 @@ public class Player : MonoBehaviour, ITakeDamage
         int itemType;
         itemType = onceWeapons.Dequeue();
         once.OnUse(itemType);
+        weapon.OnShot(false);
 
         switch (itemType)
         {
