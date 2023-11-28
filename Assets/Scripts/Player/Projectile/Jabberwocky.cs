@@ -63,6 +63,9 @@ public class Jabberwocky : MonoBehaviour
 
     void Update()
     {
+        if (!player.gameObject.activeSelf)
+            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
+
         if (idleAnim)
         {
             transform.position = new Vector3(player.position.x + posX, player.position.y + posY);
