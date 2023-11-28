@@ -12,13 +12,24 @@ public class AliceMovement : BossBaseMovement
         Pattern5,
         Pattern6,
         Pattern7,
+        Pattern8,
+
     }
 
     public Dictionary<State, BaseState> AliceState = new Dictionary<State, BaseState>();
 
     private UIManager uiManager;
+    public Animator animator;
 
-
+    public Collider2D SwordTrigger;
+    public void SetTriggerOn()
+    {
+        SwordTrigger.enabled = true;
+    }
+    public void SetTriggerOff()
+    {
+        SwordTrigger.enabled = false;
+    }
    
     public void StartStage()
     {
@@ -35,8 +46,10 @@ public class AliceMovement : BossBaseMovement
         AliceState.Add(State.Pattern5, new Pattern5(this));
         AliceState.Add(State.Pattern6, new Pattern6(this));
         AliceState.Add(State.Pattern7, new Pattern7(this));
+        AliceState.Add(State.Pattern8, new Pattern8(this));
     
         uiManager = FindObjectOfType<UIManager>();
+        animator = GetComponent<Animator>();
     }
 
     public void OnGameOver()
@@ -75,6 +88,7 @@ public class Pattern1 : BaseState
     public override void OnStateEnter()
     {
         coroutine = Monster.StartCoroutine(Pattern1Coroutine());
+        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -116,6 +130,7 @@ public class Pattern2 : BaseState
     public override void OnStateEnter()
     {
         coroutine = Monster.StartCoroutine(Pattern2Coroutine());
+        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -154,6 +169,7 @@ public class Pattern5 : BaseState
     public override void OnStateEnter()
     {
         Monster.StartCoroutine(Pattern5Coroutine());
+        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -188,7 +204,7 @@ public class Pattern6 : BaseState
     {
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[3], new Vector3(10, 3.3f, 0), Quaternion.Euler(0, 0, 0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[3], new Vector3(10, -3.3f, 0), Quaternion.Euler(0, 0, 0));
-
+        ((AliceMovement)Monster).animator.Play("Spawn");
         Monster.ChangeState(((AliceMovement)Monster).AliceState[AliceMovement.State.Idle]);
     }
 
@@ -276,5 +292,30 @@ public class Pattern7 : BaseState
 
         Monster.ChangeState(((AliceMovement)Monster).AliceState[AliceMovement.State.Idle]);
     }
+
 }
 
+public class Pattern8 : BaseState
+{
+    public Pattern8(BossBaseMovement alice) : base(alice) { }
+
+    public override void OnStateEnter()
+    {
+        Monster.StartCoroutine(StartSword());
+        Monster.isMoveable = false;
+    }
+
+    public override void OnStateExit()
+    {
+        Monster.isMoveable = true;
+    }
+    public override void OnStateUpdate()
+    {
+    }
+    IEnumerator StartSword()
+    {
+        ((AliceMovement)Monster).animator.Play("Sword");
+        yield return new WaitForSeconds(2.0f);
+        Monster.ChangeState(((AliceMovement)Monster).AliceState[AliceMovement.State.Idle]);
+    }
+}
