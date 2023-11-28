@@ -66,6 +66,7 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
 
     IEnumerator Died()
     {
+        GetComponent<AIMovement>().enabled = false;
         GetComponent<AIMovement>().isMoveable = false;
         GetComponent<Collider2D>().enabled = false;
         player = FindObjectOfType<Player>();

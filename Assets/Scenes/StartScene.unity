@@ -2834,7 +2834,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 71584b12e431deb44a420ad708c85a01, type: 3}
   - Chapter: Chapter.0
     KoreanChapter: "\uD558\uD2B8 \uC5EC\uC655\uACFC\uC758 \uB9CC\uB0A8"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "<color=#C00000>L</color>\uC740 \uD3C9\uC0DD\uC744 \uAFC8\uAFD4\uC654\uB358
       \uC608\uC5B8 \uC18D\uC758 \uC8FC\uC778\uACF5 \uC790\uB9AC\uB97C\\n\uBE7C\uC557\uC544
       \uBC84\uB9B0 <color=#C00000>\uC568\uB9AC\uC2A4</color>\uB97C \uB04C\uC5B4\uB0B4\uB9AC\uAE30
@@ -2855,7 +2855,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 0d06d2f6c0b82044c98e3d7b0ba4cb07, type: 3}
   - Chapter: Chapter.1
     KoreanChapter: "\uC5EC\uC815\uC758 \uC2DC\uC791"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "<color=#C00000>L</color>\uC740 <color=#C00000>\uC5D8\uB9AC\uC2A4</color>\uAC00
       \uC788\uB294 \uD558\uD2B8 \uC131\uC73C\uB85C \uAC00\uAE30 \uC704\uD574 <color=#C00000>\uD558\uD2B8\\n\uC5EC\uC655</color>\uC5D0\uAC8C
       \uAE38\uC744 \uBB3C\uC5C8\uACE0,\\n\uC232\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC11C
@@ -2876,7 +2876,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 2755e632585cf2e4d8224b9139edccb6, type: 3}
   - Chapter: Chapter.2
     KoreanChapter: "\uC815\uC2E0 \uC0AC\uB098\uC6B4 \uD2F0 \uD30C\uD2F0"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>\uB97C
       \uBE60\uB974\uAC8C \uCAD3\uC544\uAC14\uC9C0\uB9CC \uB05D\uB0B4 \uB193\uCCE4\uACE0,
       <color=#C00000>L</color>\uC740 \uC232\uC18D\uC5D0\uC11C \uD55C\uCC38\uC744
@@ -2900,7 +2900,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f9b70504f9da18445a82cf5c3daa067b, type: 3}
   - Chapter: Chapter.3
     KoreanChapter: "\uC568\uB9AC\uC2A4\uC640 \uB9DE\uB300\uACB0"
-    isCompleted: 0
+    isCompleted: 1
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>
       \uACC4\uC18D \uCAD3\uB2E4 \uBCF4\uB2C8 \uC5B4\uB290\uC0C8 \uB208\uC55E\uC5D0\\n<color=#C00000>\uD558\uD2B8
       \uC131</color>\uC774 \uBCF4\uC600\uACE0, <color=#C00000>L</color>\uC740 \uC131
@@ -2958,6 +2958,7 @@ MonoBehaviour:
   CImage: {fileID: 1144016494}
   SImage: {fileID: 1131772417}
   QImage: {fileID: 2084907855}
+  SettingFlip: {fileID: 1818556199}
 --- !u!4 &1541978720
 Transform:
   m_ObjectHideFlags: 0
@@ -3333,7 +3334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -29.5302, y: -13.39}
+  m_AnchoredPosition: {x: -19, y: -16}
   m_SizeDelta: {x: 1800, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1729142383
@@ -3526,6 +3527,103 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732141897}
+  m_CullTransparentMesh: 1
+--- !u!1 &1818556199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818556200}
+  - component: {fileID: 1818556203}
+  - component: {fileID: 1818556202}
+  - component: {fileID: 1818556201}
+  m_Layer: 5
+  m_Name: FlipAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1818556200
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818556199}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7806248739688798694}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 22.218994, y: -21}
+  m_SizeDelta: {x: 1800, y: 1500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1818556201
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818556199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f1fe184d46b0f6469b5606435215464, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1818556202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818556199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 92593f8d2e53ce146869f4a0efd93318, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1818556203
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818556199}
   m_CullTransparentMesh: 1
 --- !u!1 &1897044654
 GameObject:
@@ -4999,6 +5097,7 @@ RectTransform:
   - {fileID: 4144744}
   - {fileID: 1658517761}
   - {fileID: 74029943}
+  - {fileID: 1818556200}
   m_Father: {fileID: 2033487070}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
