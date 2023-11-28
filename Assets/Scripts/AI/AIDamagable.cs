@@ -21,17 +21,23 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
     [Header("Boss")]
     [SerializeField] bool GameOverOnDied;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip[] audioClips;
+    private AudioSource audioSource;
+
     private void OnEnable()
     {
         currentHp = MaxHp;
         renderer = GetComponent<Renderer>();
         renderer.material.SetFloat("_Lerp", 0);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(float value)
     {
         currentHp -= value;
         StartCoroutine(ChangeRenderCoroutine());
+        audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
         if(currentHp <= 0)
         {
             if(DieEffect != null) 

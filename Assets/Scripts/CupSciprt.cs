@@ -7,6 +7,7 @@ public class CupSciprt : MonoBehaviour
 {
     Vector2 TargetTransform;
     Collider2D collider;
+    float Delay;
 
     IEnumerator OnSpawn()
     {
@@ -17,7 +18,7 @@ public class CupSciprt : MonoBehaviour
             if (Vector2.Distance(this.transform.position, TargetTransform) < 0.1f)
                 break;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(Delay);
         Animator animator = GetComponent<Animator>();
         animator.Play("Attack");
         collider.enabled = true;
@@ -35,8 +36,9 @@ public class CupSciprt : MonoBehaviour
         ObjectPoolManager.ReturnObjectToPool(this.gameObject);
     }
 
-    public void SetTargetTransform(Vector2 transform)
+    public void SetTargetTransform(Vector2 transform, float delay)
     {
+        Delay = delay;
         TargetTransform = transform;
         collider = GetComponent<Collider2D>();
         collider.enabled = false;

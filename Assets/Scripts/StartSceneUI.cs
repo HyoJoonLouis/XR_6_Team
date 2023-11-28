@@ -43,6 +43,9 @@ public class StartSceneUI : MonoBehaviour
     public GameObject StartButton;
 
     int CurrentScene;
+
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     public void Start()
     {
         CurrentScene = -1;
@@ -60,6 +63,8 @@ public class StartSceneUI : MonoBehaviour
             CurrentScene = GameManager.instance.CurrentScene - 1;
             OnRightButtonClicked();
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ChapterEnterClicked()
@@ -105,6 +110,7 @@ public class StartSceneUI : MonoBehaviour
         else
             StartButton.SetActive(true);
 
+        audioSource.PlayOneShot(audioClip);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -141,16 +147,21 @@ public class StartSceneUI : MonoBehaviour
         else
             StartButton.SetActive(true);
 
+
+        audioSource.PlayOneShot(audioClip);
         EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void OnChapterButtonClicked()
     {
+
+        audioSource.PlayOneShot(audioClip);
         StartCoroutine(OnChapterButtonClickedCoroutine());
     }
 
     IEnumerator OnChapterButtonClickedCoroutine()
     {
+
         Background.SetActive(true);
         BookCover.SetActive(false);
         Open.gameObject.SetActive(true);
