@@ -41,6 +41,8 @@ public class Tutorial : MonoBehaviour
 
     private bool canChat;
 
+    public GameObject Item;
+
 
     void Start()
     {
@@ -72,7 +74,7 @@ public class Tutorial : MonoBehaviour
             StartCoroutine("PlayGameCoroutine");
             return;
         }
-        if (CurrentScript == 1|| CurrentScript == 7 || CurrentScript == 8)
+        if (CurrentScript == 1 || CurrentScript == 8)
         {
             StopChat();
             return;
@@ -83,6 +85,16 @@ public class Tutorial : MonoBehaviour
             StopChat();
             return;
         }
+
+        if (CurrentScript == 6)
+            Item.SetActive(true);
+        if(CurrentScript == 7)
+        {
+            Item.SetActive(false);
+            StopChat();
+            return;
+        }
+
         canChat = true;
         CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
         PlayerChatBox.gameObject.SetActive(true);
