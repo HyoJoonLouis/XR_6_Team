@@ -17,6 +17,7 @@ public class Manager1_2 : MonoBehaviour
 
     public UIManager uimanager;
 
+
     private void Start()
     {
         player = FindObjectOfType<Player>();

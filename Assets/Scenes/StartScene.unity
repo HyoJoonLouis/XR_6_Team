@@ -2834,7 +2834,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 71584b12e431deb44a420ad708c85a01, type: 3}
   - Chapter: Chapter.0
     KoreanChapter: "\uD558\uD2B8 \uC5EC\uC655\uACFC\uC758 \uB9CC\uB0A8"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "<color=#C00000>L</color>\uC740 \uD3C9\uC0DD\uC744 \uAFC8\uAFD4\uC654\uB358
       \uC608\uC5B8 \uC18D\uC758 \uC8FC\uC778\uACF5 \uC790\uB9AC\uB97C\\n\uBE7C\uC557\uC544
       \uBC84\uB9B0 <color=#C00000>\uC568\uB9AC\uC2A4</color>\uB97C \uB04C\uC5B4\uB0B4\uB9AC\uAE30
@@ -2855,7 +2855,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 0d06d2f6c0b82044c98e3d7b0ba4cb07, type: 3}
   - Chapter: Chapter.1
     KoreanChapter: "\uC5EC\uC815\uC758 \uC2DC\uC791"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "<color=#C00000>L</color>\uC740 <color=#C00000>\uC5D8\uB9AC\uC2A4</color>\uAC00
       \uC788\uB294 \uD558\uD2B8 \uC131\uC73C\uB85C \uAC00\uAE30 \uC704\uD574 <color=#C00000>\uD558\uD2B8\\n\uC5EC\uC655</color>\uC5D0\uAC8C
       \uAE38\uC744 \uBB3C\uC5C8\uACE0,\\n\uC232\uC73C\uB85C \uB4E4\uC5B4\uAC00\uC11C
@@ -2876,7 +2876,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: 2755e632585cf2e4d8224b9139edccb6, type: 3}
   - Chapter: Chapter.2
     KoreanChapter: "\uC815\uC2E0 \uC0AC\uB098\uC6B4 \uD2F0 \uD30C\uD2F0"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>\uB97C
       \uBE60\uB974\uAC8C \uCAD3\uC544\uAC14\uC9C0\uB9CC \uB05D\uB0B4 \uB193\uCCE4\uACE0,
       <color=#C00000>L</color>\uC740 \uC232\uC18D\uC5D0\uC11C \uD55C\uCC38\uC744
@@ -2900,7 +2900,7 @@ MonoBehaviour:
     CompleteSprite: {fileID: 21300000, guid: f9b70504f9da18445a82cf5c3daa067b, type: 3}
   - Chapter: Chapter.3
     KoreanChapter: "\uC568\uB9AC\uC2A4\uC640 \uB9DE\uB300\uACB0"
-    isCompleted: 1
+    isCompleted: 0
     ExaplainText: "\uB3C4\uB9DD\uAC00\uB294 <color=#C00000>\uD770\uD1A0\uB07C</color>
       \uACC4\uC18D \uCAD3\uB2E4 \uBCF4\uB2C8 \uC5B4\uB290\uC0C8 \uB208\uC55E\uC5D0\\n<color=#C00000>\uD558\uD2B8
       \uC131</color>\uC774 \uBCF4\uC600\uACE0, <color=#C00000>L</color>\uC740 \uC131
@@ -4515,6 +4515,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1843216726387977085, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
+      propertyPath: SceneCompleted.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
+      propertyPath: SceneCompleted.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
+      propertyPath: SceneCompleted.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
+      propertyPath: SceneCompleted.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
+      propertyPath: SceneCompleted.Array.data[4]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843216726387977086, guid: 7360737379c95ad40a3c00670f3ee542, type: 3}
