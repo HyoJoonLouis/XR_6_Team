@@ -41,7 +41,7 @@ public class OnceWeapon : BaseWeapon
     // Jabberwocky
     public void DamageBeam()
     {
-        AttackPoint = 0.1f;
+        AttackPoint = 0.15f;
         Duration = 5;
         int level = GetLevel((int)WeaponType.Jabberwocky);
 
@@ -105,14 +105,14 @@ public class OnceWeapon : BaseWeapon
         switch (level)
         {
             case 1:
-                AttackPoint = 10;
+                AttackPoint = 20;
                 break;
             case 2:
-                AttackPoint = 20;
+                AttackPoint = 30;
                 break;
             case 3:
             default:
-                AttackPoint = 30;
+                AttackPoint = 40;
                 break;
         }
 
@@ -165,14 +165,14 @@ public class OnceWeapon : BaseWeapon
         switch (level)
         {
             case 1:
-                Duration = 1;
+                Duration = 3;
                 break;
             case 2:
-                Duration = 3;
+                Duration = 5;
                 break;
             case 3:
             default:
-                Duration = 5;
+                Duration = 8;
                 break;
         }
 
