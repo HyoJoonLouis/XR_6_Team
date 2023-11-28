@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 210
+  MaxHp: 120
   currentHp: 0
   renderer: {fileID: 0}
   time: 0.1
@@ -231,7 +231,6 @@ MonoBehaviour:
   DropPercent: 0
   items: []
   GameOverOnDied: 1
-  Tutorial: 0
   audioClips:
   - {fileID: 8300000, guid: 405c3c68449105549ba13b9d87091280, type: 3}
   - {fileID: 8300000, guid: e4d2bfaa060a9da4d938e58b7c215005, type: 3}
@@ -275,7 +274,7 @@ AudioSource:
   m_GameObject: {fileID: 5198310365415287814}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3481049818884088536, guid: 6eea1cf501b26d74e98fefcc551c6494, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

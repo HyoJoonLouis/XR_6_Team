@@ -42,11 +42,68 @@ public class StartSceneUI : MonoBehaviour
 
     public GameObject StartButton;
 
+    public GameObject Setting;
+
     int CurrentScene;
 
     public AudioClip audioClip;
     private AudioSource audioSource;
     public AudioClip FlipClip;
+    public GameObject Fin;
+    public GameObject Fffff;
+    public Animator RealFin;
+
+
+    public GameObject CImage;
+    public GameObject SImage;
+    public GameObject QImage;
+
+    public void OnSettingClicked()
+    {
+        CImage.SetActive(false);
+        SImage.SetActive(false);
+        QImage.SetActive(false);
+        Open.gameObject.SetActive(true);
+        Open.Play("Open");
+        Invoke("OpenSetting", 0.5f);
+        Invoke("OpenFalse", 0.5f);
+    }
+    public void OpenFalse()
+    {
+        Open.gameObject.SetActive(false);
+    }
+
+    public void OnSettingClicked2()
+    {
+        CImage.SetActive(false);
+        SImage.SetActive(false);
+        QImage.SetActive(false);
+        Flip.gameObject.SetActive(true);
+        Flip.Play("Flip");
+        Invoke("CloseFlip", 0.3f);
+        Book.SetActive(false);
+        Invoke("OpenSetting", 0.1f);
+    }
+
+    public void Return()
+    {
+        Book.SetActive(true);
+        Flip.gameObject.SetActive(true);
+        Flip.Play("Flip");
+        Invoke("CloseFlip", 0.3f);
+        Invoke("CloseSetting", 0.1f);
+    }
+
+    public void OpenSetting()
+    {
+        Setting.SetActive(true);
+    }
+
+    public void CloseSetting()
+    {
+        Setting.SetActive(false);
+    }
+
     public void Start()
     {
         CurrentScene = -1;
@@ -77,14 +134,29 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnRightButtonClicked()
     {
-        if (CurrentScene == 5)
+        if (CurrentScene == 5 && !GameManager.instance.SceneCompleted[5])
             return;
+
+        else if (CurrentScene == 5 && GameManager.instance.SceneCompleted[5])
+        {
+            Flip.gameObject.SetActive(true);
+            Flip.Play("Flip");
+            Invoke("CloseFlip", 0.3f);
+            Fin.SetActive(true);
+            CurrentScene++;
+            return;
+        }
+        if (CurrentScene == 6)
+        {
+            Fffff.SetActive(true);
+            RealFin.Play("End");
+        }
 
         Flip.gameObject.SetActive(true);
         Flip.Play("Flip");
         Invoke("CloseFlip", 0.3f);
 
-        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count - 1);
+        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count);
 
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
@@ -120,6 +192,7 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnLeftButtonClicked()
     {
+        Fin.SetActive(false);
         if (CurrentScene == 0)
             return;
         Flip.gameObject.SetActive(true);
