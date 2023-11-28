@@ -171,15 +171,16 @@ public class Player : MonoBehaviour, ITakeDamage
         int itemType;
         itemType = onceWeapons.Dequeue();
         once.OnUse(itemType);
-        weapon.OnShot(false);
 
         switch (itemType)
         {
             case (int)WeaponType.Jabberwocky:
+                weapon.OnShot(false);
                 animator.SetFloat("JabberCount", 0.4f);
                 animator.SetBool("IsJabber", true);
                 break;
             case (int)WeaponType.Flamingo:
+                once.OnUse(itemType);
                 animator.SetBool("IsFlamingo", true);
                 isMove = false;
                 break;
