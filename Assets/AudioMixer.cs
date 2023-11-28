@@ -15,8 +15,8 @@ public class audioMixer : MonoBehaviour
     public Sprite Ok;
     public Sprite No;
 
-    public Image Full;
-    public Image Window;
+    public Toggle Full;
+    public Toggle Window;
 
     public Sprite Mute;
     public Sprite NotMute;
@@ -44,7 +44,7 @@ public class audioMixer : MonoBehaviour
     }
     public void BGMControl()
     {
-        float sound = MasterSlider.value;
+        float sound = BGMSlider.value;
 
         if (sound == -40f)
         {
@@ -59,7 +59,7 @@ public class audioMixer : MonoBehaviour
     }
     public void SFXControl()
     {
-        float sound = MasterSlider.value;
+        float sound = SFXSlider.value;
 
         if (sound == -40f)
         {
@@ -75,15 +75,15 @@ public class audioMixer : MonoBehaviour
 
     public void SetFullScreen()
     {
-        Full.sprite = Ok;
-        Window.sprite = No;
+        Full.isOn = true;
+        Window.isOn = false;
         Screen.SetResolution(1920, 1080, true);
     }
 
     public void SetWindowScreen()
     {
-        Full.sprite = No;
-        Window.sprite = Ok;
+        Full.isOn = false;
+        Window.isOn = true;
         Screen.SetResolution(1920, 1080, false);
     }
 }

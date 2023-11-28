@@ -42,6 +42,8 @@ public class StartSceneUI : MonoBehaviour
 
     public GameObject StartButton;
 
+    public GameObject Setting;
+
     int CurrentScene;
 
     public AudioClip audioClip;
@@ -50,6 +52,57 @@ public class StartSceneUI : MonoBehaviour
     public GameObject Fin;
     public GameObject Fffff;
     public Animator RealFin;
+
+
+    public GameObject CImage;
+    public GameObject SImage;
+    public GameObject QImage;
+
+    public void OnSettingClicked()
+    {
+        CImage.SetActive(false);
+        SImage.SetActive(false);
+        QImage.SetActive(false);
+        Open.gameObject.SetActive(true);
+        Open.Play("Open");
+        Invoke("OpenSetting", 0.5f);
+        Invoke("OpenFalse", 0.5f);
+    }
+    public void OpenFalse()
+    {
+        Open.gameObject.SetActive(false);
+    }
+
+    public void OnSettingClicked2()
+    {
+        CImage.SetActive(false);
+        SImage.SetActive(false);
+        QImage.SetActive(false);
+        Flip.gameObject.SetActive(true);
+        Flip.Play("Flip");
+        Invoke("CloseFlip", 0.3f);
+        Book.SetActive(false);
+        Invoke("OpenSetting", 0.1f);
+    }
+
+    public void Return()
+    {
+        Book.SetActive(true);
+        Flip.gameObject.SetActive(true);
+        Flip.Play("Flip");
+        Invoke("CloseFlip", 0.3f);
+        Invoke("CloseSetting", 0.1f);
+    }
+
+    public void OpenSetting()
+    {
+        Setting.SetActive(true);
+    }
+
+    public void CloseSetting()
+    {
+        Setting.SetActive(false);
+    }
 
     public void Start()
     {
