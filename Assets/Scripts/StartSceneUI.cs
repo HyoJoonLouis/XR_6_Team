@@ -47,6 +47,10 @@ public class StartSceneUI : MonoBehaviour
     public AudioClip audioClip;
     private AudioSource audioSource;
     public AudioClip FlipClip;
+    public GameObject Fin;
+    public GameObject Fffff;
+    public Animator RealFin;
+
     public void Start()
     {
         CurrentScene = -1;
@@ -77,14 +81,29 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnRightButtonClicked()
     {
-        if (CurrentScene == 5)
+        if (CurrentScene == 5 && !GameManager.instance.SceneCompleted[5])
             return;
+
+        else if (CurrentScene == 5 && GameManager.instance.SceneCompleted[5])
+        {
+            Flip.gameObject.SetActive(true);
+            Flip.Play("Flip");
+            Invoke("CloseFlip", 0.3f);
+            Fin.SetActive(true);
+            CurrentScene++;
+            return;
+        }
+        if (CurrentScene == 6)
+        {
+            Fffff.SetActive(true);
+            RealFin.Play("End");
+        }
 
         Flip.gameObject.SetActive(true);
         Flip.Play("Flip");
         Invoke("CloseFlip", 0.3f);
 
-        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count - 1);
+        CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count);
 
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
@@ -120,6 +139,7 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnLeftButtonClicked()
     {
+        Fin.SetActive(false);
         if (CurrentScene == 0)
             return;
         Flip.gameObject.SetActive(true);

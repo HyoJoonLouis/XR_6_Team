@@ -76,7 +76,7 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
             i++;
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, -15), 3 * Time.deltaTime);
             yield return null;
-            if (i > 30)
+            if (i > 60)
             {
                 i = 0;
                 ObjectPoolManager.SpawnObject(DieEffect, transform.position + new Vector3(Random.RandomRange(0, 3), Random.RandomRange(0, 3),0), this.transform.rotation);
