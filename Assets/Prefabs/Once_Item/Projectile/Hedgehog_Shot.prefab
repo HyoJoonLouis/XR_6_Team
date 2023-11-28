@@ -157,3 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99bafe08d0e9ec4381d1e3662a69e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadAnim: {fileID: 8901184899512050501, guid: 0fa44b3cd83c9c54a925b73eb6e4f434, type: 3}
