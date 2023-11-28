@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIDamagable : MonoBehaviour, ITakeDamage
+public class TutorialHit : MonoBehaviour, ITakeDamage
 {
     [SerializeField] float MaxHp;
     [SerializeField] float currentHp;
@@ -20,7 +20,6 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
 
     [Header("Boss")]
     [SerializeField] bool GameOverOnDied;
-    [SerializeField] bool Tutorial;
     bool first = false;
     int i = 0;
 
@@ -41,38 +40,20 @@ public class AIDamagable : MonoBehaviour, ITakeDamage
         currentHp -= value;
         StartCoroutine(ChangeRenderCoroutine());
         audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
-        if(!first)
+
+        if (!first)
             i++;
 
-        if (i > 5 && Tutorial)
+        if (i > 5 && !first)
         {
             first = true;
             GameObject.FindObjectOfType<Tutorial>().StartChat();
         }
+    }
 
-        
-        if(currentHp <= 0)
-        {
-            if(DieEffect != null) 
-                ObjectPoolManager.SpawnObject(DieEffect, this.transform.position, this.transform.rotation);
-            if(items.Count > 0)
-            {
-                float percent = Random.Range(0.0f, 1.0f);
-
-                if(percent < DropPercent)
-                {
-                    ObjectPoolManager.SpawnObject(items[Random.Range(0, items.Count)],this.transform.position, this.transform.rotation);
-                }
-            }
-            ObjectPoolManager.ReturnObjectToPool(this.gameObject);
-
-            if(GameOverOnDied)
-            {
-                UIManager uiManager = FindObjectOfType<UIManager>();
-                uiManager.GameClearCanvas.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
+    public void hit()
+    {
+        GameObject.FindObjectOfType<Tutorial>().StartChat();
     }
 
     IEnumerator ChangeRenderCoroutine()

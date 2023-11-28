@@ -43,6 +43,8 @@ public class Tutorial : MonoBehaviour
 
     public GameObject Item;
 
+    public GameObject ItemPrefab;
+
 
     void Start()
     {
@@ -87,10 +89,16 @@ public class Tutorial : MonoBehaviour
         }
 
         if (CurrentScript == 6)
+        {
             Item.SetActive(true);
+            StopChat();
+            return;
+        }
+
         if(CurrentScript == 7)
         {
             Item.SetActive(false);
+            ObjectPoolManager.SpawnObject(ItemPrefab, new Vector3(5.82f, 0, 0), transform.rotation);
             StopChat();
             return;
         }
@@ -106,14 +114,19 @@ public class Tutorial : MonoBehaviour
     public int StartChat()
     {
         canChat = true;
+        GetComponent<Animator>().Play("Close");
+        Invoke("asd", 0.5f);
+        return CurrentScript;
+    }
+
+    public void asd()
+    {
         CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
         PlayerChatBox.gameObject.SetActive(true);
         PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);
         PlayerEmotion.sprite = QueenSprite[(int)scripts[CurrentScript].QueenEmotion];
         PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
-        return CurrentScript;
     }
-
 
     IEnumerator PlayGameCoroutine()
     {

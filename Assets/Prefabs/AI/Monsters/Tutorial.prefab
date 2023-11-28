@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2460830953686712663}
   - component: {fileID: 2460830953686712662}
   - component: {fileID: 2460830953686712661}
-  - component: {fileID: 2460830953686712664}
   - component: {fileID: 894907558964156240}
   - component: {fileID: 6222750400668871678}
+  - component: {fileID: 108453688129806282}
   m_Layer: 8
   m_Name: Tutorial
   m_TagString: Untagged
@@ -108,30 +108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2460830953686712664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2460830953686712660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0fed4a40ec2dc94c8feb83bfc50e17a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHp: 5
-  currentHp: 0
-  renderer: {fileID: 0}
-  time: 0
-  DieEffect: {fileID: 0}
-  DropPercent: 0
-  items: []
-  GameOverOnDied: 0
-  audioClips:
-  - {fileID: 8300000, guid: 405c3c68449105549ba13b9d87091280, type: 3}
-  - {fileID: 8300000, guid: e4d2bfaa060a9da4d938e58b7c215005, type: 3}
-  - {fileID: 8300000, guid: 875e1dd723a916648ab64720163a5162, type: 3}
 --- !u!61 &894907558964156240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -254,3 +230,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &108453688129806282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460830953686712660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ba6ff4aa6d5a84198868f759f85673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 100
+  currentHp: 0
+  renderer: {fileID: 0}
+  time: 0
+  DieEffect: {fileID: 0}
+  DropPercent: 0
+  items: []
+  GameOverOnDied: 0
+  audioClips:
+  - {fileID: 8300000, guid: 405c3c68449105549ba13b9d87091280, type: 3}
+  - {fileID: 8300000, guid: e4d2bfaa060a9da4d938e58b7c215005, type: 3}
+  - {fileID: 8300000, guid: 875e1dd723a916648ab64720163a5162, type: 3}

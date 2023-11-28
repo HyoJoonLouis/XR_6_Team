@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class TutorialPlayer : MonoBehaviour, ITakeDamage
+public class TutorialPlayer : Player, ITakeDamage
 {
     [Header("Info")]
     public float Speed;
@@ -20,7 +20,7 @@ public class TutorialPlayer : MonoBehaviour, ITakeDamage
     public int MaxOnceWeaponCount = 3;
     public GameObject itemEffect;
     Queue<int> onceWeapons;
-    OnceWeapon once;
+    TutorialOnceWeapon once;
     Weapon weapon;
     bool isUse;
     bool isMove;
@@ -39,7 +39,7 @@ public class TutorialPlayer : MonoBehaviour, ITakeDamage
         animator = GetComponent<Animator>();
         move = GetComponent<Movement>();
         weapon = GetComponentInChildren<Weapon>();
-        once = GetComponentInChildren<OnceWeapon>();
+        once = GetComponentInChildren<TutorialOnceWeapon>();
         onceWeapons = new Queue<int>();
         uiManager = FindObjectOfType<UIManager>();
         tutorial = FindObjectOfType<Tutorial>();
@@ -56,6 +56,12 @@ public class TutorialPlayer : MonoBehaviour, ITakeDamage
     {
         if (isMove)
             move.Move(Speed);
+
+        if (count == 3 && scriptCount >= 1)
+        {
+            scriptCount = 0;
+            tutorial.StartChat();
+        }
 
         CameraWorldSpace();
     }
@@ -156,6 +162,8 @@ public class TutorialPlayer : MonoBehaviour, ITakeDamage
         int itemType;
         itemType = onceWeapons.Dequeue();
         once.OnUse(itemType);
+
+        FindObjectOfType<TutorialHit>().hit();
 
         switch (itemType)
         {
