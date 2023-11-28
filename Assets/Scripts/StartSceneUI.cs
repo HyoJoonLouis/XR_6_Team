@@ -58,6 +58,8 @@ public class StartSceneUI : MonoBehaviour
     public GameObject SImage;
     public GameObject QImage;
 
+    public GameObject SettingFlip;
+
     public void OnSettingClicked()
     {
         CImage.SetActive(false);
@@ -78,11 +80,8 @@ public class StartSceneUI : MonoBehaviour
         CImage.SetActive(false);
         SImage.SetActive(false);
         QImage.SetActive(false);
-        Flip.gameObject.SetActive(true);
-        Flip.Play("Flip");
-        Invoke("CloseFlip", 0.3f);
         Book.SetActive(false);
-        Invoke("OpenSetting", 0.1f);
+        OpenSetting();
     }
 
     public void Return()
@@ -97,7 +96,16 @@ public class StartSceneUI : MonoBehaviour
     public void OpenSetting()
     {
         Setting.SetActive(true);
+        SettingFlip.gameObject.SetActive(true);
+        SettingFlip.GetComponent<Animator>().Play("Flip");
+        Invoke("CloseSettingss", 0.3f);
     }
+
+    public void CloseSettingss()
+    {
+        SettingFlip.gameObject.SetActive(false);
+    }
+    
 
     public void CloseSetting()
     {
@@ -243,12 +251,12 @@ public class StartSceneUI : MonoBehaviour
 
     IEnumerator OnChapterButtonClickedCoroutine()
     {
-
         Background.SetActive(true);
         BookCover.SetActive(false);
         Open.gameObject.SetActive(true);
         Open.Play("Open");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
+        Open.gameObject.SetActive(false);
         Book.SetActive(true);
         CurrentScene = 0;
         ChapterText.text = Scene[CurrentScene].Chapter;
@@ -282,7 +290,6 @@ public class StartSceneUI : MonoBehaviour
         audioSource.PlayOneShot(FlipClip);
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForSeconds(1);
-        Open.gameObject.SetActive(false);
     }
 
     public void CloseFlip()
