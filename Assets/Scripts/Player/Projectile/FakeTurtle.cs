@@ -19,6 +19,7 @@ public class FakeTurtle : MonoBehaviour
         player = p.gameObject;
 
         objSize = posType;
+        player.GetComponent<Player>().SetIsUse(false);
 
         StartCoroutine(Duration());
     }
@@ -48,7 +49,6 @@ public class FakeTurtle : MonoBehaviour
             if (time >= 10)
             {
                 time = 0;
-                player.GetComponent<Player>().SetIsUse(false);
                 ObjectPoolManager.ReturnObjectToPool(this.gameObject);
             }
             yield return new WaitForSeconds(0.001f);
