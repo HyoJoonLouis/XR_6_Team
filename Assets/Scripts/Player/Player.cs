@@ -55,6 +55,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
         uiManager.SetHealth((int)MaxHp);
         StartCoroutine(PlayAttackSound());
+
+        onceWeapons.Enqueue((int)WeaponType.Jabberwocky);
     }
 
     private void Update()
