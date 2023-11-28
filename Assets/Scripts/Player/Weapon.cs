@@ -50,4 +50,9 @@ public class Weapon : BaseWeapon
     {
         isAttack = isAtk;
     }
+
+    public bool GetIsAttack()
+    {
+        return isAttack;
+    }
 }

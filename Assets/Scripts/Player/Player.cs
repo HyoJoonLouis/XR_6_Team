@@ -29,7 +29,11 @@ public class Player : MonoBehaviour, ITakeDamage
     Weapon weapon;
     bool isUse = false;
     bool isMove = true;
-    float effectTime = 0;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip[] hitAudioClips;
+    [SerializeField] AudioClip[] attackAudioClips;
+    private AudioSource audioSource;
 
     [Header("UI")]
     public GameObject cameraUI;
@@ -45,10 +49,12 @@ public class Player : MonoBehaviour, ITakeDamage
         once = GetComponentInChildren<OnceWeapon>();
         onceWeapons = new Queue<int>();
         uiManager = FindObjectOfType<UIManager>();
+        audioSource = GetComponent<AudioSource>();
 
         CurrentHp = MaxHp;
 
         uiManager.SetHealth((int)MaxHp);
+        StartCoroutine(PlayAttackSound());
     }
 
     private void Update()
@@ -67,12 +73,11 @@ public class Player : MonoBehaviour, ITakeDamage
     {
         CurrentHp -= value;
         uiManager.SetHealth((int)CurrentHp);
+        audioSource.PlayOneShot(hitAudioClips[Random.Range(0, hitAudioClips.Length)]);
 
         if (CurrentHp <= 0)
         {
             uiManager.GameOver();
-            isUse = true;
-            isMove = false;
             OnPlayerDied();
         }
 
@@ -89,6 +94,17 @@ public class Player : MonoBehaviour, ITakeDamage
         else
             CurrentHp += hp;
         uiManager.SetHealth((int)CurrentHp);
+    }
+
+    IEnumerator PlayAttackSound()
+    {
+        while (true)
+        {
+            if (weapon.GetIsAttack())
+                audioSource.PlayOneShot(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 
     IEnumerator UnBeatTime()
@@ -174,7 +190,6 @@ public class Player : MonoBehaviour, ITakeDamage
     public void AddOnceWeapon(int itemName)
     {
         itemEffect.SetActive(true);
-        effectTime = 0;
         StartCoroutine(OnItemEffect());
 
         if (onceWeapons.Count >= MaxOnceWeaponCount || once.GetLevel(itemName) == 3)
