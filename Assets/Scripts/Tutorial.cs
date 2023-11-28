@@ -39,6 +39,8 @@ public class Tutorial : MonoBehaviour
 
     private TextMeshProUGUI PlayerText;
 
+    private bool canChat;
+
 
     void Start()
     {
@@ -58,7 +60,7 @@ public class Tutorial : MonoBehaviour
     }
     public void Update()
     {
-        if (Keyboard.current.zKey.wasPressedThisFrame)
+        if (Keyboard.current.zKey.wasPressedThisFrame && canChat)
         {
             ChangeToNextScript();
         }
@@ -70,13 +72,29 @@ public class Tutorial : MonoBehaviour
             StartCoroutine("PlayGameCoroutine");
             return;
         }
-
+        if (CurrentScript == 1 || CurrentScript == 3 || CurrentScript == 7 || CurrentScript == 8)
+        {
+            StopChat();
+            return;
+        }
+        canChat = true;
         CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
         PlayerChatBox.gameObject.SetActive(true);
         PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);
         PlayerEmotion.sprite = QueenSprite[(int)scripts[CurrentScript].QueenEmotion];
         PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
     }
+
+    public void StartChat()
+    {
+        canChat = true;
+        CurrentScript = Mathf.Clamp(CurrentScript + 1, 0, scripts.Count);
+        PlayerChatBox.gameObject.SetActive(true);
+        PlayerEmotion.GetComponent<Image>().color = new Color(1, 1, 1);
+        PlayerEmotion.sprite = QueenSprite[(int)scripts[CurrentScript].QueenEmotion];
+        PlayerText.text = scripts[CurrentScript].script.Replace("\\n", "\n");
+    }
+
 
     IEnumerator PlayGameCoroutine()
     {
@@ -86,5 +104,13 @@ public class Tutorial : MonoBehaviour
         this.gameObject.SetActive(false);
         UIManager uiManager = GameObject.FindObjectOfType<UIManager>();
         uiManager.GameClearCanvas.SetActive(true);
+    }
+
+    void StopChat()
+    {
+        canChat = false;
+        PlayerChatBox.gameObject.SetActive(false);
+        PlayerChatBox.gameObject.SetActive(false);
+        GetComponent<Animator>().Play("Start");
     }
 }
