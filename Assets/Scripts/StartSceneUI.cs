@@ -255,8 +255,7 @@ public class StartSceneUI : MonoBehaviour
         BookCover.SetActive(false);
         Open.gameObject.SetActive(true);
         Open.Play("Open");
-        yield return new WaitForSeconds(0.6f);
-        Open.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
         Book.SetActive(true);
         CurrentScene = 0;
         ChapterText.text = Scene[CurrentScene].Chapter;
@@ -289,7 +288,8 @@ public class StartSceneUI : MonoBehaviour
 
         audioSource.PlayOneShot(FlipClip);
         EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.6f);
+        Open.gameObject.SetActive(false);
     }
 
     public void CloseFlip()
