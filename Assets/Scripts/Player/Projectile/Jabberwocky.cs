@@ -9,10 +9,11 @@ public class Jabberwocky : MonoBehaviour
     float time = 0;
     float blendTime = 0;
     float laserDuration;
-    float laserTime = 0;
     float damage;
     int level = 1;
     float posX, posY;
+    float dealTime = 0;
+    bool isDeal = true;
     bool isOff = false;
     bool idleAnim = false;
 
@@ -26,6 +27,8 @@ public class Jabberwocky : MonoBehaviour
         laserDuration = duration;
         this.damage = damage;
         this.level = level;
+        isDeal = true;
+        dealTime = 0;
 
         posX = 9.9f;
         switch (level)
@@ -50,6 +53,7 @@ public class Jabberwocky : MonoBehaviour
         }
 
         StartCoroutine(WaitAnim());
+        StartCoroutine(DealDuration());
     }
 
     private void Start()
@@ -94,13 +98,11 @@ public class Jabberwocky : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        lock (collision)
-        {
-            if (collision == null)
-                return;
+        if (collision == null)
+            return;
 
-            collision.GetComponent<ITakeDamage>().TakeDamage(damage);
-        }
+        collision.GetComponent<ITakeDamage>().TakeDamage(damage);
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     IEnumerator DurationChecking()
@@ -134,6 +136,17 @@ public class Jabberwocky : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.001f);
+        }
+    }
+
+    IEnumerator DealDuration()
+    {
+        while (true)
+        {
+            dealTime += Time.unscaledDeltaTime;
+            if (dealTime >= 0.1f)
+                this.GetComponent<BoxCollider2D>().enabled = true;
+            yield return new WaitForSecondsRealtime(0.01f);
         }
     }
 }
