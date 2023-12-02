@@ -50,6 +50,7 @@ public class AliceMovement : BossBaseMovement
     
         uiManager = FindObjectOfType<UIManager>();
         animator = GetComponent<Animator>();
+        StartStage();
     }
 
     public void OnGameOver()
@@ -264,17 +265,20 @@ public class Pattern7 : BaseState
 
         ObjectPoolManager.ReturnObjectToPool(GiantHandRange);
 
-        GiantHand.transform.position = new Vector2(Monster.TargetTransform.position.x, 10);
-            
-        while(GiantHand.transform.position.y > 0.5f )
+        GiantHand.transform.position = new Vector2(Monster.TargetTransform.position.x, 15);
+
+        GiantHand.GetComponent<Animator>().Play("Start");
+        while (GiantHand.transform.position.y > 0.5f )
         {
             GiantHand.transform.position = Vector2.Lerp(GiantHand.transform.position, new Vector2(GiantHand.transform.position.x, 0.45f), Time.deltaTime * 4.5f);
             yield return null;
         }
 
+        GiantHand.GetComponent<Animator>().Play("Loop");
         yield return new WaitForSeconds(0.5f);
 
-        while(GiantHand.transform.position.y < 10)
+        GiantHand.GetComponent<Animator>().Play("End");
+        while(GiantHand.transform.position.y < 15)
         {
             GiantHand.transform.Translate(Vector2.up * Time.deltaTime * 10); 
             /*GiantHand.transform.position = Vector2.Lerp(GiantHand.transform.position, new Vector2(GiantHand.transform.position.x, 11), Time.deltaTime * 2);*/

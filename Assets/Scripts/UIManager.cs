@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public List<GameObject> items;
 
+    public GameObject TimeStop;
+
     
     [Header("Alice")]
     public UnityEvent OnGameOverEvent;
@@ -42,6 +45,19 @@ public class UIManager : MonoBehaviour
         GameClearCanvas.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(Keyboard.current.escapeKey.wasPressedThisFrame && TimeStop.active == false)
+        {
+            Time.timeScale = 0;
+            TimeStop.SetActive(true);
+        }
+        else if(Keyboard.current.escapeKey.wasPressedThisFrame && TimeStop.active == true)
+        {
+            Time.timeScale = 1;
+            TimeStop.SetActive(false);
+        }
+    }
     public void SetHealth(int value)
     {
         int i;

@@ -37,7 +37,6 @@ public class ChatScript1_3 : MonoBehaviour
     [SerializeField] public List<Sprite> AliceSprite;
 
 
-    public AliceMovement Manager;
 
     public GameObject Player;
     public GameObject Enemy;
@@ -57,7 +56,6 @@ public class ChatScript1_3 : MonoBehaviour
 
     void Start()
     {
-        Manager = FindObjectOfType<AliceMovement>();
 
         CurrentScript = -1;
 
@@ -134,7 +132,7 @@ public class ChatScript1_3 : MonoBehaviour
         EnemyChatBox.gameObject.SetActive(false);
         GetComponent<Animator>().Play("Start");
         yield return new WaitForSeconds(1);
-        Manager.StartStage();
+        ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[10], new Vector3(5.76f, 1, 0), transform.rotation);
         this.gameObject.SetActive(false);
     }
 }

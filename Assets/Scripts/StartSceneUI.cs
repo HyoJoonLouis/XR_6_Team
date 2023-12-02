@@ -60,6 +60,9 @@ public class StartSceneUI : MonoBehaviour
 
     public GameObject SettingFlip;
 
+    public Button LeftButton;
+
+    public Animator Fade;
     public void OnSettingClicked()
     {
         CImage.SetActive(false);
@@ -115,6 +118,7 @@ public class StartSceneUI : MonoBehaviour
     public void Start()
     {
         CurrentScene = -1;
+        audioSource = GetComponent<AudioSource>();
         for(int i = 0; i< Scene.Count; i++)
         {
             if (GameManager.instance.SceneCompleted[i])
@@ -129,8 +133,19 @@ public class StartSceneUI : MonoBehaviour
             CurrentScene = GameManager.instance.CurrentScene - 1;
             OnRightButtonClicked();
         }
+        else
+        {
+            Fade.gameObject.SetActive(true);
+            Fade.Play("Fade");
+            Invoke("CloseFade", 1.5f);
+        }
 
-        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void CloseFade()
+    {
+        Fade.gameObject.SetActive(false);
+
     }
 
     public void ChapterEnterClicked()
@@ -143,10 +158,14 @@ public class StartSceneUI : MonoBehaviour
     public void OnRightButtonClicked()
     {
         if (CurrentScene == 5 && !GameManager.instance.SceneCompleted[5])
+        {
+            RightButton.interactable = false;
             return;
+        }
 
         else if (CurrentScene == 5 && GameManager.instance.SceneCompleted[5])
         {
+            RightButton.interactable = true;
             Flip.gameObject.SetActive(true);
             Flip.Play("Flip");
             Invoke("CloseFlip", 0.3f);
@@ -160,12 +179,19 @@ public class StartSceneUI : MonoBehaviour
             RealFin.Play("End");
         }
 
+        LeftButton.interactable = true;
+        
+
         Flip.gameObject.SetActive(true);
         Flip.Play("Flip");
         Invoke("CloseFlip", 0.3f);
 
         CurrentScene = Mathf.Clamp(CurrentScene + 1, 0, Scene.Count);
 
+        if (!Scene[CurrentScene].isCompleted)
+            RightButton.interactable = false;
+        else
+            RightButton.interactable = true;
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
         ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");
@@ -201,8 +227,11 @@ public class StartSceneUI : MonoBehaviour
     public void OnLeftButtonClicked()
     {
         Fin.SetActive(false);
-        if (CurrentScene == 0)
-            return;
+        if (CurrentScene == 1)
+        {
+            LeftButton.interactable = false;
+        }
+        RightButton.interactable = true;
         Flip.gameObject.SetActive(true);
         Flip.Play("Back");
         Invoke("CloseFlip", 0.3f);
@@ -242,9 +271,12 @@ public class StartSceneUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
+    public void GameQuit()
+    {
+        Application.Quit(0);
+    }
     public void OnChapterButtonClicked()
     {
-
         audioSource.PlayOneShot(audioClip);
         StartCoroutine(OnChapterButtonClickedCoroutine());
     }
@@ -258,6 +290,7 @@ public class StartSceneUI : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Book.SetActive(true);
         CurrentScene = 0;
+        LeftButton.interactable = false;
         ChapterText.text = Scene[CurrentScene].Chapter;
         KoreanText.text = Scene[CurrentScene].KoreanChapter;
         ExplainText.text = Scene[CurrentScene].ExaplainText.Replace("\\n", "\n");

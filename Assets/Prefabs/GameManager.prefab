@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 5697340841093579391, guid: 40fd42f4f69c25441894ffa589d5fa7e, type: 3}
   - {fileID: 2460830953686712660, guid: 45d3bf34f20d6e94893ed61f16027fe9, type: 3}
+  - {fileID: 4436388834620046065, guid: 7080556aa3137814ea9057ecab18d33e, type: 3}
   Ammos:
   - {fileID: 3456975904051789431, guid: b27ad69a6502a2c4da8686e2321525d8, type: 3}
   - {fileID: 1936970529259058219, guid: fe8041544d36c6b4f9e5280046d605c4, type: 3}
@@ -69,5 +70,5 @@ MonoBehaviour:
   - {fileID: 7190041472637853845, guid: bf907e4d7db4087429e7b96b7d0362b9, type: 3}
   - {fileID: 8781438576031731633, guid: a6271567c4c16de4ebfc77897759bb40, type: 3}
   - {fileID: 2004355677318684743, guid: 6a7d0f806c13a7a458e3e02bb5ac8945, type: 3}
-  SceneCompleted: 000000000000
+  SceneCompleted: 010101010101
   CurrentScene: 0

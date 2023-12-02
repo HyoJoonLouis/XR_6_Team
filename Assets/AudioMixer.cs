@@ -73,17 +73,35 @@ public class audioMixer : MonoBehaviour
         }
     }
 
-    public void SetFullScreen()
+    public void SetFullScreen(bool _bool)
     {
-        Full.isOn = true;
-        Window.isOn = false;
-        Screen.SetResolution(1920, 1080, true);
+        if(_bool)
+        {
+            Full.isOn = true;
+            Window.isOn = false;
+            Screen.SetResolution(1920, 1080, true);
+        }
+        else
+        {
+            Full.isOn = false;
+            Window.isOn = true;
+            Screen.SetResolution(1920, 1080, false);
+        }
     }
 
-    public void SetWindowScreen()
+    public void SetWindowScreen(bool _bool)
     {
-        Full.isOn = false;
-        Window.isOn = true;
-        Screen.SetResolution(1920, 1080, false);
+        if (_bool)
+        {
+            Full.isOn = false;
+            Window.isOn = true;
+            Screen.SetResolution(1920, 1080, false);
+        }
+        else
+        {
+            Full.isOn = true;
+            Window.isOn = false;
+            Screen.SetResolution(1920, 1080, true);
+        }
     }
 }
