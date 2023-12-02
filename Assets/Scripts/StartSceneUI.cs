@@ -117,7 +117,7 @@ public class StartSceneUI : MonoBehaviour
 
     public void Start()
     {
-        CurrentScene = -1;
+        CurrentScene = 0;
         audioSource = GetComponent<AudioSource>();
         for(int i = 0; i< Scene.Count; i++)
         {
@@ -228,6 +228,10 @@ public class StartSceneUI : MonoBehaviour
     {
         Fin.SetActive(false);
         if (CurrentScene == 1)
+        {
+            LeftButton.interactable = false;
+        }
+        if(CurrentScene == 0)
         {
             LeftButton.interactable = false;
         }

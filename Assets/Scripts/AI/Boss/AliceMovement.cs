@@ -89,7 +89,6 @@ public class Pattern1 : BaseState
     public override void OnStateEnter()
     {
         coroutine = Monster.StartCoroutine(Pattern1Coroutine());
-        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -104,7 +103,7 @@ public class Pattern1 : BaseState
 
     IEnumerator Pattern1Coroutine()
     {
-        for(int repeat = 0; repeat < Random.Range(10,20); repeat++)
+        for(int repeat = 0; repeat < Random.Range(8,12); repeat++)
         {
             for(int i = 0; i< 15; i++)
             {
@@ -131,7 +130,6 @@ public class Pattern2 : BaseState
     public override void OnStateEnter()
     {
         coroutine = Monster.StartCoroutine(Pattern2Coroutine());
-        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -170,7 +168,6 @@ public class Pattern5 : BaseState
     public override void OnStateEnter()
     {
         Monster.StartCoroutine(Pattern5Coroutine());
-        ((AliceMovement)Monster).animator.Play("Spawn");
     }
 
     public override void OnStateExit()
@@ -183,6 +180,7 @@ public class Pattern5 : BaseState
 
     IEnumerator Pattern5Coroutine()
     {
+        ((AliceMovement)Monster).animator.Play("Spawn");
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[0], new Vector3(10, 4, 0), Quaternion.Euler(0,0,0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[0], new Vector3(10, 2, 0), Quaternion.Euler(0, 0, 0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[0], new Vector3(10, -2, 0), Quaternion.Euler(0, 0, 0));
@@ -190,6 +188,7 @@ public class Pattern5 : BaseState
 
         yield return new WaitForSeconds(2.5f);
 
+        ((AliceMovement)Monster).animator.Play("Spawn");
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[2], new Vector3(10, 3, 0), Quaternion.Euler(0, 0, 0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[2], new Vector3(10, 0, 0), Quaternion.Euler(0, 0, 0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[2], new Vector3(10, -3, 0), Quaternion.Euler(0, 0, 0));
@@ -203,9 +202,9 @@ public class Pattern6 : BaseState
     public Pattern6(BossBaseMovement alice) : base(alice) { }
     public override void OnStateEnter()
     {
+        ((AliceMovement)Monster).animator.Play("Spawn");
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[3], new Vector3(10, 3.3f, 0), Quaternion.Euler(0, 0, 0));
         ObjectPoolManager.SpawnObject(GameManager.instance.Monsters[3], new Vector3(10, -3.3f, 0), Quaternion.Euler(0, 0, 0));
-        ((AliceMovement)Monster).animator.Play("Spawn");
         Monster.ChangeState(((AliceMovement)Monster).AliceState[AliceMovement.State.Idle]);
     }
 
@@ -268,14 +267,16 @@ public class Pattern7 : BaseState
         GiantHand.transform.position = new Vector2(Monster.TargetTransform.position.x, 15);
 
         GiantHand.GetComponent<Animator>().Play("Start");
-        while (GiantHand.transform.position.y > 0.5f )
+        while (GiantHand.transform.position.y > 0.4f )
         {
-            GiantHand.transform.position = Vector2.Lerp(GiantHand.transform.position, new Vector2(GiantHand.transform.position.x, 0.45f), Time.deltaTime * 4.5f);
+            GiantHand.transform.position = Vector2.MoveTowards(GiantHand.transform.position, new Vector2(GiantHand.transform.position.x, 0.2f), Time.deltaTime * 20);
             yield return null;
         }
 
+        CameraShake camera = Object.FindObjectOfType<CameraShake>();
+        camera.VibrateForTime(0.5f);
         GiantHand.GetComponent<Animator>().Play("Loop");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
         GiantHand.GetComponent<Animator>().Play("End");
         while(GiantHand.transform.position.y < 15)
