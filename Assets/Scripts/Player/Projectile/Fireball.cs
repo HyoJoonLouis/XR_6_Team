@@ -11,6 +11,7 @@ public class Fireball : MonoBehaviour
     [SerializeField] AnimationCurve curveUp;
     float time;
     [SerializeField] GameObject OnHitParticle;
+    float pauseTime;
 
     public void Init(float speed, float damage, int maxAtk)
     {
@@ -28,14 +29,19 @@ public class Fireball : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.right * Speed * Time.unscaledDeltaTime);
+        if (Time.timeScale != 0)
+            pauseTime = Time.unscaledDeltaTime;
+        else if (Time.timeScale == 0)
+            pauseTime = Time.deltaTime;
+
+        transform.Translate(Vector3.right * Speed * pauseTime);
 
         if (this.transform.position.x < -13 || this.transform.position.x > 13 || this.transform.position.y > 7 || this.transform.position.y < -7)
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
 
         if (time < 1)
         {
-            time += Time.unscaledDeltaTime;
+            time += pauseTime;
             this.transform.localScale = new Vector3(curveUp.Evaluate(time), curveUp.Evaluate(time), 1);
         }
 

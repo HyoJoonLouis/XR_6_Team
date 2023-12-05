@@ -60,7 +60,14 @@ public class Player : MonoBehaviour, ITakeDamage
     private void Update()
     {
         if (uiManager.TimeStop.active == true)
+        {
+            isUse = true;
             return;
+        }
+        else
+        {
+            isUse = false;
+        }
 
         if (isUnbeatTime)
             boxCollider.enabled = false;

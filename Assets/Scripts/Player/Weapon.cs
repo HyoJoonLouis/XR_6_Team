@@ -9,7 +9,6 @@ public class Weapon : BaseWeapon
     bool isAttack = false;
     bool attackTime = true;
     public float time;
-    Vector2 randVector;
 
     protected override void Awake()
     {
@@ -22,8 +21,8 @@ public class Weapon : BaseWeapon
         if (time > 100f)
             time = 0;
         Random.InitState((int)time);
-
-        CreateProjectile();
+        if (Time.timeScale != 0)
+            CreateProjectile();
     }
 
     public IEnumerator OnAttack()

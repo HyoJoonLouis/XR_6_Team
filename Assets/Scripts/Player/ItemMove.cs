@@ -50,7 +50,10 @@ public class ItemMove : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(new Vector3(-1, moveDir, 0) * speed * Time.unscaledDeltaTime);
+        if (Time.timeScale != 0)
+            transform.Translate(new Vector3(-1, moveDir, 0) * speed * Time.unscaledDeltaTime);
+        else if (Time.timeScale == 0)
+            transform.Translate(new Vector3(-1, moveDir, 0) * speed * Time.deltaTime);
 
         if (this.transform.position.x < -13 || this.transform.position.x > 13 || this.transform.position.y > 7 || this.transform.position.y < -7)
             ObjectPoolManager.ReturnObjectToPool(this.gameObject);
