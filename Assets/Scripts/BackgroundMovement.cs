@@ -9,7 +9,7 @@ public class BackgroundMovement : MonoBehaviour
     [SerializeField] float x;
 
     float time;
-    void Update()
+    void LateUpdate()
     {
         this.transform.Translate(new Vector3(-Speed * Time.deltaTime, 0));
         if(this.transform.position.x <= -x)
